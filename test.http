@@ -2,3 +2,4 @@ GET https://api.harvardartmuseums.org/image?apikey=a3ea6ad7-34cb-4507-a771-21efb
 
 ###
 GET https://api.harvardartmuseums.org/image/326541?apikey=a3ea6ad7-34cb-4507-a771-21efbcd15181&
+
