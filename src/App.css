@@ -5,7 +5,6 @@
 
 body {
   background: #eeeeee;
-  padding: 20px 100px;
 }
 
 .menu-bar {
@@ -100,7 +99,6 @@ div [class^="menu-dot-4"] {
 }
 
 .login-dot {
-  margin-left: 400px;
   width: 500px;
   height: 500px;
   position: relative;
@@ -125,4 +123,35 @@ div [class^="menu-dot-4"] {
   position: absolute;
   top: 47%;
   left: 22%;
+}
+
+.hirst-container-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hirst-container {
+  width: 540px;
+  height: 650px;
+}
+
+.hirst-dot {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 20px;
+  animation: fade-inout 0.5s infinite alternate;
+}
+
+@keyframes fade-inout {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
 }
