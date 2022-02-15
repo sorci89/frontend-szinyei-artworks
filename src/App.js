@@ -1,43 +1,30 @@
 import './App.css';
-import { useState, useEffect } from 'react';
 
-const axios = require('axios');
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Landing from './pages/Landing';
+import Browser from './pages/Browser';
+import Login from './pages/Login';
+import Logout from './pages/Logout';
+import Register from './pages/Register';
+import Account from './pages/Account';
 
 function App() {
-  const [data, setData] = useState('');
-  const [dataList, setDataList] = useState([]);
-  const [department, setDepartment] = useState([]);
-  const [search, setSearch] = useState([]);
-
-  const getDatas = async () => {
-    const response = await axios.get(
-      'https://api.harvardartmuseums.org/image?apikey=a3ea6ad7-34cb-4507-a771-21efbcd15181&q=name:18th century BCE'
-    );
-    setDataList(response.data);
-    console.log('data', dataList);
-  };
-  // const getDepartment = async () => {
-  //   const response = await axios.get(
-  //     'https://collectionapi.metmuseum.org/public/collection/v1/departments'
-  //   );
-  //   setDepartment(response.data);
-  //   console.log(department);
-  // };
-
-  const getSearch = async () => {
-    const response = await axios.get();
-    setSearch(response.data);
-    console.log(search);
-  };
-
-  useEffect(() => {
-    getDatas();
-    console.log(dataList);
-    // getDepartment();
-    // getSearch();
-  }, []);
-
-  return <div>HELLO MET</div>;
+  return (
+    <div className='App'>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Landing />}></Route>
+          <Route path='login' element={<Login />}></Route>
+          <Route path='logout' element={<Logout />}></Route>
+          <Route path='register' element={<Register />}></Route>
+          <Route path='account' element={<Account />}></Route>
+          <Route path='browser' element={<Browser />}></Route>
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;
