@@ -5,7 +5,6 @@
 
 body {
   background: #eeeeee;
-  padding: 20px 100px;
 }
 
 .menu-bar {
@@ -53,7 +52,7 @@ div [class^="menu-dot-4"] {
 .page-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .search-bar {
@@ -75,17 +74,20 @@ div [class^="menu-dot-4"] {
 
 .color-test {
   width: 250px;
-  height: 250px;
+  height: 320px;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-top: 15px;
+  background-color: rgba(146, 38, 77, 0.2);
 }
 
-.color-test:before {
-  width: 250px;
-  height: 250px;
-  position: absolute;
-  opacity: 0.2;
-  background: #92264d;
-  content: " ";
+.color-test img {
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .login-dot {
