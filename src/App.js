@@ -7,25 +7,35 @@ function App() {
   const [data, setData] = useState('');
   const [dataList, setDataList] = useState([]);
   const [department, setDepartment] = useState([]);
+  const [search, setSearch] = useState([]);
 
-  const getDatas = async () => {
+  //   const getDatas = async () => {
+  //     const response = await axios.get(
+  //       'https://collectionapi.metmuseum.org/public/collection/v1/objects/?objectID=437133'
+  //     );
+  //     setDataList(response.data);
+  //     console.log('data', dataList);
+  //   };
+  //   const getDepartment = async () => {
+  //     const response = await axios.get(
+  //       'https://collectionapi.metmuseum.org/public/collection/v1/departments'
+  //     );
+  //     setDepartment(response.data);
+  //     console.log(department);
+  //   };
+
+  const getSearch = async () => {
     const response = await axios.get(
-      'https://collectionapi.metmuseum.org/public/collection/v1/objects/?objectID=437133'
+      'https://collectionapi.metmuseum.org/public/collection/v1/search?q=sunflowers&isHighlight=true'
     );
-    setDataList(response.data);
-    console.log('data', dataList);
-  };
-  const getDepartment = async () => {
-    const response = await axios.get(
-      'https://collectionapi.metmuseum.org/public/collection/v1/departments'
-    );
-    setDepartment(response.data);
-    console.log(department);
+    setSearch(response.data);
+    console.log(search);
   };
 
   useEffect(() => {
-    getDatas();
-    getDepartment();
+    // getDatas();
+    // getDepartment();
+    getSearch();
   }, []);
 
   return <div>HELLO MET</div>;
