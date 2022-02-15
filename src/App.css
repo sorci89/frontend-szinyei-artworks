@@ -77,6 +77,11 @@ div [class^="menu-dot-4"] {
   width: 250px;
   height: 250px;
   margin: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 15px;
 }
 
 .color-test:before {
@@ -86,6 +91,12 @@ div [class^="menu-dot-4"] {
   opacity: 0.2;
   background: #92264d;
   content: " ";
+  transform: translateY(-10px);
+}
+
+.color-test img {
+  max-width: 200px;
+  max-height: 200px;
 }
 
 .login-dot {
