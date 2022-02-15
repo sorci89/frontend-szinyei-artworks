@@ -25,10 +25,10 @@ const Browser = () => {
 
       <div className="page-content">
         <div className="search-bar"></div>
-
+ 
         {dataList.map((data) => (
           <Imagebox data={data} />
-        ))}
+          ))}
       </div>
     </div>
   );
