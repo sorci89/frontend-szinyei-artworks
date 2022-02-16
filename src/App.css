@@ -313,17 +313,8 @@ div [class^="menu-dot-4"] {
     box-shadow: 0 0 0 0 rgba(90, 131, 219, 0);
   }
 }
-/* @keyframes fade-inout {
-  0% {
-    transform: scale(1);
-  }
 
-  100% {
-    transform: scale(1.2);
-  }
-}
-
-.regstration{
+.regstration {
   width: 400px;
   padding: 20px;
   margin: 30px auto;
@@ -333,7 +324,7 @@ div [class^="menu-dot-4"] {
   border: 1px solid rgb(201, 201, 201);
   box-shadow: 15px 15px 35px rgb(71, 71, 71);
 }
-.regstration input{
+.regstration input {
   display: block;
   width: 300px;
   padding: 8px;
@@ -342,7 +333,7 @@ div [class^="menu-dot-4"] {
   border-radius: 20px;
   border: 1px solid grey;
 }
-.regstration button{
+.regstration button {
   display: block;
   width: 150px;
   padding: 5px;
