@@ -53,7 +53,7 @@ div [class^="menu-dot-4"] {
 .page-content {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .search-bar {
@@ -75,23 +75,15 @@ div [class^="menu-dot-4"] {
 
 .color-test {
   width: 250px;
-  height: 250px;
+  height: 320px;
   margin: 20px;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
+  justify-content: space-evenly;
   padding-top: 15px;
-}
-
-.color-test:before {
-  width: 250px;
-  height: 250px;
-  position: absolute;
-  opacity: 0.2;
-  background: #92264d;
-  content: " ";
-  transform: translateY(-10px);
+  background-color: rgba(146, 38, 77, 0.2);
 }
 
 .color-test img {
@@ -330,4 +322,36 @@ div [class^="menu-dot-4"] {
     transform: scale(1.2);
   }
 }
+<<<<<<< HEAD
  */
+=======
+
+.regstration{
+  width: 400px;
+  padding: 20px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgb(201, 201, 201);
+  box-shadow: 15px 15px 35px rgb(71, 71, 71);
+}
+.regstration input{
+  display: block;
+  width: 300px;
+  padding: 8px;
+  font-size: 20px;
+  margin: 30px auto;
+  border-radius: 20px;
+  border: 1px solid grey;
+}
+.regstration button{
+  display: block;
+  width: 150px;
+  padding: 5px;
+  font-size: 20px;
+  margin: 30px auto 10px;
+  border-radius: 20px;
+  border: 1px solid grey;
+}
+>>>>>>> main
