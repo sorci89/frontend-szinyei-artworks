@@ -22,6 +22,7 @@ const Browser = () => {
     // `https://api.harvardartmuseums.org/object?size=12&size=100&page=${pageNumber}&classification=Paintings&century=19th%20century&apikey=a8d819ad-b52c-4acb-97b5-88541077022b`);
     `https://api.harvardartmuseums.org/object?size=12&size=100&page=${page}&classification=Paintings&century=19th%20century&apikey=a8d819ad-b52c-4acb-97b5-88541077022b`);
     setDataList(resp.data.records);
+    console.log(resp.data)
    
     setNumberOfPages(resp.data.info.pages)
   };
