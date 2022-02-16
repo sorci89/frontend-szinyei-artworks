@@ -51,13 +51,11 @@ const Hirst = () => {
     <div className="hirst-container-container">
       <div className="hirst-container">
         {colors.map((color) => (
-          <Link to="/browser">
-            <div
-              key={color}
-              className="hirst-dot"
-              style={{ background: `${color}` }}
-            ></div>
-          </Link>
+          <div
+            key={color}
+            className="hirst-dot"
+            style={{ background: `${color}` }}
+          ></div>
         ))}
       </div>
     </div>

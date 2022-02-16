@@ -7,14 +7,14 @@ const Landing = () => {
 
   setTimeout(() => {
     swithNext(true);
-  }, 4000);
+  }, 6000);
 
   return (
     <div className="hirst-container-container">
-      {!next ? (
+      {next ? (
         <Link to="/browser">
           <div className="login-dot">
-            <p>THE MET</p> <p>image browser</p>
+            <p>Harvard Art Museum</p> <p>image browser</p>
           </div>
         </Link>
       ) : (
