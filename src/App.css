@@ -341,3 +341,19 @@ div [class^='menu-dot-4'] {
   border-radius: 20px;
   border: 1px solid grey;
 }
+
+.bigImage_container {
+  width: 50%;
+  height: auto;
+  background-color: blanchedalmond;
+  color: crimson;
+  -webkit-box-shadow: 5px 5px 10 10 grey;
+  box-shadow: 5px 5px 10 10 grey;
+}
+
+.bigImage_btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: blueviolet;
+}

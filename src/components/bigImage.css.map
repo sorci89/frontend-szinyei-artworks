@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,IAAI;EACZ,gBAAgB,EAAE,cAAc;EAEhC,KAAK,EAAE,OAAO;EACd,UAAU,EAAE,kBAAkB;CAM/B;;AAZD,AAQE,UARQ,CAQR,MAAM,CAAC;EACL,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,GAAG;CACnB",
+    "sources": [
+        "bigImage.scss"
+    ],
+    "names": [],
+    "file": "bigImage.css"
+}
