@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -103,19 +104,47 @@ div [class^="menu-dot-4"] {
   height: 500px;
   position: relative;
   border-radius: 50%;
-  /* background: #5a83db; */
+  background: #5a83db;
   animation: 6s shrink;
+}
+
+.login-dot:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  animation: shockwave 1.5s 0.5s ease-out infinite;
+}
+.login-dot:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  animation: shockwave 1.5s 0.2s ease-out infinite;
+  z-index: -1;
+  /*  animation: 1.5s cresent linear infinite alternate; */
 }
 
 .login-dot p:nth-child(1) {
   font-family: "Noto Sans", sans-serif;
   color: #ffffff;
-  font-size: 80px;
-  line-height: 0.84;
+  font-size: 70px;
+  line-height: 0.9;
   font-weight: bolder;
   position: absolute;
-  top: 10%;
-  left: 22%;
+  top: 13%;
+  left: 20%;
+  letter-spacing: 0.1em;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 6px;
+  -webkit-text-stroke-color: white;
+  text-shadow: 8px 8px #a7cfe6, 12px 12px #4b3c39;
 }
 
 .login-dot p:nth-child(2) {
@@ -124,8 +153,9 @@ div [class^="menu-dot-4"] {
   font-size: 25px;
   font-weight: bold;
   position: absolute;
-  top: 63%;
-  left: 43%;
+  top: 62%;
+  left: 40%;
+  animation: text-shadow 1.5s ease-in-out infinite;
 }
 
 .hirst-container-container {
@@ -146,18 +176,7 @@ div [class^="menu-dot-4"] {
   border-radius: 50%;
   display: inline-block;
   margin: 20px;
-  animation: 0.6s pop-in ease infinite alternate;
-}
-
-@keyframes pop-in {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  }
-  100% {
-    transform: scale(1.2);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  }
+  /* animation: 0.6s pop-in ease infinite alternate; */
 }
 
 .hirst-container div:nth-child(1),
@@ -215,50 +234,15 @@ div [class^="menu-dot-4"] {
   animation-delay: 0.3s;
 }
 
-@keyframes fade-inout {
+@keyframes pop-in {
   0% {
     transform: scale(1);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   }
-
   100% {
     transform: scale(1.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
-}
-
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(90, 131, 219, 0.4);
-  }
-  75% {
-    box-shadow: 0 0 0 100px rgba(90, 131, 219, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(90, 131, 219, 0);
-  }
-}
-
-.login-dot:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border-radius: 50%;
-  /*   animation: shockwave 1s 0.65s ease-out infinite; */
-  z-index: -1;
-  animation: 1.5s cresent linear infinite alternate;
-}
-
-.login-dot:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border-radius: 50%;
-  animation: shockwave 1.5s 0.5s ease-out infinite;
 }
 
 @keyframes shrink {
@@ -282,7 +266,7 @@ div [class^="menu-dot-4"] {
     box-shadow: 0 0 50px rgba(0, 0, 0, 0), inset 0 0 30px rgba(0, 0, 0, 0);
   }
   100% {
-    transform: scale(1.5);
+    transform: scale(1.3);
   }
 }
 
@@ -301,3 +285,49 @@ div [class^="menu-dot-4"] {
     box-shadow: none;
   }
 }
+
+@keyframes text-shadow {
+  0% {
+    text-shadow: 0 0 0 #89af24, 0 0 0 #a7cfe6, 0 0 0 #d65035, 0 0 0 #f2d748;
+  }
+
+  20% {
+    text-shadow: 0 0.125em 0 #89af24, 0 0.25em 0 #a7cfe6, 0 -0.125em 0 #d65035,
+      0 -0.25em 0 #f2d748;
+  }
+
+  40% {
+    text-shadow: 0 -0.0625em 0 #89af24, 0 -0.125em 0 #a7cfe6,
+      0 0.0625em 0 #d65035, 0 0.125em 0 #f2d748;
+  }
+
+  60% {
+    text-shadow: 0 0.03125em 0 #89af24, 0 0.0625em 0 #a7cfe6,
+      0 -0.03125em 0 #d65035, 0 -0.0625em 0 #f2d748;
+  }
+
+  80% {
+    text-shadow: 0 0 0 #89af24, 0 0 0 #a7cfe6, 0 0 0 #d65035, 0 0 0 #f2d748;
+  }
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(90, 131, 219, 0.4);
+  }
+  75% {
+    box-shadow: 0 0 0 100px rgba(90, 131, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(90, 131, 219, 0);
+  }
+}
+/* @keyframes fade-inout {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.2);
+  }
+}
+ */
