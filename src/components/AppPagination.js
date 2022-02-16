@@ -21,8 +21,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-//????
-
 const AppPagination = ({ setPage, page }) => {
   const classes = useStyles();
 
