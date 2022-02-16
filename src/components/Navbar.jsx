@@ -11,7 +11,6 @@ const Navbar = () => {
     { id: 3, value: '#92264d', text: 'red' },
   ];
 
-  console.log(themeState[0].value);
   const [theme, setTheme] = useState([]);
   const [color, setColor] = useState(themeState[0].value);
 

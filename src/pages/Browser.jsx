@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Navbar from "../components/Navbar";
-import Imagebox from "../components/Imagebox";
-import AppPagination from "../components/AppPagination";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import Navbar from '../components/Navbar';
+import Imagebox from '../components/Imagebox';
+import AppPagination from '../components/AppPagination';
 
 const Browser = () => {
   const [dataList, setDataList] = useState([]);
@@ -11,7 +11,7 @@ const Browser = () => {
 
   useEffect(() => {
     renderData();
-    console.log(page);
+    // console.log(page);
   }, [page]);
 
   const renderData = async () => {
@@ -32,12 +32,12 @@ const Browser = () => {
       <Navbar />
 
       <div
-        className="page-content"
+        className='page-content'
         style={{
           backgroundImage: `url("/pictures/bg-paper-texture.jpg")`,
         }}
       >
-        <div className="search-bar"></div>
+        <div className='search-bar'></div>
 
         {dataList.map((data) => (
           <Imagebox data={data} key={Math.floor(Math.random() * 10000)} />
