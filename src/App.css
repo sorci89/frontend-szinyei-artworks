@@ -117,3 +117,32 @@ div [class^="menu-dot-4"] {
   top: 47%;
   left: 22%;
 }
+
+.regstration{
+  width: 400px;
+  padding: 20px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  text-align: center;
+  border-radius: 20px;
+  border: 1px solid rgb(201, 201, 201);
+  box-shadow: 15px 15px 35px rgb(71, 71, 71);
+}
+.regstration input{
+  display: block;
+  width: 300px;
+  padding: 8px;
+  font-size: 20px;
+  margin: 30px auto;
+  border-radius: 20px;
+  border: 1px solid grey;
+}
+.regstration button{
+  display: block;
+  width: 150px;
+  padding: 5px;
+  font-size: 20px;
+  margin: 30px auto 10px;
+  border-radius: 20px;
+  border: 1px solid grey;
+}

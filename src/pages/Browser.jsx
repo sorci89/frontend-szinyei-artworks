@@ -34,7 +34,7 @@ const Browser = () => {
         <div className="search-bar"></div>
  
         {dataList.map((data) => (
-          <Imagebox data={data} />
+          <Imagebox data={data} key={Math.floor(Math.random() * 10000)}/>
           ))}
       </div>
       {/* <button
