@@ -11,14 +11,16 @@ const Landing = () => {
 
   return (
     <div className="hirst-container-container">
-      {next ? (
+      {!next ? (
         <Link to="/browser">
           <div className="login-dot">
             <p>Harvard Art Museum</p> <p>image browser</p>
           </div>
         </Link>
       ) : (
-        <Hirst />
+        <Link to="/browser">
+          <Hirst />
+        </Link>
       )}
     </div>
   );
