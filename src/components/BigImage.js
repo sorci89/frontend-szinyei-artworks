@@ -20,34 +20,47 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
           </div>
         )}
       </div>
-      {data.images[0].description && (
+      {data.images[0].description ? (
         <div className='description'>{data.images[0].description}</div>
+      ) : (
+        <div className='unknown description'>
+          Desciption is not yet part of the museum API
+        </div>
       )}
       <div className='details'>
-        {data.classification && (
+        {data.classification ? (
           <div>
             <spam>Classification: </spam> {data.classification}
           </div>
+        ) : (
+          <div className='unknown'>
+            <spam>Classification: </spam> unknown
+          </div>
         )}
-        {data.century && (
+        {data.century ? (
           <div>
             <spam>Century: </spam> {data.century}
           </div>
+        ) : (
+          <div className='unknown'>
+            <spam>Century: </spam> unknown
+          </div>
         )}
-
-        {data.culture && (
+        {data.culture ? (
           <div>
             <spam>Culture: </spam> {data.culture}
           </div>
-        )}
-        {data.datebegin && data.dateend && (
-          <div>
-            <spam>Begin / end of the artistic period: </spam> {data.datebegin} -
-            {data.dateend}
+        ) : (
+          <div className='unknown'>
+            <spam>Culture: </spam> unknown
           </div>
         )}
-        <spam>Date</spam>
-        {data.dated}
+        {data.dated && (
+          <div>
+            <spam>Dated: </spam> {data.date}
+          </div>
+        )}
+
         {data.department && (
           <div>
             <spam>Department: </spam> {data.department}

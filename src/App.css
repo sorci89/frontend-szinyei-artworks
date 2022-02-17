@@ -73,7 +73,7 @@ div [class^='menu-dot-4'] {
   flex-wrap: nowrap;
   align-items: center;
   justify-content: space-evenly;
-  padding-top: 15px;
+  padding: 0 20px 10px;
   background-color: rgba(146, 38, 77, 0.2);
 }
 

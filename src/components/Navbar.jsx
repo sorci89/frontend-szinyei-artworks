@@ -6,7 +6,7 @@ const Navbar = () => {
 
   const themeState = [
     { id: 0, value: '#fff', text: 'Change' },
-    { id: 1, value: '#5a83db', text: 'blue' },
+    { id: 1, value: '#a7cfe6', text: 'blue' },
     { id: 2, value: '#abdd98', text: 'green' },
     { id: 3, value: '#92264d', text: 'red' },
   ];
@@ -47,6 +47,7 @@ const Navbar = () => {
             </Link>
             <div className='menu-dot-4' style={{ backgroundColor: { color } }}>
               <select
+                className='select'
                 onChange={(e) => getColor(e.target.value)}
                 style={{
                   border: 'none',

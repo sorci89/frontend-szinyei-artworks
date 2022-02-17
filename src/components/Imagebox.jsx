@@ -23,21 +23,25 @@ const Imagebox = (props) => {
           imageId={imageId}
         />
       ) : (
-        <div>
+        <div className=''>
           <img
-            style={{ cursor: 'pointer' }}
+            style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
             onClick={() => openImage(data.id)}
             src={
-              data.images && data.images[0] ? data.images[0].baseimageurl : ''
+              data.images[0]
+                ? data.images[0].baseimageurl
+                : './picturs/no-profile-picture'
             }
             alt='not available'
           />
-          <div>{data.title}</div>
           {data.people ? (
-            <div>{data.people[0].name}</div>
+            <div>
+              <b>{data.people[0].name}</b>
+            </div>
           ) : (
             <div>Unknown Artist</div>
           )}
+          <div style={{ textAlign: 'center' }}>{data.title}</div>
         </div>
       )}
     </div>

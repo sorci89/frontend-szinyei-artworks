@@ -2,6 +2,10 @@ $menu1: #424058;
 $menu2: #a7cfe6;
 $menu3: #abdd98;
 $menu4: #92264d;
+$myColor: #1234d5;
+$myg: grayscale(#1234d5);
+$myc: complement(#1234d5);
+$myi: invert(#1234d5);
 
 .bigImage_container {
   position: fixed;
@@ -19,16 +23,26 @@ $menu4: #92264d;
   background-color: blanchedalmond;
   //   background-image: url('./pictures/bg-paper-texture.jpg');
   color: rgb(51, 2, 131);
+  font-size: 1em;
   box-shadow: 5px 5px 10 10 grey;
   padding: 30px 50px 50px;
 
+  h2 {
+    margin-left: 50px;
+  }
   .inside_image {
     grid-column: 1;
     grid-row: 2;
     text-align: center;
+    align-self: center;
+  }
+
+  .title {
+    font-weight: 600;
   }
   .description {
-    margin-top: 10px;
+    align-self: center;
+    margin-bottom: 20px;
 
     grid-column: 2 / span 3;
     grid-row: 2;
@@ -65,11 +79,16 @@ $menu4: #92264d;
     font-size: 16px;
     padding-left: 15px;
   }
-
+  .unknown {
+    font-style: italic;
+  }
   .text {
     padding: 5px 20px;
   }
   .lastupdate {
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
     grid-column: 3;
     grid-row: 3;
     font-size: 14px;
