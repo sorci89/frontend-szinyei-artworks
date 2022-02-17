@@ -1,12 +1,10 @@
 import React from 'react';
-import './bigImage.css';
+import './bigImage.scss';
 
-const BigImage = ({ imageData, isOpen, setIsOpen }) => {
-  console.log(imageData);
-  let data = imageData[0][0];
-  console.log(data.cantury, data.description);
+const BigImage = ({ data, isOpen, setIsOpen }) => {
   return (
-    <div className='conatiner'>
+    <div className='bigImage_container'>
+      Ide jönne a leírás
       {/* <img src={data.images[0].baseimageurl} */}
       {/* {data.century}
      <span>Classification</span> {data.classification}
@@ -31,7 +29,6 @@ const BigImage = ({ imageData, isOpen, setIsOpen }) => {
 	  <span></span>{data.peope[0].dispalyname}
 	  <span></span>{data.peope[0].culture}
       <span></span>{data.peope[0].dispalydate} */}
-
       <button onClick={() => setIsOpen(false)}>Close</button>
     </div>
   );

@@ -1,14 +1,44 @@
-.container {
-  width: 50%;
-  height: auto;
+$menu1: #424058;
+$menu2: #a7cfe6;
+$menu3: #abdd98;
+$menu4: #92264d;
+
+.bigImage_container {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  height: 300px;
   background-color: blanchedalmond;
   //   background-image: url('./pictures/bg-paper-texture.jpg');
   color: crimson;
   box-shadow: 5px 5px 10 10 grey;
+  padding: 30px 20px 50px;
 
   button {
-    width: 100px;
+    position: relative;
+    left: 30px;
+    bottom: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    background-color: blueviolet;
+    background-color: $menu3;
+    color: #fff;
+
+    &:hover {
+      background-color: #ab1154;
+    }
+  }
+
+  span {
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  .text {
+    padding: 5px 20px;
   }
 }

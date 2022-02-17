@@ -342,13 +342,23 @@ div [class^='menu-dot-4'] {
   border: 1px solid grey;
 }
 
+imagebox_container {
+  position: relative;
+}
+/* 
 .bigImage_container {
-  width: 50%;
-  height: auto;
+  position: fixed;
+  top: 30%;
+  width: 200px;
+  min-height: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100px;
   background-color: blanchedalmond;
+  border: #424058 1px solid;
   color: crimson;
-  -webkit-box-shadow: 5px 5px 10 10 grey;
-  box-shadow: 5px 5px 10 10 grey;
+  box-shadow: 5px 5px grey;
+  z-index: 10;
 }
 
 .bigImage_btn {
@@ -356,4 +366,4 @@ div [class^='menu-dot-4'] {
   height: 50px;
   border-radius: 50%;
   background-color: blueviolet;
-}
+} */
