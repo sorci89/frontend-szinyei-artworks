@@ -5,23 +5,44 @@ $menu4: #92264d;
 
 .bigImage_container {
   position: fixed;
-  top: 30%;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-wrap: wrap;
-  width: 300px;
-  height: 300px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-row: 10px 1fr 1fr;
+  grid-gap: 15px;
+  overflow-y: auto;
+  width: 80%;
+  height: 90%;
+  scroll-behavior: auto;
   background-color: blanchedalmond;
   //   background-image: url('./pictures/bg-paper-texture.jpg');
-  color: crimson;
+  color: rgb(51, 2, 131);
   box-shadow: 5px 5px 10 10 grey;
-  padding: 30px 20px 50px;
+  padding: 30px 50px 50px;
+
+  .inside_image {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+  }
+  .description {
+    margin-top: 10px;
+
+    grid-column: 2 / span 3;
+    grid-row: 2;
+  }
+  .details {
+    grid-column: 1 / span 3;
+    grid-row: 3;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
 
   button {
-    position: relative;
-    left: 30px;
-    bottom: 20px;
+    margin-left: auto;
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -33,12 +54,26 @@ $menu4: #92264d;
     }
   }
 
-  span {
+  .head {
+    text-decoration: underline;
+    grid-column: 1 / span 3;
+    display: flex;
+    justify-content: center;
+  }
+  spam {
     font-weight: 600;
-    font-size: 24px;
+    font-size: 16px;
+    padding-left: 15px;
   }
 
   .text {
     padding: 5px 20px;
+  }
+  .lastupdate {
+    grid-column: 3;
+    grid-row: 3;
+    font-size: 14px;
+    text-align: right;
+    font-style: italic;
   }
 }

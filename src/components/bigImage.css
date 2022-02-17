@@ -1,16 +1,16 @@
 .bigImage_container {
   position: fixed;
-  top: 30%;
+  top: 10%;
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 300px;
-  height: 300px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  grid-row: 20px 1fr 1fr;
+  width: 500px;
+  height: 500px;
   background-color: blanchedalmond;
   color: crimson;
   -webkit-box-shadow: 5px 5px 10 10 grey;
@@ -18,10 +18,28 @@
   padding: 30px 20px 50px;
 }
 
+.bigImage_container .inside_image {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1 / span 2;
+  -ms-grid-row: 2;
+  grid-row: 2;
+  text-align: center;
+}
+
+.bigImage_container .description {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2 / 3;
+  -ms-grid-row: 2;
+  grid-row: 2;
+}
+
 .bigImage_container button {
-  position: relative;
-  left: 30px;
-  bottom: 20px;
+  -ms-grid-column: 3;
+  grid-column: 3;
+  -ms-grid-row: 3;
+  grid-row: 3;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -33,12 +51,27 @@
   background-color: #ab1154;
 }
 
-.bigImage_container span {
+.bigImage_container h2 {
+  text-align: center;
+  text-decoration: underline;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  grid-column: 1 / span 3;
+}
+
+.bigImage_container spam {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
+  padding-left: 15px;
 }
 
 .bigImage_container .text {
   padding: 5px 20px;
+}
+
+.bigImage_container .lastupdate {
+  font-size: 14px;
+  text-align: left;
+  font-style: italic;
 }
 /*# sourceMappingURL=bigImage.css.map */

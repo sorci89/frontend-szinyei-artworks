@@ -139,7 +139,12 @@ const Browser = () => {
             onChange={(e) => updateSearchClassification(e.target.value)}
           >
             {classifications.map((type) => (
-              <option value={type.value}>{type.name}</option>
+              <option
+                key={Math.floor(Math.random() * 10000)}
+                value={type.value}
+              >
+                {type.name}
+              </option>
             ))}
           </select>
           <label>
