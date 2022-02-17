@@ -1,29 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import SelectMenu from '../components/SelectMenu';
 
 const Navbar = () => {
   let loggedIn = false;
 
-  const themeState = [
-    { id: 0, value: '#fff', text: 'Change' },
-    { id: 1, value: '#a7cfe6', text: 'blue' },
-    { id: 2, value: '#abdd98', text: 'green' },
-    { id: 3, value: '#92264d', text: 'red' },
-  ];
+  //   const themeState = [
+  //     { id: 0, value: '#fff', text: 'Change' },
+  //     { id: 1, value: '#a7cfe6', text: 'blue' },
+  //     { id: 2, value: '#abdd98', text: 'green' },
+  //     { id: 3, value: '#92264d', text: 'red' },
+  //   ];
 
-  const [theme, setTheme] = useState([]);
-  const [color, setColor] = useState(themeState[0].value);
+  //   const [theme, setTheme] = useState([]);
+  //   const [color, setColor] = useState(themeState[0].value);
 
-  const getColor = (color) => {
-    console.log('color', color);
-    if (color === themeState[1].text) setColor(themeState[1].value);
-    else if (color === themeState[2].text) setColor(themeState[2].value);
-    else setColor(themeState[0].value);
-  };
+  //   const getColor = (color) => {
+  //     console.log('color', color);
+  //     if (color === themeState[1].text) setColor(themeState[1].value);
+  //     else if (color === themeState[2].text) setColor(themeState[2].value);
+  //     else setColor(themeState[0].value);
+  //   };
 
-  useEffect(() => {
-    setTheme(themeState);
-  }, []);
+  //   useEffect(() => {
+  //     setTheme(themeState);
+  //   }, []);
 
   return (
     <div>
@@ -45,29 +46,8 @@ const Navbar = () => {
                 <p>browse</p>
               </div>
             </Link>
-            <div className='menu-dot-4' style={{ backgroundColor: { color } }}>
-              <select
-                className='select'
-                onChange={(e) => getColor(e.target.value)}
-                style={{
-                  border: 'none',
-                  backgroundColor: { color },
-                  borderRadius: '50%',
-                  height: '60px',
-                }}
-              >
-                {theme.map((t) => (
-                  <option
-                    key={t.id}
-                    style={{
-                      border: 'none',
-                      backgroundColor: t.value,
-                    }}
-                  >
-                    {t.text}
-                  </option>
-                ))}
-              </select>
+            <div className='menu-dot-4'>
+              <SelectMenu />
             </div>
           </div>
           <div className='nav-border'></div>
@@ -90,13 +70,7 @@ const Navbar = () => {
                 <p>browse</p>
               </div>
             </Link>
-            <div className='menu-dot-4' style={{ backgroundColor: { theme } }}>
-              <select onChange={(e) => getColor(e.target.value)}>
-                {theme.map((t) => (
-                  <option key={t.id}>{t.text}</option>
-                ))}
-              </select>
-            </div>
+            <div className='menu-dot-4'></div>
           </div>
           <div className='nav-border'></div>
         </div>

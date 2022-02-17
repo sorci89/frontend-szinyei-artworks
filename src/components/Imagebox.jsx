@@ -30,7 +30,7 @@ const Imagebox = (props) => {
             src={
               data.images[0]
                 ? data.images[0].baseimageurl
-                : './picturs/no-profile-picture'
+                : './pictures/no-profile-picture'
             }
             alt='not available'
           />

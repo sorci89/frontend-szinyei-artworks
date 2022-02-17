@@ -57,7 +57,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
         )}
         {data.dated && (
           <div>
-            <spam>Dated: </spam> {data.date}
+            <spam>Dated: </spam> {data.dated}
           </div>
         )}
 
@@ -99,13 +99,13 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
           </div>
         )}
 
-        {data.images[0].height && data.images[0].width && (
+        {/* {data.images[0].height && data.images[0].width && (
           <div>
             <spam>Width - height: </spam>
             {data.images[0].width}&nbsp;x&nbsp;
-            {data.images[0].height}
+            {data.images[0].height} px
           </div>
-        )}
+        )} */}
       </div>
       {/* {data.peolpe[0].culture}
       <spam></spam> */}
@@ -113,6 +113,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
         <div className='lastupdate'>
           <spam>Last update:</spam>
           {dateYMD}
+          <button className='save_btn'>Save</button>
         </div>
       )}
     </div>

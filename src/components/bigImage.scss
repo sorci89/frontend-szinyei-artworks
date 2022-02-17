@@ -30,6 +30,7 @@ $myi: invert(#1234d5);
   h2 {
     margin-left: 50px;
   }
+
   .inside_image {
     grid-column: 1;
     grid-row: 2;
@@ -87,6 +88,9 @@ $myi: invert(#1234d5);
   }
   .lastupdate {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     bottom: 15px;
     right: 30px;
     grid-column: 3;
@@ -94,5 +98,8 @@ $myi: invert(#1234d5);
     font-size: 14px;
     text-align: right;
     font-style: italic;
+    .save_btn {
+      align-self: center;
+    }
   }
 }
