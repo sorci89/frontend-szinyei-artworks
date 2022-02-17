@@ -39,8 +39,8 @@ div [class^='menu-dot'] p {
   background: #abdd98;
 }
 div [class^='menu-dot-4'] {
+  z-index: 10;
   margin-left: calc(95% - 280px);
-  background: #92264d;
 }
 
 .nav-border {
