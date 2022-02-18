@@ -1,37 +1,37 @@
 import React, { useState, useEffect } from 'react';
 import './bigImage.scss';
-import axios from "axios";
+import axios from 'axios';
 
 const BigImage = ({ data, isOpen, setIsOpen }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   let dateYMD = data.lastupdate.slice(0, 10);
 
-
   const savePicture = async () => {
-    const authUsername = localStorage.getItem("user");
-    const authPassword = localStorage.getItem("pw");
-
-   try {
+    const authUsername = localStorage.getItem('user');
+    const authPassword = localStorage.getItem('pw');
+    const savedImage = {
+      'data.images[0].baseimageurl': 'data.images[0].baseimageurl',
+      images: [],
+    };
+    try {
       const response = await axios.post(
-        "http://localhost:3101/api/picture/save",
-        {"data":data},
+        'http://localhost:3101/api/picture/save',
+        { data: data },
         {
           headers: {
-            Authorization: authUsername + "&&&" + authPassword,
+            Authorization: authUsername + '&&&' + authPassword,
           },
         }
       );
-      alert("Csuhajja");
+      alert('Csuhajja');
     } catch (e) {
-      alert("wrong username/password");
-    } 
+      alert('wrong username/password');
+    }
   };
 
-
-
   useEffect(() => {
-    setLoggedIn(localStorage.getItem("loggedIn"));
+    setLoggedIn(localStorage.getItem('loggedIn'));
   }, []);
 
   return (
@@ -157,8 +157,15 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
           <span>Last update:</span>
           {dateYMD}
 
-
-          <button onClick={(e) =>{ savePicture()} }  className='save_btn' disabled={!loggedIn}>Save</button>
+          <button
+            onClick={(e) => {
+              savePicture();
+            }}
+            className='save_btn'
+            disabled={!loggedIn}
+          >
+            Save
+          </button>
         </div>
       )}
     </div>
