@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './bigImage.scss';
 
 const BigImage = ({ data, isOpen, setIsOpen }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
+
+
   let dateYMD = data.lastupdate.slice(0, 10);
+
+
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  }, []);
 
   return (
     <div className='bigImage_container'>
@@ -113,7 +122,9 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
         <div className='lastupdate'>
           <spam>Last update:</spam>
           {dateYMD}
-          <button className='save_btn'>Save</button>
+
+
+          <button onClick={(e) =>{ console.log('Click');} }  className='save_btn' disabled={!loggedIn}>Save</button>
         </div>
       )}
     </div>
