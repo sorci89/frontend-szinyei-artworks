@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap");
 
 * {
   box-sizing: border-box;
@@ -10,9 +10,18 @@ body {
 
 .menu-bar {
   display: flex;
+  flex-wrap: wrap;
+  font-family: "Noto Sans", sans-serif;
+}
+.menu-bar p {
+  display: inline;
+}
+.menu-bar .title {
+  display: block;
+  width: 100%;
 }
 
-div [class^='menu-dot'] {
+div [class^="menu-dot"] {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -22,11 +31,11 @@ div [class^='menu-dot'] {
   position: relative;
 }
 
-div [class^='menu-dot'] p {
+div [class^="menu-dot"] p {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .menu-dot-1 {
@@ -38,9 +47,8 @@ div [class^='menu-dot'] p {
 .menu-dot-3 {
   background: #abdd98;
 }
-div [class^='menu-dot-4'] {
+div [class^="menu-dot-4"] {
   z-index: 10;
-  margin-left: calc(95% - 280px);
 }
 
 .nav-border {
@@ -92,7 +100,7 @@ div [class^='menu-dot-4'] {
 }
 
 .login-dot:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -102,7 +110,7 @@ div [class^='menu-dot-4'] {
   animation: shockwave 1.5s 0.5s ease-out infinite;
 }
 .login-dot:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -115,7 +123,7 @@ div [class^='menu-dot-4'] {
 }
 
 .login-dot p:nth-child(1) {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   color: #ffffff;
   font-size: 70px;
   line-height: 0.9;
@@ -131,7 +139,7 @@ div [class^='menu-dot-4'] {
 }
 
 .login-dot p:nth-child(2) {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   color: #ffffff;
   font-size: 25px;
   font-weight: bold;
@@ -304,7 +312,6 @@ div [class^='menu-dot-4'] {
   }
 }
 
-
 .regstration {
   width: 400px;
   padding: 20px;
@@ -316,7 +323,7 @@ div [class^='menu-dot-4'] {
   border: 1px solid rgba(146, 38, 77, 0.2);
   box-shadow: 15px 15px 35px rgba(77, 15, 38, 0.6);
 }
-.regstration h1{
+.regstration h1 {
   color: #92264d;
   font-size: 40px;
 }
@@ -345,17 +352,17 @@ div [class^='menu-dot-4'] {
   background-color: #cf4578;
   color: #ffffff;
 }
-.regstration hr{
+.regstration hr {
   border-top: 1px solid #cf4578;
 }
-.error{
+.error {
   padding: 1px 5px 5px;
   background-color: #92264d;
   border-radius: 10px;
   color: #ffffff;
   font-size: 25px;
 }
-.successful{
+.successful {
   padding: 1px 5px 5px;
   background-color: #22b86d;
   color: #ffffff;

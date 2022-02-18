@@ -35,24 +35,35 @@ const Navbar = () => {
       {!loggedIn ? (
         <div>
           <div className="menu-bar">
-            <Link to="/login">
+            <p className="title">
+              Hi fellow art-lover, welcome to our Harvard Art Museum page.
+            </p>
+            <p>Feel free to</p>
+            <Link to="/browser">
               <div className="menu-dot-1">
+                <p>browse</p>
+              </div>
+            </Link>
+            <p>the collection, or </p>
+            <Link to="/login">
+              <div className="menu-dot-3">
                 <p>login</p>
               </div>
             </Link>
+            <p>
+              {" "}
+              and start adding pictures onto you own collection. If you don't
+              have an account yet, you can
+            </p>
             <Link to="/register">
               <div className="menu-dot-2">
                 <p>register</p>
               </div>
             </Link>
-            <Link to="/browser">
-              <div className="menu-dot-3">
-                <p>browse</p>
-              </div>
-            </Link>
-            <div className="menu-dot-4">
+            <p> here</p>
+            {/*        <div className="menu-dot-4">
               <SelectMenu />
-            </div>
+            </div> */}
           </div>
           <div className="nav-border"></div>
         </div>
