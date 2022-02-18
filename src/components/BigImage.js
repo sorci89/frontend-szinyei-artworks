@@ -30,88 +30,101 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
       <div className='details'>
         {data.classification ? (
           <div>
-            <spam>Classification: </spam> {data.classification}
+            <span>Classification: </span> {data.classification}
           </div>
         ) : (
           <div className='unknown'>
-            <spam>Classification: </spam> unknown
+            <span>Classification: </span> unknown
           </div>
         )}
         {data.century ? (
           <div>
-            <spam>Century: </spam> {data.century}
+            <span>Century: </span> {data.century}
           </div>
         ) : (
           <div className='unknown'>
-            <spam>Century: </spam> unknown
+            <span>Century: </span> unknown
           </div>
         )}
         {data.culture ? (
           <div>
-            <spam>Culture: </spam> {data.culture}
+            <span>Culture: </span> {data.culture}
           </div>
         ) : (
           <div className='unknown'>
-            <spam>Culture: </spam> unknown
+            <span>Culture: </span> unknown
           </div>
         )}
-        {data.dated && (
+        {data.dated ? (
           <div>
-            <spam>Dated: </spam> {data.dated}
+            <span>Dated: </span> {data.dated}
+          </div>
+        ) : (
+          <div className='unknown'>
+            <span>Dated: </span> unknown
           </div>
         )}
 
-        {data.department && (
+        {data.department ? (
           <div>
-            <spam>Department: </spam> {data.department}
+            <span>Department: </span> {data.department}
           </div>
-        )}
-        {data.dimensions && (
+        ) : null}
+        {data.dimensions ? (
           <div>
-            <spam>Dimensions: </spam> {data.dimensions}
+            <span>Dimensions: </span> {data.dimensions}
+          </div>
+        ) : (
+          <div className='unknown'>
+            <span>Dimensions: </span> no data
           </div>
         )}
         {data.division && (
           <div>
-            <spam>Division: </spam>
+            <span>Division: </span>
             {data.division}
           </div>
         )}
-        {data.medium && (
+        {data.medium ? (
           <div>
-            <spam>Technique: </spam>
+            <span>Technique: </span>
             {data.medium}
+          </div>
+        ) : (
+          <div className='unknown'>
+            <span>Technique: </span>
+            no data
           </div>
         )}
         {data.period && (
           <div>
-            <spam>Artistic period: </spam>
+            <span>Artistic period: </span>
             {data.period}
           </div>
         )}
 
-        {/* <spam></spam>
+        {/* <span></span>
       {data.contact} */}
         {data.worktypes[0].worktype && (
           <div>
-            <spam>Worktype: </spam>
-            {data.worktypes[0].worktype}, {data.images[0].technique}
+            <span>Worktype: </span>
+            {data.worktypes[0].worktype} {data.images[0].technique}
           </div>
         )}
 
         {/* {data.images[0].height && data.images[0].width && (
           <div>
-            <spam>Width - height: </spam>
+            <span>Width - height: </span>
             {data.images[0].width}&nbsp;x&nbsp;
             {data.images[0].height} px
           </div>
         )} */}
       </div>
       {/* {data.peolpe[0].culture}
-      <spam></spam> */}
+      <span></span> */}
       {data.lastupdate && (
         <div className='lastupdate'>
-          <spam>Last update:</spam>
+          <span>Last update:</span>
           {dateYMD}
           <button className='save_btn'>Save</button>
         </div>
