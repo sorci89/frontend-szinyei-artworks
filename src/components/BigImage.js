@@ -1,69 +1,91 @@
-import React, { useState, useEffect } from 'react';
-import './bigImage.scss';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import "./bigImage.scss";
+import axios from "axios";
 
 const BigImage = ({ data, isOpen, setIsOpen }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   let dateYMD = data.lastupdate.slice(0, 10);
 
+  const savedImage = {
+    lastupdate: data.lastupdate,
+    title: data.title,
+    classification: data.classification,
+    century: data.century,
+    culture: data.culture,
+    dated: data.dated,
+    department: data.department,
+    dimensions: data.dimensions,
+    division: data.division,
+    medium: data.medium,
+    period: data.period,
+
+    images: [
+      {
+        baseimageurl: data.images[0].baseimageurl,
+        alttext: data.images[0].alttext,
+        description: data.images[0].description,
+        technique: data.images[0].technique,
+      },
+    ],
+    people: [{ displayname: data.people[0].displayname }],
+    worktypes: [{ worktype: data.worktypes[0].worktype }],
+  };
+
   const savePicture = async () => {
-    const authUsername = localStorage.getItem('user');
-    const authPassword = localStorage.getItem('pw');
-    const savedImage = {
-      'data.images[0].baseimageurl': 'data.images[0].baseimageurl',
-      images: [],
-    };
+    const authUsername = localStorage.getItem("user");
+    const authPassword = localStorage.getItem("pw");
+
     try {
       const response = await axios.post(
-        'http://localhost:3101/api/picture/save',
-        { data: data },
+        "http://localhost:3101/api/picture/save",
+        { data: savedImage },
         {
           headers: {
-            Authorization: authUsername + '&&&' + authPassword,
+            Authorization: authUsername + "&&&" + authPassword,
           },
         }
       );
-      alert('Csuhajja');
+      alert("Csuhajja");
     } catch (e) {
-      alert('wrong username/password');
+      alert("wrong username/password");
     }
   };
 
   useEffect(() => {
-    setLoggedIn(localStorage.getItem('loggedIn'));
+    setLoggedIn(localStorage.getItem("loggedIn"));
   }, []);
 
   return (
-    <div className='bigImage_container'>
-      <div className='head'>
+    <div className="bigImage_container">
+      <div className="head">
         <h2>All about the picture</h2>
         <button onClick={() => setIsOpen(false)}>Close</button>
       </div>
 
-      <div className='inside_image'>
+      <div className="inside_image">
         <img src={data.images[0].baseimageurl} alt={data.images[0].alttext} />
         {data.title && (
-          <div className='title'>
+          <div className="title">
             {data.people[0].displayname}: <br />
             {data.title}
           </div>
         )}
       </div>
       {data.images[0].description ? (
-        <div className='description'>{data.images[0].description}</div>
+        <div className="description">{data.images[0].description}</div>
       ) : (
-        <div className='unknown description'>
+        <div className="unknown description">
           Desciption is not yet part of the museum API
         </div>
       )}
-      <div className='details'>
+      <div className="details">
         {data.classification ? (
           <div>
             <span>Classification: </span> {data.classification}
           </div>
         ) : (
-          <div className='unknown'>
+          <div className="unknown">
             <span>Classification: </span> unknown
           </div>
         )}
@@ -72,7 +94,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
             <span>Century: </span> {data.century}
           </div>
         ) : (
-          <div className='unknown'>
+          <div className="unknown">
             <span>Century: </span> unknown
           </div>
         )}
@@ -81,7 +103,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
             <span>Culture: </span> {data.culture}
           </div>
         ) : (
-          <div className='unknown'>
+          <div className="unknown">
             <span>Culture: </span> unknown
           </div>
         )}
@@ -90,7 +112,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
             <span>Dated: </span> {data.dated}
           </div>
         ) : (
-          <div className='unknown'>
+          <div className="unknown">
             <span>Dated: </span> unknown
           </div>
         )}
@@ -105,7 +127,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
             <span>Dimensions: </span> {data.dimensions}
           </div>
         ) : (
-          <div className='unknown'>
+          <div className="unknown">
             <span>Dimensions: </span> no data
           </div>
         )}
@@ -121,7 +143,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
             {data.medium}
           </div>
         ) : (
-          <div className='unknown'>
+          <div className="unknown">
             <span>Technique: </span>
             no data
           </div>
@@ -153,7 +175,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
       {/* {data.peolpe[0].culture}
       <span></span> */}
       {data.lastupdate && (
-        <div className='lastupdate'>
+        <div className="lastupdate">
           <span>Last update:</span>
           {dateYMD}
 
@@ -161,7 +183,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
             onClick={(e) => {
               savePicture();
             }}
-            className='save_btn'
+            className="save_btn"
             disabled={!loggedIn}
           >
             Save
