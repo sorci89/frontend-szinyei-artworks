@@ -1,8 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const LoginForm = () => {
+  let navigate = useNavigate();
   const [authUsername, setAuthUsername] = useState("");
   const [authPassword, setAuthPassword] = useState("");
   const [logErrors, setLogErrors] = useState({});
@@ -95,20 +97,7 @@ const LoginForm = () => {
           <button onClick={(e) => loginValidation()}>Login</button>
         </div>
       ) : (
-        <div>
-          <h1>Hi,you're logged in!</h1>
-          <button
-            onClick={(e) => {
-              setAuthUsername("");
-              setAuthPassword("");
-              localStorage.clear();
-              setLoggedIn(false);
-              console.log(loggedIn);
-            }}
-          >
-            Log out
-          </button>
-        </div>
+        navigate("/browser")
       )}
     </div>
   );
