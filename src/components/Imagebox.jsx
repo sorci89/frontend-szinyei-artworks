@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
 
 const Imagebox = (props) => {
   const data = props.data;
 
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [imageId, setImageId] = useState('');
 
@@ -12,6 +13,11 @@ const Imagebox = (props) => {
     setImageId(image);
     setIsOpen(true);
   };
+
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  }, []);
+
 
   return (
     <div className='color-test'>
@@ -42,6 +48,7 @@ const Imagebox = (props) => {
             <div>Unknown Artist</div>
           )}
           <div style={{ textAlign: 'center' }}>{data.title}</div>
+          <button onClick={(e) =>{ console.log('Click');} }  className='save_btn' disabled={!loggedIn}>Save</button>
         </div>
       )}
     </div>

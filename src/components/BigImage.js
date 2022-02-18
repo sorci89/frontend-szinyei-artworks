@@ -1,8 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './bigImage.scss';
+import axios from "axios";
 
 const BigImage = ({ data, isOpen, setIsOpen }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   let dateYMD = data.lastupdate.slice(0, 10);
+
+
+  const savePicture = async () => {
+    const authUsername = localStorage.getItem("user");
+    const authPassword = localStorage.getItem("pw");
+
+   try {
+      const response = await axios.post(
+        "http://localhost:3101/api/picture/save",
+        {"data":data},
+        {
+          headers: {
+            Authorization: authUsername + "&&&" + authPassword,
+          },
+        }
+      );
+      alert("Csuhajja");
+    } catch (e) {
+      alert("wrong username/password");
+    } 
+  };
+
+
+
+  useEffect(() => {
+    setLoggedIn(localStorage.getItem("loggedIn"));
+  }, []);
 
   return (
     <div className='bigImage_container'>
@@ -126,7 +156,9 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
         <div className='lastupdate'>
           <span>Last update:</span>
           {dateYMD}
-          <button className='save_btn'>Save</button>
+
+
+          <button onClick={(e) =>{ savePicture()} }  className='save_btn' disabled={!loggedIn}>Save</button>
         </div>
       )}
     </div>
