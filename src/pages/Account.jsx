@@ -5,12 +5,15 @@ import Imagebox from "../components/Imagebox";
 import AppPagination from "../components/AppPagination";
 
 const Account = () => {
+
   const [dataList, setDataList] = useState([]);
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(10);
   const [searchKeyword, updateSearchKeword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("");
   const [hasimage, setHasimage] = useState("");
+
+  
 
   const classifications = [
     { name: "ALL", value: "" },
@@ -24,12 +27,48 @@ const Account = () => {
     { name: "Tools and Equipment", value: "32" },
   ];
 
+
+
+
   const renderData = async () => {
-    let resp = await axios.get();
-    setDataList(resp.data.records);
-    console.log(resp.data);
-    setNumberOfPages(resp.data.info.pages);
+    let authUsername = localStorage.getItem('user');
+    let authPassword =localStorage.getItem('pw');
+    console.log(localStorage.getItem('user'));
+    console.log(localStorage.getItem('pw'));
+    try {
+      const response = await axios.post(
+        'http://localhost:3101/api/user/galery',
+        {},
+        {
+          headers: {
+            Authorization: authUsername + "&&&" + authPassword,
+          },
+        }
+      );
+      setDataList(response.data);
+      setNumberOfPages(1);
+    } catch (e) {
+      alert("wrong username/password");
+    }
   };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   const toggleSetimage = () => {
     if (hasimage === "") {
@@ -41,7 +80,7 @@ const Account = () => {
 
   useEffect(() => {
     renderData();
-  }, [page, searchKeyword, searchClassification, hasimage]);
+  }, []);
 
   return (
     <div>
