@@ -103,3 +103,15 @@ $myi: invert(#1234d5);
     }
   }
 }
+
+.comment_container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: (-50%, -50%);
+  width: 40%;
+  height: auto;
+  padding: 20px 10px 30px;
+  border-radius: 15px;
+  box-shadow: 10px 10px 5px 0 rgba(128, 128, 128, 0.8);
+}
