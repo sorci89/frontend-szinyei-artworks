@@ -304,6 +304,7 @@ div [class^='menu-dot-4'] {
   }
 }
 
+
 .regstration {
   width: 400px;
   padding: 20px;
@@ -311,8 +312,13 @@ div [class^='menu-dot-4'] {
   background-color: #ffffff;
   text-align: center;
   border-radius: 20px;
-  border: 1px solid rgb(201, 201, 201);
-  box-shadow: 15px 15px 35px rgb(71, 71, 71);
+  /* background-color: #fff9fb; */
+  border: 1px solid rgba(146, 38, 77, 0.2);
+  box-shadow: 15px 15px 35px rgba(77, 15, 38, 0.6);
+}
+.regstration h1{
+  color: #92264d;
+  font-size: 40px;
 }
 .regstration input {
   display: block;
@@ -321,16 +327,40 @@ div [class^='menu-dot-4'] {
   font-size: 20px;
   margin: 30px auto;
   border-radius: 20px;
-  border: 1px solid grey;
+  border: 2px solid rgba(146, 38, 77, 0.4);
 }
 .regstration button {
   display: block;
   width: 150px;
-  padding: 5px;
+  padding: 7px 5px 5px;
   font-size: 20px;
   margin: 30px auto 10px;
   border-radius: 20px;
-  border: 1px solid grey;
+  background-color: #92264d;
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid rgba(146, 38, 77, 0.4);
+}
+.regstration button:hover {
+  background-color: #cf4578;
+  color: #ffffff;
+}
+.regstration hr{
+  border-top: 1px solid #cf4578;
+}
+.error{
+  padding: 1px 5px 5px;
+  background-color: #92264d;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 25px;
+}
+.successful{
+  padding: 1px 5px 5px;
+  background-color: #22b86d;
+  color: #ffffff;
+  font-size: 25px;
+  border-radius: 10px;
 }
 
 imagebox_container {
