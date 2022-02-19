@@ -13,13 +13,6 @@ body {
   flex-wrap: wrap;
   font-family: "Noto Sans", sans-serif;
 }
-.menu-bar p {
-  display: inline;
-}
-.menu-bar .title {
-  display: block;
-  width: 100%;
-}
 
 div [class^="menu-dot"] {
   width: 60px;
