@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack';
 
 import './bigImage.scss';
 import '../App.css';
+import { TakeoutDining } from '@mui/icons-material';
 
 function CommentInput({
   stars,
@@ -16,12 +17,20 @@ function CommentInput({
   setComment,
   tag,
   setTag,
+  tags,
+  setTags,
   loggedIn,
   onClick,
   isChoosen,
   setIsChoosen,
   savedImage,
 }) {
+  console.log(typeof tags);
+  const addTag = (tagIn) => {
+    let newTag = tags.push(tagIn);
+    console.log('add', tagIn, newTag, tags);
+    setTags(newTag);
+  };
   return (
     <div>
       {isChoosen && (
@@ -33,15 +42,26 @@ function CommentInput({
               onClick={() => setIsChoosen(false)}
             />
           </div>
-          <hr />
           <lebel>You can add tag</lebel>
-          <input
+          <div className='tag_container'>
+            <input
+              className='input_tag'
+              value={tag}
+              onChange={(e) => setTag(e.target.value)}
+            />
+            <Button
+              text='Add'
+              onClick={() => addTag(tag)}
+              className='tag_btn'
+            />
+          </div>
+
+          <lebel>Write here your commit</lebel>
+          <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
             placeholder='Add your comment here'
           />
-          <lebel>Write here your commit</lebel>
-          <textarea value={tag} onChange={(e) => setTag(e.target.value)} />
           <Box
             sx={{
               '& > legend': { mt: 2 },
@@ -61,9 +81,13 @@ function CommentInput({
             </Stack>
           </Box>
           {loggedIn ? (
-            <Button onClick={savedImage} text='Save' className='button save' />
+            <Button
+              onClick={savedImage}
+              text='Save'
+              className='comment_save_btn save'
+            />
           ) : (
-            <Button text='Save' disabled className='button save' />
+            <Button text='Save' disabled className='comment_save_btn save' />
           )}
         </div>
       )}

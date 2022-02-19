@@ -76,7 +76,7 @@ div [class^='menu-dot-4'] {
   margin: 0 10px;
 }
 
-.color-test {
+/* .color-test {
   position: relative;
   width: 250px;
   height: 380px;
@@ -110,7 +110,7 @@ div [class^='menu-dot-4'] {
 
 .color-test .button_container button {
   margin-left: 5px;
-}
+} */
 
 .login-dot {
   width: 500px;

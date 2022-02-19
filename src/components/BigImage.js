@@ -9,7 +9,8 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
 
   const [stars, setStars] = useState(3);
   const [comment, setComment] = useState('');
-  const [tag, setTag] = useState([]);
+  const [tag, setTag] = useState(['favorite']);
+  const [tags, setTags] = useState(['']);
 
   let dateYMD = data.lastupdate.slice(0, 10);
 
@@ -36,6 +37,9 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
     ],
     people: [{ displayname: data.people[0].displayname }],
     worktypes: [{ worktype: data.worktypes[0].worktype }],
+    tag: tag,
+    comment: comment,
+    stars: stars,
   };
 
   const savePicture = async () => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
 import Button from './Button';
+import './imagebox.scss';
 
 const Imagebox = (props) => {
   const data = props.data;
