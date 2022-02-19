@@ -83,7 +83,10 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
       <>
         <div className='head'>
           <div className='h2'>
-            {data.people && data.people[0] && data.people[0].displayname ? (
+            {data.people &&
+            data.people[0] &&
+            data.people[0].displayname &&
+            data.title ? (
               <>
                 <b>{data.people[0].displayname}:</b>
                 <br />
@@ -95,12 +98,12 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
           </div>
           <div className='button_container'>
             <Button
-              className='save'
+              className='button save'
               onClick={() => setIsChoosen(true)}
               text='Save'
             />
             <Button
-              className='close'
+              className='button close'
               onClick={() => setIsOpen(false)}
               text='Close'
             />

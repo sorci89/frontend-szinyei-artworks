@@ -14,6 +14,7 @@ $myi: invert(#1234d5);
   // font-family: 'Roboto', sans-serif;
 }
 .bigImage_container {
+  z-index: 10;
   position: fixed;
   top: 5%;
   left: 50%;
@@ -31,7 +32,7 @@ $myi: invert(#1234d5);
   color: rgb(51, 2, 131);
   font-size: 1em;
   box-shadow: 5px 5px 10 10 grey;
-  padding: 30px 50px 50px;
+  padding: 30px 50px 20px;
 
   .head {
     display: flex;
@@ -46,6 +47,7 @@ $myi: invert(#1234d5);
 
     .button_container {
       margin-left: auto;
+
       button {
         margin-left: 5px;
       }
@@ -58,7 +60,7 @@ $myi: invert(#1234d5);
     margin-bottom: 1.5em;
 
     img {
-      max-width: 100%;
+      max-width: 60%;
       height: auto;
       flex-shrink: 0;
       display: inline;

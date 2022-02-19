@@ -35,19 +35,19 @@ const Navbar = () => {
       {!loggedIn ? (
         <div>
           <div className="menu-bar">
-            <Link to="/login">
+            <Link to="/browser">
               <div className="menu-dot-1">
+                <p>browse</p>
+              </div>
+            </Link>
+            <Link to="/login">
+              <div className="menu-dot-3">
                 <p>login</p>
               </div>
             </Link>
             <Link to="/register">
               <div className="menu-dot-2">
                 <p>register</p>
-              </div>
-            </Link>
-            <Link to="/browser">
-              <div className="menu-dot-3">
-                <p>browse</p>
               </div>
             </Link>
             <div className="menu-dot-4">

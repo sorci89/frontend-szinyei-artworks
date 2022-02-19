@@ -46,14 +46,16 @@ const Imagebox = (props) => {
               alt='not available'
             />
           </div>
-          {data.people && data.people[0] && data.people[0].name ? (
+          {data.people ? (
             <div>
               <b>{data.people[0].name}</b>
             </div>
           ) : (
             <div>Unknown Artist</div>
           )}
-          <div style={{ textAlign: 'center' }}>{data.title}</div>
+          <div style={{ padding: '2px 5px', textAlign: 'center' }}>
+            {data.title.split('(')[0]}
+          </div>
           {/* <button
             onClick={(e) => {
               console.log('Click');
