@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import BigImage from './BigImage';
+import React, { useState, useEffect } from "react";
+import BigImage from "./BigImage";
 
 const Imagebox = (props) => {
   const data = props.data;
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const [imageId, setImageId] = useState('');
+  const [imageId, setImageId] = useState("");
 
   const openImage = (image) => {
     console.log(image);
@@ -18,9 +18,8 @@ const Imagebox = (props) => {
     setLoggedIn(localStorage.getItem("loggedIn"));
   }, []);
 
-
   return (
-    <div className='color-test'>
+    <div className="color-test">
       {isOpen ? (
         <BigImage
           isOpen={isOpen}
@@ -29,16 +28,18 @@ const Imagebox = (props) => {
           imageId={imageId}
         />
       ) : (
-        <div className=''>
+        <div className="">
           <img
-            style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
+            style={{ cursor: "pointer", margin: "5px 0px 18px" }}
             onClick={() => openImage(data.id)}
             src={
-              data.images[0]
+              data.images && data.images[0] && data.images[0].baseimageurl
                 ? data.images[0].baseimageurl
-                : './pictures/no-profile-picture'
+                : data.images
+                ? "/pictures/bg-paper-texture-2.jpg"
+                : "/pictures/no-profile-picture.png"
             }
-            alt='not available'
+            alt="not available"
           />
           {data.people ? (
             <div>
@@ -47,8 +48,16 @@ const Imagebox = (props) => {
           ) : (
             <div>Unknown Artist</div>
           )}
-          <div style={{ textAlign: 'center' }}>{data.title}</div>
-          <button onClick={(e) =>{ console.log('Click');} }  className='save_btn' disabled={!loggedIn}>Save</button>
+          <div style={{ textAlign: "center" }}>{data.title}</div>
+          <button
+            onClick={(e) => {
+              console.log("Click");
+            }}
+            className="save_btn"
+            disabled={!loggedIn}
+          >
+            Save
+          </button>
         </div>
       )}
     </div>
