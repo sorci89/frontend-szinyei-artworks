@@ -18,10 +18,12 @@ $myi: invert(#1234d5);
   top: 5%;
   left: 50%;
   transform: translateX(-50%);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-row: 2.2em auto auto;
-  grid-gap: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  //   grid-template-columns: 1fr 1fr 1fr;
+  //   grid-row: 2.2em auto auto;
+  //   grid-gap: 15px;
   overflow-y: auto;
   width: 80%;
   height: 90%;
@@ -33,46 +35,43 @@ $myi: invert(#1234d5);
   box-shadow: 5px 5px 10 10 grey;
   padding: 30px 50px 50px;
 
-  .h2 {
-    font-size: 2em;
-    font-weight: 500;
-    margin-left: 50px;
-  }
+  .head {
+    display: flex;
+    justify-content: space-between;
 
-  button {
-    margin-left: auto;
-    margin-right: 10px;
+    .h2 {
+      font-size: 2em;
+      font-weight: 500;
+      width: 85%;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-left: 10px;
+    }
   }
 
   .inside_image {
-    grid-column: 1;
-    grid-row: 2;
-    text-align: center;
-    align-self: center;
-  }
-
-  .title {
-    font-weight: 600;
-  }
-  .description {
-    align-self: center;
-    margin-bottom: 20px;
-
-    grid-column: 2 / span 3;
-    grid-row: 2;
-  }
-  .details {
-    grid-column: 1 / span 3;
-    grid-row: 3;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+
+    img {
+      width: 200px;
+      height: auto;
+      flex-shrink: 0;
+      display: inline;
+      margin-right: 20px;
+      box-shadow: 2px 2px 3px 0px rgb(51, 2, 131);
+    }
+    .description {
+      text-indent: 20px;
+      flex-shrink: 1;
+    }
   }
 
-  .head {
-    grid-column: 1 / span 3;
+  .dimensions {
     display: flex;
-    justify-content: space-between;
   }
 
   span {
@@ -83,9 +82,7 @@ $myi: invert(#1234d5);
   .unknown {
     font-style: italic;
   }
-  .text {
-    padding: 5px 20px;
-  }
+
   .lastupdate {
     position: absolute;
     display: flex;

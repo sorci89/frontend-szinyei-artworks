@@ -81,7 +81,9 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
       )}
       <>
         <div className='head'>
-          <div className='h2'> All about the picture lorem</div>
+          <div className='h2'>
+            <b>{data.people[0].displayname}:</b> {data.title}
+          </div>
           <div className='button_container'>
             <button onClick={() => setIsChoosen(true)}>Save</button>
             <button onClick={() => setIsOpen(false)}>Close</button>
@@ -90,20 +92,14 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
 
         <div className='inside_image'>
           <img src={data.images[0].baseimageurl} alt={data.images[0].alttext} />
-          {data.title && (
-            <div className='title'>
-              {data.people[0].displayname}: <br />
-              {data.title}
+          {data.images[0].description ? (
+            <div className='description'>{data.images[0].description}</div>
+          ) : (
+            <div className='unknown description'>
+              Desciption is not yet part of the museum API
             </div>
           )}
         </div>
-        {data.images[0].description ? (
-          <div className='description'>{data.images[0].description}</div>
-        ) : (
-          <div className='unknown description'>
-            Desciption is not yet part of the museum API
-          </div>
-        )}
         <div className='details'>
           {data.classification ? (
             <div>
@@ -147,8 +143,9 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             </div>
           ) : null}
           {data.dimensions ? (
-            <div>
-              <span>Dimensions: </span> {data.dimensions}
+            <div className='dimensions'>
+              <span>Dimensions: &nbsp; &nbsp;</span>
+              {data.dimensions}
             </div>
           ) : (
             <div className='unknown'>
