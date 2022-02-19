@@ -20,7 +20,7 @@ const Imagebox = (props) => {
   }, []);
 
   return (
-    <div className='color-test'>
+    <div>
       {isOpen ? (
         <BigImage
           isOpen={isOpen}
@@ -31,17 +31,26 @@ const Imagebox = (props) => {
           setIsChoosen={setIsChoosen}
         />
       ) : (
-        <div className=''>
-          <img
-            style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
-            onClick={() => openImage(data.id)}
-            src={
-              data.images[0]
-                ? data.images[0].baseimageurl
-                : './pictures/no-profile-picture'
-            }
-            alt='not available'
-          />
+        <div className='color-test'>
+          <div
+            className='color-image'
+            // className={
+            //   data.images[0].baseimageurl
+            //     ? 'color-image'
+            //     : 'color-image-no-image'
+            // }
+          >
+            <img
+              style={{ cursor: 'pointer' }}
+              onClick={() => openImage(data.id)}
+              src={
+                data.images[0]
+                  ? data.images[0].baseimageurl
+                  : './pictures/no-profile-picture'
+              }
+              alt='not available'
+            />
+          </div>
           {data.people ? (
             <div>
               <b>{data.people[0].name}</b>

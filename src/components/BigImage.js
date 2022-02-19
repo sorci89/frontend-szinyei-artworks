@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import './bigImage.scss';
 import axios from 'axios';
 import CommentInput from './CommentInput';
+import Button from './Button';
 
 const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  const [stars, setStars] = useState(0);
+  const [stars, setStars] = useState(3);
   const [comment, setComment] = useState('');
   const [tag, setTag] = useState([]);
 
@@ -82,16 +83,39 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
       <>
         <div className='head'>
           <div className='h2'>
-            <b>{data.people[0].displayname}:</b> {data.title}
+            {data.people ? (
+              <>
+                <b>{data.people[0].displayname}:</b>
+                <br />
+                {data.title}
+              </>
+            ) : (
+              <div className='unknown'>Unknown artist: {data.title}</div>
+            )}
           </div>
           <div className='button_container'>
-            <button onClick={() => setIsChoosen(true)}>Save</button>
-            <button onClick={() => setIsOpen(false)}>Close</button>
+            <Button
+              className='save'
+              onClick={() => setIsChoosen(true)}
+              text='Save'
+            />
+            <Button
+              className='close'
+              onClick={() => setIsOpen(false)}
+              text='Close'
+            />
           </div>
         </div>
 
         <div className='inside_image'>
-          <img src={data.images[0].baseimageurl} alt={data.images[0].alttext} />
+          {data.images[0].alttext ? (
+            <img
+              src={data.images[0].baseimageurl}
+              alt={data.images[0].alttext}
+            />
+          ) : (
+            <img src={data.images[0].baseimageurl} alt='no data' />
+          )}
           {data.images[0].description ? (
             <div className='description'>{data.images[0].description}</div>
           ) : (
@@ -141,10 +165,14 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             <div>
               <span>Department: </span> {data.department}
             </div>
-          ) : null}
+          ) : (
+            <div className='unknown'>
+              <span>Department: </span> no data
+            </div>
+          )}
           {data.dimensions ? (
             <div className='dimensions'>
-              <span>Dimensions: &nbsp; &nbsp;</span>
+              <span>Dimensions: &nbsp; </span>&nbsp;
               {data.dimensions}
             </div>
           ) : (
@@ -184,16 +212,11 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
               unknown
             </div>
           )}
-          {data.contact ? (
-            <div>
-              <span>Contact: </span>
-              {data.contact}{' '}
-            </div>
-          ) : null}
-          {data.worktypes[0].worktype ? (
+
+          {data.worktypes[0] ? (
             <div>
               <span>Worktype: </span>
-              {data.worktypes[0].worktype} {data.images[0].technique}
+              {data.worktypes[0].worktype}
             </div>
           ) : (
             <div className='unknown'>

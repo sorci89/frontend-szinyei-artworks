@@ -1,6 +1,11 @@
 import React from 'react';
 import Button from './Button';
 import CloseIcon from '@mui/icons-material/Close';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+
 import './bigImage.scss';
 import '../App.css';
 
@@ -37,6 +42,24 @@ function CommentInput({
           />
           <lebel>Write here your commit</lebel>
           <textarea value={tag} onChange={(e) => setTag(e.target.value)} />
+          <Box
+            sx={{
+              '& > legend': { mt: 2 },
+            }}
+          >
+            <Typography component='legend'>My Vote</Typography>
+            <Stack spacing={2}>
+              <Rating
+                name='simple-controlled'
+                size='small'
+                defaultValue={0}
+                value={stars}
+                onChange={(event, newValue) => {
+                  setStars(newValue);
+                }}
+              />
+            </Stack>
+          </Box>
           {loggedIn ? (
             <Button onClick={savedImage} text='Save' className='button save' />
           ) : (

@@ -21,15 +21,13 @@ $myi: invert(#1234d5);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  //   grid-template-columns: 1fr 1fr 1fr;
-  //   grid-row: 2.2em auto auto;
-  //   grid-gap: 15px;
   overflow-y: auto;
   width: 80%;
   height: 90%;
   scroll-behavior: auto;
   background-color: blanchedalmond;
-  //   background-image: url('./pictures/bg-paper-texture.jpg');
+  background-image: url('./bg-paper-texture.jpg');
+  background-size: cover;
   color: rgb(51, 2, 131);
   font-size: 1em;
   box-shadow: 5px 5px 10 10 grey;
@@ -37,27 +35,30 @@ $myi: invert(#1234d5);
 
   .head {
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 10px;
 
     .h2 {
       font-size: 2em;
       font-weight: 500;
-      width: 85%;
-      margin-bottom: 10px;
     }
 
-    button {
-      margin-left: 10px;
+    .button_container {
+      margin-left: auto;
+      button {
+        margin-left: 5px;
+      }
     }
   }
 
   .inside_image {
     display: flex;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 1.5em;
 
     img {
-      width: 200px;
+      max-width: 100%;
       height: auto;
       flex-shrink: 0;
       display: inline;
@@ -67,6 +68,7 @@ $myi: invert(#1234d5);
     .description {
       text-indent: 20px;
       flex-shrink: 1;
+      align-self: center;
     }
   }
 
@@ -84,20 +86,12 @@ $myi: invert(#1234d5);
   }
 
   .lastupdate {
-    position: absolute;
     display: flex;
     flex-direction: column;
-    align-content: center;
-    bottom: 15px;
-    right: 30px;
-    grid-column: 3;
-    grid-row: 3;
+    align-self: flex-end;
     font-size: 14px;
     text-align: right;
     font-style: italic;
-    .save_btn {
-      align-self: center;
-    }
   }
 }
 
@@ -113,23 +107,26 @@ $myi: invert(#1234d5);
   width: 40%;
   min-width: 350px;
   min-height: auto;
-  padding-bottom: 70px;
+  padding-bottom: 60px;
   background-color: aliceblue;
   border-radius: 20px;
 
   .head {
     display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 
     .mui_icon {
       color: $menu4;
       margin-left: auto;
-      justify-self: center;
     }
   }
-  .h2 {
+  h3 {
     color: #92264d;
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 1.4em;
+
+    text-align: center;
+    width: 90%;
   }
 
   button {
@@ -139,8 +136,8 @@ $myi: invert(#1234d5);
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: $menu3;
-    color: invert($menu3);
+    background-color: $menu4;
+    color: invert($menu4);
     font-size: 1em;
     font-weight: 400;
 
@@ -149,9 +146,6 @@ $myi: invert(#1234d5);
     }
   }
 
-  hr {
-    border-top: 1px solid #cf4578;
-  }
   input,
   textarea {
     display: block;
@@ -162,7 +156,7 @@ $myi: invert(#1234d5);
     border-radius: 20px;
     border: 2px solid rgba(146, 38, 77, 0.4);
 
-    &:change {
+    &:onchange {
       border: 1px solid invert(rgba(146, 38, 77, 0.4));
     }
   }
@@ -171,6 +165,9 @@ $myi: invert(#1234d5);
     padding-top: 5px;
     padding-left: 10px;
     min-height: calc(2em + 50px);
+  }
+  .MuiBox-root {
+    margin-right: 80px;
   }
 }
 
@@ -186,5 +183,17 @@ button {
 
   &:hover {
     background-color: complement($menu3);
+  }
+  .save {
+    background-color: green;
+    color: invert(green);
+  }
+  .close {
+    background-color: invert($menu3);
+    color: $menu3;
+  }
+  .delete {
+    background-color: red;
+    color: black;
   }
 }
