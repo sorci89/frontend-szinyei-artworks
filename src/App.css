@@ -69,6 +69,7 @@ div [class^='menu-dot-4'] {
 }
 
 .color-test {
+  position: relative;
   width: 250px;
   height: 380px;
   margin: 20px 15px 5px;
@@ -90,6 +91,17 @@ div [class^='menu-dot-4'] {
   max-width: 200px;
   max-height: 200px;
   margin-bottom: 1em;
+}
+
+.color-test .button_container {
+  align-self: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.color-test .button_container button {
+  margin-left: 5px;
 }
 
 .login-dot {

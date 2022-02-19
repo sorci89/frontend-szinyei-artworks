@@ -83,7 +83,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
       <>
         <div className='head'>
           <div className='h2'>
-            {data.people ? (
+            {data.people && data.people[0] && data.people[0].displayname ? (
               <>
                 <b>{data.people[0].displayname}:</b>
                 <br />
@@ -108,15 +108,17 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
         </div>
 
         <div className='inside_image'>
-          {data.images[0].alttext ? (
+          {data.images && data.images[0] && data.images[0].alttext ? (
             <img
               src={data.images[0].baseimageurl}
               alt={data.images[0].alttext}
             />
-          ) : (
+          ) : data.images && data.images[0] ? (
             <img src={data.images[0].baseimageurl} alt='no data' />
+          ) : (
+            <div className='unknown'>No picture</div>
           )}
-          {data.images[0].description ? (
+          {data.images && data.images[0] && data.images[0].description ? (
             <div className='description'>{data.images[0].description}</div>
           ) : (
             <div className='unknown description'>
