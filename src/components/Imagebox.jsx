@@ -32,29 +32,19 @@ const Imagebox = (props) => {
         />
       ) : (
         <div className='color-test'>
-          <div
-            // className='color-image'
-            className={
-              data.images && data.images[0] && data.images[0].baseimageurl
-                ? 'color-image'
-                : 'color-image-no-image'
-            }
-          >
-            {data.images && data.images[0] && data.images[0].baseimageurl ? (
-              <img
-                style={{ cursor: 'pointer' }}
-                onClick={() => openImage(data.id)}
-                src={data.images[0].baseimageurl}
-                alt='no pict'
-              />
-            ) : (
-              <img
-                style={{ cursor: 'pointer' }}
-                onClick={() => openImage(data.id)}
-                src='./bg-paper-texture'
-                alt='no pict'
-              />
-            )}
+          <div className='color-image'>
+            <img
+              style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
+              onClick={() => openImage(data.id)}
+              src={
+                data.images && data.images[0] && data.images[0].baseimageurl
+                  ? data.images[0].baseimageurl
+                  : data.images
+                  ? '/pictures/bg-paper-texture-2.jpg'
+                  : '/pictures/no-profile-picture.png'
+              }
+              alt='not available'
+            />
           </div>
           {data.people && data.people[0] && data.people[0].name ? (
             <div>
