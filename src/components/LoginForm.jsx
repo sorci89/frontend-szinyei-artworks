@@ -68,7 +68,7 @@ const LoginForm = () => {
   }, [loggedIn]);
 
   return (
-    <div className='regstration'>
+    <div className='registration'>
       {!loggedIn ? (
         <div>
           <h1>Login</h1>

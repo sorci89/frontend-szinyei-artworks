@@ -304,8 +304,7 @@ div [class^='menu-dot-4'] {
   }
 }
 
-
-.regstration {
+.registration {
   width: 400px;
   padding: 20px;
   margin: 30px auto;
@@ -316,11 +315,11 @@ div [class^='menu-dot-4'] {
   border: 1px solid rgba(146, 38, 77, 0.2);
   box-shadow: 15px 15px 35px rgba(77, 15, 38, 0.6);
 }
-.regstration h1{
+.registration h1 {
   color: #92264d;
   font-size: 40px;
 }
-.regstration input {
+.registration input {
   display: block;
   width: 300px;
   padding: 8px;
@@ -328,8 +327,9 @@ div [class^='menu-dot-4'] {
   margin: 30px auto;
   border-radius: 20px;
   border: 2px solid rgba(146, 38, 77, 0.4);
+  text-indent: 10px;
 }
-.regstration button {
+.registration button {
   display: block;
   width: 150px;
   padding: 7px 5px 5px;
@@ -341,21 +341,21 @@ div [class^='menu-dot-4'] {
   font-weight: bold;
   border: 1px solid rgba(146, 38, 77, 0.4);
 }
-.regstration button:hover {
+.registration button:hover {
   background-color: #cf4578;
   color: #ffffff;
 }
-.regstration hr{
+.registration hr {
   border-top: 1px solid #cf4578;
 }
-.error{
+.error {
   padding: 1px 5px 5px;
   background-color: #92264d;
   border-radius: 10px;
   color: #ffffff;
   font-size: 25px;
 }
-.successful{
+.successful {
   padding: 1px 5px 5px;
   background-color: #22b86d;
   color: #ffffff;
@@ -366,25 +366,14 @@ div [class^='menu-dot-4'] {
 imagebox_container {
   position: relative;
 }
-/* 
-.bigImage_container {
-  position: fixed;
-  top: 30%;
-  width: 200px;
-  min-height: 200px;
-  left: 50%;
-  transform: translateX(-50%);
-  height: 100px;
-  background-color: blanchedalmond;
-  border: #424058 1px solid;
-  color: crimson;
-  box-shadow: 5px 5px grey;
-  z-index: 10;
+
+.button_container {
+  display: flex;
+  justify-content: flex-end;
 }
 
-.bigImage_btn {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: blueviolet;
-} */
+.button_container button {
+  width: 40px;
+  height: 40px;
+  font-size: 0.8em;
+}

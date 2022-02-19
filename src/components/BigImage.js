@@ -3,9 +3,9 @@ import './bigImage.scss';
 import axios from 'axios';
 import CommentInput from './CommentInput';
 
-const BigImage = ({ data, isOpen, setIsOpen }) => {
+const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
   const [loggedIn, setLoggedIn] = useState(false);
-  const [isChoosen, setIsChoosen] = useState(false);
+
   const [stars, setStars] = useState(0);
   const [comment, setComment] = useState('');
   const [tag, setTag] = useState([]);
@@ -62,24 +62,30 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
   }, []);
 
   return (
-    <>
-      {!isChoosen && (
+    <div className='bigImage_container'>
+      {isChoosen && (
         <div>
           <CommentInput
             loggedIn={loggedIn}
             stars={stars}
+            setStarts={setStars}
             comment={comment}
+            setComment={setComment}
             tag={tag}
+            setTag={setTag}
             onClick={savePicture}
             isChoosen={isChoosen}
             setIsChoosen={setIsChoosen}
           />
         </div>
       )}
-      <div className='bigImage_container'>
+      <>
         <div className='head'>
-          <h2>All about the picture</h2>
-          <button onClick={() => setIsOpen(false)}>Close</button>
+          <div className='h2'> All about the picture lorem</div>
+          <div className='button_container'>
+            <button onClick={() => setIsChoosen(true)}>Save</button>
+            <button onClick={() => setIsOpen(false)}>Close</button>
+          </div>
         </div>
 
         <div className='inside_image'>
@@ -214,18 +220,8 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
         ) : (
           <div className='lastupdate'>Last update: no data</div>
         )}
-        <button
-          className='choose_btn'
-          onClick={(e) => {
-            savePicture();
-            // setIsChoosen(true);
-          }}
-          disabled={!loggedIn}
-        >
-          Save
-        </button>
-      </div>
-    </>
+      </>
+    </div>
   );
 };
 

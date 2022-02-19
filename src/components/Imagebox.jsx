@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
+import Button from './Button';
 
 const Imagebox = (props) => {
   const data = props.data;
+  const [isChoosen, setIsChoosen] = useState(false);
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [imageId, setImageId] = useState('');
 
   const openImage = (image) => {
-    console.log(image);
     setImageId(image);
     setIsOpen(true);
   };
 
   useEffect(() => {
-    setLoggedIn(localStorage.getItem("loggedIn"));
+    setLoggedIn(localStorage.getItem('loggedIn'));
   }, []);
-
 
   return (
     <div className='color-test'>
@@ -27,6 +27,8 @@ const Imagebox = (props) => {
           setIsOpen={setIsOpen}
           data={data}
           imageId={imageId}
+          isChoosen={isChoosen}
+          setIsChoosen={setIsChoosen}
         />
       ) : (
         <div className=''>
@@ -48,7 +50,27 @@ const Imagebox = (props) => {
             <div>Unknown Artist</div>
           )}
           <div style={{ textAlign: 'center' }}>{data.title}</div>
-          <button onClick={(e) =>{ console.log('Click');} }  className='save_btn' disabled={!loggedIn}>Save</button>
+          {/* <button
+            onClick={(e) => {
+              console.log('Click');
+            }}
+            className='save_btn'
+            disabled={!loggedIn}
+          >
+            Save
+          </button> */}
+          <div className='button_container'>
+            <Button
+              onClick={() => setIsOpen(true)}
+              text='Save'
+              disabled={!loggedIn}
+            />
+            <Button
+              onClick={() => console.log('Delete')}
+              text='Del'
+              disabled={!loggedIn}
+            />
+          </div>
         </div>
       )}
     </div>
