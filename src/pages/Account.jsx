@@ -6,13 +6,14 @@ import AppPagination from "../components/AppPagination";
 
 const Account = () => {
   const [dataList, setDataList] = useState([]);
+  const [datatoShow, setDataToShow] = useState([]);
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(10);
   const [searchKeyword, updateSearchKeword] = useState("");
-  const [searchClassification, updateSearchClassification] = useState("");
+  const [searchClassification, updateSearchClassification] = useState("All");
   const [hasimage, setHasimage] = useState("");
 
-  const [classifications, setClassifications] = useState([]);
+  const [classifications, setClassifications] = useState([""]);
 
   const getClassificationList = (dataList) => {
     let classificationList = ["All"];
@@ -26,17 +27,25 @@ const Account = () => {
       }
       add && classificationList.push(data.classification);
     }
-
     setClassifications(classificationList);
   };
 
-  const filterData = (dataList) => {};
+  const filterData = () => {
+    if (searchClassification === "All") {
+      setDataToShow(dataList);
+    } else {
+      setDataToShow(
+        dataList.filter((data) => data.classification === searchClassification)
+      );
+    }
+  };
 
   const renderData = async () => {
     let authUsername = localStorage.getItem("user");
     let authPassword = localStorage.getItem("pw");
     console.log(localStorage.getItem("user"));
     console.log(localStorage.getItem("pw"));
+    console.log("Render, render!!!!!!!!!");
     try {
       const response = await axios.post(
         "http://localhost:3101/api/user/galery",
@@ -48,8 +57,8 @@ const Account = () => {
         }
       );
       setDataList(response.data);
+      setDataToShow(response.data);
       getClassificationList(response.data);
-      filterData(response.data);
       setNumberOfPages(1);
     } catch (e) {
       alert("wrong username/password");
@@ -67,6 +76,9 @@ const Account = () => {
   useEffect(() => {
     renderData();
   }, []);
+  useEffect(() => {
+    filterData();
+  }, [searchClassification]);
 
   return (
     <div>
@@ -104,7 +116,7 @@ const Account = () => {
           </label>
         </div>
 
-        {dataList.map((data) => (
+        {datatoShow.map((data) => (
           <Imagebox data={data} key={Math.floor(Math.random() * 10000)} />
         ))}
       </div>
