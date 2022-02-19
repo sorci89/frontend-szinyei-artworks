@@ -5,7 +5,6 @@ import Imagebox from "../components/Imagebox";
 import AppPagination from "../components/AppPagination";
 
 const Account = () => {
-
   const [dataList, setDataList] = useState([]);
   const [page, setPage] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(10);
@@ -13,31 +12,34 @@ const Account = () => {
   const [searchClassification, updateSearchClassification] = useState("");
   const [hasimage, setHasimage] = useState("");
 
-  
+  const [classifications, setClassifications] = useState([]);
 
-  const classifications = [
-    { name: "ALL", value: "" },
-    { name: "Coins", value: "50" },
-    { name: "Drawings", value: "21" },
-    { name: "Photographs", value: "17" },
-    { name: "Paintings", value: "26" },
-    { name: "Sculpture", value: "30" },
-    { name: "Vessels", value: "57" },
-    { name: "Textile Arts", value: "62" },
-    { name: "Tools and Equipment", value: "32" },
-  ];
+  const getClassificationList = (dataList) => {
+    let classificationList = ["All"];
 
+    for (let data of dataList) {
+      let add = true;
+      for (let classification of classificationList) {
+        if (data.classification === classification) {
+          add = false;
+        }
+      }
+      add && classificationList.push(data.classification);
+    }
 
+    setClassifications(classificationList);
+  };
 
+  const filterData = (dataList) => {};
 
   const renderData = async () => {
-    let authUsername = localStorage.getItem('user');
-    let authPassword =localStorage.getItem('pw');
-    console.log(localStorage.getItem('user'));
-    console.log(localStorage.getItem('pw'));
+    let authUsername = localStorage.getItem("user");
+    let authPassword = localStorage.getItem("pw");
+    console.log(localStorage.getItem("user"));
+    console.log(localStorage.getItem("pw"));
     try {
       const response = await axios.post(
-        'http://localhost:3101/api/user/galery',
+        "http://localhost:3101/api/user/galery",
         {},
         {
           headers: {
@@ -46,29 +48,13 @@ const Account = () => {
         }
       );
       setDataList(response.data);
+      getClassificationList(response.data);
+      filterData(response.data);
       setNumberOfPages(1);
     } catch (e) {
       alert("wrong username/password");
     }
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   const toggleSetimage = () => {
     if (hasimage === "") {
@@ -107,11 +93,8 @@ const Account = () => {
             onChange={(e) => updateSearchClassification(e.target.value)}
           >
             {classifications.map((type) => (
-              <option
-                key={Math.floor(Math.random() * 10000)}
-                value={type.value}
-              >
-                {type.name}
+              <option key={Math.floor(Math.random() * 10000)} value={type}>
+                {type}
               </option>
             ))}
           </select>
