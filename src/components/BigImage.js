@@ -4,7 +4,15 @@ import axios from 'axios';
 import CommentInput from './CommentInput';
 import Button from './Button';
 
-const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
+const BigImage = ({
+  data,
+  isOpen,
+  setIsOpen,
+  isChoosen,
+  setIsChoosen,
+  z,
+  setZ,
+}) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const [stars, setStars] = useState(3);
@@ -96,7 +104,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
   }, []);
 
   return (
-    <div className='bigImage_container'>
+    <div className='bigImage_container' stlye={{ zIndex: z }}>
       {isChoosen && (
         <div>
           <CommentInput
@@ -144,7 +152,11 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             />
             <Button
               className='button close'
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                setIsOpen(false);
+                setZ(z - 1);
+                console.log('le', z);
+              }}
               text='Close'
             />
           </div>
