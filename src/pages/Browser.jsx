@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Imagebox from "../components/Imagebox";
-// import AppPagination from "../components/AppPagination";
 import ReactPaginate from "react-paginate";
 
 const queryUrl = "https://api.harvardartmuseums.org/";
@@ -25,9 +24,8 @@ const Browser = () => {
   const [dataList, setDataList] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [limit, setLimit] = useState(10);
-
   const [page, setPage] = useState(1);
-  // const [numberOfPages, setNumberOfPages] = useState(10);
+
   const [searchKeyword, updateSearchKeword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("");
   const [hasimage, setHasimage] = useState("");
@@ -63,29 +61,11 @@ const Browser = () => {
     setDataList(resp.data.records);
     const total = resp.data.info.totalrecords;
     setPageCount(Math.ceil(total / limit));
-
-    // setNumberOfPages(resp.data.info.pages);
   };
 
   useEffect(() => {
     renderData();
   }, [page, searchKeyword, searchClassification, hasimage, limit]);
-
-
-  // const fetchData = async (currentPage) => {
-  //   const res = await fetch(
-  //     `https://api.harvardartmuseums.org/object?size=${limit}&page=${currentPage}&classification=Paintings&century=19th%20century&apikey=a8d819ad-b52c-4acb-97b5-88541077022b`
-  //   );
-  //   const data = await res.json();
-  //   return data.records;
-  // };
-
-  // const handlePageClick = async (data) => {
-  //   let currentPage = data.selected + 1;
-
-  //   const dataFormServer = await fetchData(currentPage);
-  //   setDataList(dataFormServer);
-  // };
 
 
   return (
@@ -134,7 +114,7 @@ const Browser = () => {
         ))}
       </div>
       {/* <AppPagination setPage={setPage} page={numberOfPages} /> */}
-      <div>
+      <div className="page-select-container">
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
@@ -154,13 +134,16 @@ const Browser = () => {
         breakLinkClassName={"page-link"}
         activeClassName={"active"}
       />
-    </div>
-      <select name="page-items" id="page-items" onChange={(event)=>setLimit(event.target.value)}>
+       <select name="page-select" id="page-select" onChange={(event)=>setLimit(event.target.value)}>
     <option value='10'>10 / page</option>
     <option value="20">20 / page</option>
     <option value="50">50 / page</option>
     <option value="100">100 / page</option>
   </select>
+    </div>
+    <div>
+     
+    </div>
 
     </div>
   );
