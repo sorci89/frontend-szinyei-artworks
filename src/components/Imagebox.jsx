@@ -35,7 +35,10 @@ const Imagebox = (props) => {
         <div className='color-test'>
           <div className='color-image'>
             <img
-              style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
+              className={
+                data.images && data.images[0] ? 'img' : 'color-image-no-image'
+              }
+              style={{ cursor: 'pointer' }}
               onClick={() => openImage(data.id)}
               src={
                 data.images && data.images[0] && data.images[0].baseimageurl
@@ -48,11 +51,9 @@ const Imagebox = (props) => {
             />
           </div>
           {data.people ? (
-            <div>
-              <b>{data.people[0].displayname}</b>
-            </div>
+            <div className='artist'>{data.people[0].displayname}</div>
           ) : (
-            <div>Unknown Artist</div>
+            <div className='artist'>Unknown Artist</div>
           )}
           <div style={{ padding: '2px 5px', textAlign: 'center' }}>
             {data.title.split('(')[0]}

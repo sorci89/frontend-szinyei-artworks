@@ -107,12 +107,12 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             data.people[0].displayname &&
             data.title ? (
               <>
-                <b>{data.people[0].displayname}:</b>
+                <div className='artist'>{data.people[0].displayname}:</div>
                 <br />
-                {data.title}
+                <div className='title'>{data.title}</div>
               </>
             ) : (
-              <div className='unknown'>Unknown artist: {data.title}</div>
+              <div className='unknown artist'>Unknown artist: {data.title}</div>
             )}
           </div>
           <div className='button_container'>
@@ -131,7 +131,6 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
         </div>
 
         <div className='inside_image'>
-          inside
           {data.images && data.images[0] && data.images[0].alttext ? (
             <img
               src={data.images[0].baseimageurl}
@@ -143,7 +142,6 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             <div className='unknown'>No picture</div>
           )}
           <div className='details'>
-            details
             {data.classification ? (
               <div>
                 <span>Classification: </span> {data.classification}

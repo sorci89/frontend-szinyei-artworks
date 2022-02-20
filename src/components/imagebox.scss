@@ -22,13 +22,29 @@
 .color-image-no-image {
   min-width: 200px;
   min-height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  padding-top: 50px;
+  border: 2px dotted rgba(146, 38, 77, 0.5);
 }
 .color-image,
 .color-image img {
   max-width: 200px;
   max-height: 200px;
   margin-bottom: 1em;
+}
+
+img::after {
+  content: 'no picture';
+  display: block;
+  position: absolute;
+  top: 13px;
+  margin: auto;
+  min-width: 196px;
+  min-height: 172px;
+  padding-top: 25px;
+  background-color: antiquewhite;
+}
+.artist {
+  text-align: center;
+  font-weight: 700;
 }
