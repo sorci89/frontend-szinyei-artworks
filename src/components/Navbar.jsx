@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import SelectMenu from "../components/SelectMenu";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import SelectMenu from '../components/SelectMenu';
 
 const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -27,61 +27,63 @@ const Navbar = () => {
   //   }, []);
 
   useEffect(() => {
-    setLoggedIn(localStorage.getItem("loggedIn"));
+    setLoggedIn(localStorage.getItem('loggedIn'));
   }, []);
 
   return (
     <div>
       {!loggedIn ? (
         <div>
-          <div className="menu-bar">
-            <Link to="/browser">
-              <div className="menu-dot-1">
+          <div className='menu-bar'>
+            <Link to='/browser'>
+              <div className='menu-dot-1'>
                 <p>browse</p>
               </div>
             </Link>
-            <Link to="/login">
-              <div className="menu-dot-3">
+            <Link to='/login'>
+              <div className='menu-dot-3'>
                 <p>login</p>
               </div>
             </Link>
-            <Link to="/register">
-              <div className="menu-dot-2">
+            <Link to='/register'>
+              <div className='menu-dot-2'>
                 <p>register</p>
               </div>
             </Link>
-            <div className="menu-dot-4">
+            <div className='menu-dot-4'>
               <SelectMenu />
             </div>
           </div>
-          <div className="nav-border"></div>
+          <div className='nav-border'></div>
         </div>
       ) : (
         <div>
-          <div className="menu-bar">
-            <button
-              onClick={() => {
-                localStorage.clear();
-                setLoggedIn(false);
-              }}
-            >
-              <div className="menu-dot-1">
+          <div className='menu-bar'>
+            <Link to='/account'>
+              <div
+                onClick={() => {
+                  localStorage.clear();
+                  setLoggedIn(false);
+                }}
+                className='menu-dot-1'
+              >
                 <p>logout</p>
               </div>
-            </button>
-            <Link to="/account">
-              <div className="menu-dot-2">
+            </Link>
+            <Link to='/account'>
+              <div className='menu-dot-2'>
                 <p>mypics</p>
               </div>
             </Link>
-            <Link to="/browser">
-              <div className="menu-dot-3">
+
+            <Link to='/browser'>
+              <div className='menu-dot-3'>
                 <p>browse</p>
               </div>
             </Link>
-            <div className="menu-dot-4"></div>
+            <div className='menu-dot-4'></div>
           </div>
-          <div className="nav-border"></div>
+          <div className='nav-border'></div>
         </div>
       )}
     </div>
