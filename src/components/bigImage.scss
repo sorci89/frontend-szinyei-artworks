@@ -89,30 +89,23 @@ button {
 
     img {
       max-width: 60%;
-      height: auto;
+      height: max-content;
       flex-shrink: 0;
       display: inline;
       margin-right: 20px;
       box-shadow: 2px 2px 3px 0px rgb(51, 2, 131);
     }
-    .description {
-      text-indent: 20px;
-      flex-shrink: 1;
+
+    .details {
       align-self: center;
+      span {
+        font-weight: 600;
+        font-size: 16px;
+      }
+      .unknown {
+        font-style: italic;
+      }
     }
-  }
-
-  .dimensions {
-    display: flex;
-  }
-
-  span {
-    font-weight: 600;
-    font-size: 16px;
-    padding-left: 15px;
-  }
-  .unknown {
-    font-style: italic;
   }
 
   .lastupdate {

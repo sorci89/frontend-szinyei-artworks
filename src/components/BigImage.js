@@ -79,6 +79,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
       {isChoosen && (
         <div>
           <CommentInput
+            data={data}
             loggedIn={loggedIn}
             stars={stars}
             setStarts={setStars}
@@ -92,6 +93,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             onClick={savePicture}
             isChoosen={isChoosen}
             setIsChoosen={setIsChoosen}
+            savedImage={savedImage}
           />
         </div>
       )}
@@ -137,15 +139,6 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
           ) : (
             <div className='unknown'>No picture</div>
           )}
-          <div>
-            {data.images && data.images[0] && data.images[0].description ? (
-              <div className='description'>{data.images[0].description}</div>
-            ) : (
-              <div className='unknown description'>
-                Desciption is not yet part of the museum API
-              </div>
-            )}
-          </div>
           <div className='details'>
             {data.classification ? (
               <div>
@@ -245,6 +238,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
                 unknown
               </div>
             )}
+
             {/* {data.images[0].height && data.images[0].width && (
 			  <div>
 				<span>Width - height: </span>
@@ -254,6 +248,14 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
 					  )} */}
           </div>
         </div>
+        {data.images && data.images[0] && data.images[0].description ? (
+          <div className='description'>{data.images[0].description}</div>
+        ) : (
+          <div className='unknown description'>
+            Desciption is not yet part of the museum API
+          </div>
+        )}
+
         {data.lastupdate ? (
           <div className='lastupdate'>
             <span>Last update:</span>
