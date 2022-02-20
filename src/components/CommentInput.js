@@ -24,7 +24,7 @@ function CommentInput({
   onClick,
   isChoosen,
   setIsChoosen,
-  savedImage,
+  savePicture,
 }) {
   console.log(loggedIn);
   const addTag = (tagIn) => {
@@ -94,7 +94,11 @@ function CommentInput({
           </Box>
           {loggedIn ? (
             <Button
-              onClick={savedImage}
+              onClick={(e) => {
+                savePicture();
+                console.log('ok');
+                setIsChoosen(false);
+              }}
               text='Save'
               className='comment_save_btn save'
             />

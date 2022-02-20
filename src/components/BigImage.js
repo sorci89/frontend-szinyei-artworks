@@ -93,7 +93,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             onClick={savePicture}
             isChoosen={isChoosen}
             setIsChoosen={setIsChoosen}
-            savedImage={savedImage}
+            savePicture={savePicture}
           />
         </div>
       )}
@@ -129,6 +129,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
         </div>
 
         <div className='inside_image'>
+          inside
           {data.images && data.images[0] && data.images[0].alttext ? (
             <img
               src={data.images[0].baseimageurl}
@@ -140,6 +141,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             <div className='unknown'>No picture</div>
           )}
           <div className='details'>
+            details
             {data.classification ? (
               <div>
                 <span>Classification: </span> {data.classification}
@@ -238,14 +240,6 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
                 unknown
               </div>
             )}
-
-            {/* {data.images[0].height && data.images[0].width && (
-			  <div>
-				<span>Width - height: </span>
-				{data.images[0].width}&nbsp;x&nbsp;
-				{data.images[0].height} px
-			  </div>
-					  )} */}
           </div>
         </div>
         {data.images && data.images[0] && data.images[0].description ? (
