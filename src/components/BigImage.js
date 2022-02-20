@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import './bigImage.scss';
-import axios from 'axios';
-import CommentInput from './CommentInput';
+import React, { useState, useEffect } from "react";
+import "./bigImage.scss";
+import axios from "axios";
+import CommentInput from "./CommentInput";
 
 const BigImage = ({ data, isOpen, setIsOpen }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [isChoosen, setIsChoosen] = useState(false);
   const [stars, setStars] = useState(0);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState("");
   const [tag, setTag] = useState([]);
 
   let dateYMD = data.lastupdate.slice(0, 10);
@@ -33,32 +33,34 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
         technique: data.images[0].technique,
       },
     ],
-    people: [{ displayname: data.people[0].displayname }],
+    people: [
+      { displayname: data.people ? data.people[0].displayname : "unknown" },
+    ],
     worktypes: [{ worktype: data.worktypes[0].worktype }],
   };
 
   const savePicture = async () => {
-    const authUsername = localStorage.getItem('user');
-    const authPassword = localStorage.getItem('pw');
+    const authUsername = localStorage.getItem("user");
+    const authPassword = localStorage.getItem("pw");
 
     try {
       const response = await axios.post(
-        'http://localhost:3101/api/picture/save',
+        "http://localhost:3101/api/picture/save",
         { data: savedImage },
         {
           headers: {
-            Authorization: authUsername + '&&&' + authPassword,
+            Authorization: authUsername + "&&&" + authPassword,
           },
         }
       );
-      alert('Csuhajja');
+      alert("Csuhajja");
     } catch (e) {
-      alert('wrong username/password');
+      alert("wrong username/password");
     }
   };
 
   useEffect(() => {
-    setLoggedIn(localStorage.getItem('loggedIn'));
+    setLoggedIn(localStorage.getItem("loggedIn"));
   }, []);
 
   return (
@@ -76,35 +78,35 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
           />
         </div>
       )}
-      <div className='bigImage_container'>
-        <div className='head'>
+      <div className="bigImage_container">
+        <div className="head">
           <h2>All about the picture</h2>
           <button onClick={() => setIsOpen(false)}>Close</button>
         </div>
 
-        <div className='inside_image'>
+        <div className="inside_image">
           <img src={data.images[0].baseimageurl} alt={data.images[0].alttext} />
           {data.title && (
-            <div className='title'>
+            <div className="title">
               {data.people[0].displayname}: <br />
               {data.title}
             </div>
           )}
         </div>
         {data.images[0].description ? (
-          <div className='description'>{data.images[0].description}</div>
+          <div className="description">{data.images[0].description}</div>
         ) : (
-          <div className='unknown description'>
+          <div className="unknown description">
             Desciption is not yet part of the museum API
           </div>
         )}
-        <div className='details'>
+        <div className="details">
           {data.classification ? (
             <div>
               <span>Classification: </span> {data.classification}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Classification: </span> unknown
             </div>
           )}
@@ -113,7 +115,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               <span>Century: </span> {data.century}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Century: </span> unknown
             </div>
           )}
@@ -122,7 +124,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               <span>Culture: </span> {data.culture}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Culture: </span> unknown
             </div>
           )}
@@ -131,7 +133,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               <span>Dated: </span> {data.dated}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Dated: </span> unknown
             </div>
           )}
@@ -145,7 +147,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               <span>Dimensions: </span> {data.dimensions}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Dimensions: </span> no data
             </div>
           )}
@@ -155,7 +157,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               {data.division}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Division: </span> no data
             </div>
           )}
@@ -165,7 +167,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               {data.medium}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Technique: </span>
               no data
             </div>
@@ -176,7 +178,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               {data.period}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Artistic period: </span>
               unknown
             </div>
@@ -184,7 +186,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
           {data.contact ? (
             <div>
               <span>Contact: </span>
-              {data.contact}{' '}
+              {data.contact}{" "}
             </div>
           ) : null}
           {data.worktypes[0].worktype ? (
@@ -193,29 +195,29 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               {data.worktypes[0].worktype} {data.images[0].technique}
             </div>
           ) : (
-            <div className='unknown'>
+            <div className="unknown">
               <span>Worktype: </span>
               unknown
             </div>
           )}
           {/* {data.images[0].height && data.images[0].width && (
-          <div>
-            <span>Width - height: </span>
-            {data.images[0].width}&nbsp;x&nbsp;
-            {data.images[0].height} px
-          </div>
-        )} */}
+      <div>
+        <span>Width - height: </span>
+        {data.images[0].width}&nbsp;x&nbsp;
+        {data.images[0].height} px
+      </div>
+    )} */}
         </div>
         {data.lastupdate ? (
-          <div className='lastupdate'>
+          <div className="lastupdate">
             <span>Last update:</span>
             {dateYMD}
           </div>
         ) : (
-          <div className='lastupdate'>Last update: no data</div>
+          <div className="lastupdate">Last update: no data</div>
         )}
         <button
-          className='choose_btn'
+          className="choose_btn"
           onClick={(e) => {
             savePicture();
             // setIsChoosen(true);
@@ -225,6 +227,7 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
           Save
         </button>
       </div>
+      ;
     </>
   );
 };

@@ -43,7 +43,7 @@ const Imagebox = (props) => {
           />
           {data.people ? (
             <div>
-              <b>{data.people[0].name}</b>
+              <b>{data.people[0].displayname}</b>
             </div>
           ) : (
             <div>Unknown Artist</div>

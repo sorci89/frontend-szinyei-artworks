@@ -2,23 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Imagebox from "../components/Imagebox";
-import AppPagination from "../components/AppPagination";
 
 const Account = () => {
   const [dataList, setDataList] = useState([]);
-  const [datatoShow, setDataToShow] = useState([]);
-  const [page, setPage] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(10);
+  const [dataToShow, setDataToShow] = useState([]);
   const [searchKeyword, updateSearchKeword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("All");
-  const [hasimage, setHasimage] = useState("");
+  const [searchCulture, updateSearchCulture] = useState("All");
 
   const [classifications, setClassifications] = useState([""]);
+  const [cultures, setCultures] = useState([""]);
 
-  const getClassificationList = (dataList) => {
+  const getClassifications = (dataToShow) => {
     let classificationList = ["All"];
+    console.log(dataToShow);
 
-    for (let data of dataList) {
+    for (let data of dataToShow) {
       let add = true;
       for (let classification of classificationList) {
         if (data.classification === classification) {
@@ -30,14 +29,37 @@ const Account = () => {
     setClassifications(classificationList);
   };
 
-  const filterData = () => {
-    if (searchClassification === "All") {
-      setDataToShow(dataList);
-    } else {
-      setDataToShow(
-        dataList.filter((data) => data.classification === searchClassification)
-      );
+  const getCultures = (dataToShow) => {
+    let cultureList = ["All"];
+    console.log(dataToShow);
+
+    for (let data of dataToShow) {
+      let add = true;
+
+      for (let culture of cultureList) {
+        if (data.culture === culture) {
+          add = false;
+        }
+      }
+      add && cultureList.push(data.culture);
     }
+
+    setCultures(cultureList);
+  };
+
+  const filterData = () => {
+    setDataToShow(
+      dataList.filter(
+        (data) =>
+          (searchClassification === "All" ||
+            data.classification === searchClassification) &&
+          (searchCulture === "All" || data.culture === searchCulture) &&
+          (data.title.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+            data.people[0].displayname
+              .toLowerCase()
+              .includes(searchKeyword.toLowerCase()))
+      )
+    );
   };
 
   const renderData = async () => {
@@ -58,18 +80,10 @@ const Account = () => {
       );
       setDataList(response.data);
       setDataToShow(response.data);
-      getClassificationList(response.data);
-      setNumberOfPages(1);
+      getCultures(response.data);
+      getClassifications(response.data);
     } catch (e) {
       alert("wrong username/password");
-    }
-  };
-
-  const toggleSetimage = () => {
-    if (hasimage === "") {
-      setHasimage("&hasimage=1");
-    } else {
-      setHasimage("");
     }
   };
 
@@ -78,7 +92,16 @@ const Account = () => {
   }, []);
   useEffect(() => {
     filterData();
-  }, [searchClassification]);
+  }, [searchClassification, searchCulture, searchKeyword]);
+
+  useEffect(() => {
+    searchClassification !== "All"
+      ? getCultures(dataToShow)
+      : getCultures(dataList);
+    searchCulture !== "All"
+      ? getClassifications(dataToShow)
+      : getClassifications(dataList);
+  }, [dataToShow]);
 
   return (
     <div>
@@ -97,30 +120,38 @@ const Account = () => {
             placeholder="kewords"
             onChange={(e) => {
               updateSearchKeword(e.target.value);
-              setPage(1);
             }}
           ></input>
+          <label>Classification:</label>
           <select
             value={searchClassification}
-            onChange={(e) => updateSearchClassification(e.target.value)}
+            onChange={(e) => {
+              updateSearchClassification(e.target.value);
+            }}
           >
-            {classifications.map((type) => (
-              <option key={Math.floor(Math.random() * 10000)} value={type}>
+            {classifications.map((type, i) => (
+              <option key={i} value={type}>
                 {type}
               </option>
             ))}
           </select>
-          <label>
-            <input type="checkbox" onChange={toggleSetimage} />
-            with image only
-          </label>
+          <label>Culture:</label>
+          <select
+            value={searchCulture}
+            onChange={(e) => updateSearchCulture(e.target.value)}
+          >
+            {cultures.map((type, i) => (
+              <option key={i} value={type}>
+                {type}
+              </option>
+            ))}
+          </select>
         </div>
 
-        {datatoShow.map((data) => (
-          <Imagebox data={data} key={Math.floor(Math.random() * 10000)} />
+        {dataToShow.map((data, i) => (
+          <Imagebox data={data} key={i} />
         ))}
       </div>
-      <AppPagination setPage={setPage} page={numberOfPages} />
     </div>
   );
 };
