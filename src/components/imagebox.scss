@@ -25,6 +25,7 @@
   text-align: center;
   padding-top: 50px;
   border: 2px dotted rgba(146, 38, 77, 0.5);
+  cursor: no-drop;
 }
 .color-image,
 .color-image img {
@@ -33,19 +34,6 @@
   margin-bottom: 1em;
 }
 
-img::after {
-  content: 'no picture';
-  display: block;
-  position: absolute;
-  top: 14px;
-  margin: auto;
-  min-width: 196px;
-  min-height: 171px;
-  padding-top: 25px;
-  background-color: bisque;
-  //   background: url('/public/white_canvas');
-  //   background-size: cover;
-}
 .artist {
   text-align: center;
   font-weight: 700;

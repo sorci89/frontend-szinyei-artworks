@@ -34,23 +34,31 @@ const Imagebox = (props) => {
       ) : (
         <div className='color-test'>
           <div className='color-image'>
-            <img
-              className={
-                data.images && data.images[0] ? 'img' : 'color-image-no-image'
-              }
-              style={{
-                cursor: data.images && data.images[0] ? 'pointer' : 'no-drop',
-              }}
-              onClick={() => openImage(data.id)}
-              src={
-                data.images && data.images[0] && data.images[0].baseimageurl
-                  ? data.images[0].baseimageurl
-                  : data.images
-                  ? '/pictures/bg-paper-texture-2.jpg'
-                  : '/pictures/no-profile-picture.png'
-              }
-              alt='not available'
-            />
+            {data.images && data.images[0] ? (
+              <img
+                className={
+                  data.images && data.images[0] ? 'img' : 'color-image-no-image'
+                }
+                style={{
+                  cursor: data.images && data.images[0] ? 'pointer' : 'no-drop',
+                }}
+                onClick={() => openImage(data.id)}
+                src={
+                  data.images && data.images[0] && data.images[0].baseimageurl
+                    ? data.images[0].baseimageurl
+                    : data.images
+                    ? '/pictures/bg-paper-texture-2.jpg'
+                    : '/pictures/no-profile-picture.png'
+                }
+                alt='not available'
+              />
+            ) : (
+              <div className='color-image-no-image'>
+                No image
+                <br />
+                No more information
+              </div>
+            )}
           </div>
           {data.people ? (
             <div className='artist'>{data.people[0].displayname}</div>
@@ -69,18 +77,20 @@ const Imagebox = (props) => {
           >
             Save
           </button> */}
-          <div className='button_container'>
-            <Button
-              onClick={() => setIsOpen(true)}
-              text='Save'
-              disabled={!loggedIn}
-            />
-            <Button
-              onClick={() => console.log('Delete')}
-              text='Del'
-              disabled={!loggedIn}
-            />
-          </div>
+          {data.images && data.images[0] && (
+            <div className='button_container'>
+              <Button
+                onClick={() => setIsOpen(true)}
+                text='Save'
+                disabled={!loggedIn}
+              />
+              <Button
+                onClick={() => console.log('Delete')}
+                text='Del'
+                disabled={!loggedIn}
+              />
+            </div>
+          )}
         </div>
       )}
     </div>
