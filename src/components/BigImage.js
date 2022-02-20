@@ -23,7 +23,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
   let dateYMD = data.lastupdate.slice(0, 10);
 
   const savedImage = {
-    lastupdate: data.lastupdate,
+    // {lastupdate: data.lastupdate ? data.lastupdate : 'no data'},
     title: data.title,
     classification: data.classification,
     century: data.century,
@@ -37,16 +37,28 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
 
     images: [
       {
-        baseimageurl: data.images[0].baseimageurl,
-        alttext: data.images[0].alttext,
-        description: data.images[0].description,
-        technique: data.images[0].technique,
+        baseimageurl: data.images[0].baseimageurl
+          ? data.images[0].baseimageurl
+          : '/public/no-profile-picture.png',
+        alttext: data.images[0].alttext ? data.images[0].alttext : 'no data',
+        description: data.images[0].description
+          ? data.images[0].description
+          : 'no avalable information',
+        technique: data.images[0].technique
+          ? data.images[0].technique
+          : 'no data',
       },
     ],
     people: [
       { displayname: data.people ? data.people[0].displayname : 'unknown' },
     ],
-    worktypes: [{ worktype: data.worktypes[0].worktype }],
+    worktypes: [
+      {
+        worktype: data.worktypes[0].worktype
+          ? data.worktypes[0].worktype
+          : 'unknown',
+      },
+    ],
     tag: tag,
     comment: comment,
     stars: stars,
@@ -107,12 +119,13 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             data.people[0].displayname &&
             data.title ? (
               <>
-                <div className='artist'>{data.people[0].displayname}:</div>
-                <br />
-                <div className='title'>{data.title}</div>
+                <div className='bigImage_artist'>
+                  {data.people[0].displayname}:
+                </div>
+                {data.title}
               </>
             ) : (
-              <div className='unknown artist'>Unknown artist: {data.title}</div>
+              <div bigImage_artist>Unknown artist: {data.title}</div>
             )}
           </div>
           <div className='button_container'>

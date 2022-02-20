@@ -37,12 +37,14 @@ img::after {
   content: 'no picture';
   display: block;
   position: absolute;
-  top: 13px;
+  top: 14px;
   margin: auto;
   min-width: 196px;
-  min-height: 172px;
+  min-height: 171px;
   padding-top: 25px;
-  background-color: antiquewhite;
+  background-color: bisque;
+  //   background: url('/public/white_canvas');
+  //   background-size: cover;
 }
 .artist {
   text-align: center;

@@ -38,7 +38,9 @@ const Imagebox = (props) => {
               className={
                 data.images && data.images[0] ? 'img' : 'color-image-no-image'
               }
-              style={{ cursor: 'pointer' }}
+              style={{
+                cursor: data.images && data.images[0] ? 'pointer' : 'no-drop',
+              }}
               onClick={() => openImage(data.id)}
               src={
                 data.images && data.images[0] && data.images[0].baseimageurl
