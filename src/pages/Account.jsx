@@ -90,6 +90,7 @@ const Account = () => {
   useEffect(() => {
     renderData();
   }, []);
+
   useEffect(() => {
     filterData();
   }, [searchClassification, searchCulture, searchKeyword]);

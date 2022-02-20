@@ -27,16 +27,18 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
 
     images: [
       {
-        baseimageurl: data.images[0].baseimageurl,
-        alttext: data.images[0].alttext,
-        description: data.images[0].description,
-        technique: data.images[0].technique,
+        baseimageurl:
+          data.images && data.images[0] && data.images[0].baseimageurl,
+        alttext: data.images && data.images[0] && data.images[0].alttext,
+        description:
+          data.images && data.images[0] && data.images[0].description,
+        technique: data.images && data.images[0] && data.images[0].technique,
       },
     ],
     people: [
       { displayname: data.people ? data.people[0].displayname : "unknown" },
     ],
-    worktypes: [{ worktype: data.worktypes[0].worktype }],
+    worktypes: [{ worktype: data.worktypes && data.worktypes[0].worktype }],
   };
 
   const savePicture = async () => {
@@ -85,15 +87,24 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
         </div>
 
         <div className="inside_image">
-          <img src={data.images[0].baseimageurl} alt={data.images[0].alttext} />
-          {data.title && (
+          <img
+            src={
+              data.images && data.images[0] && data.images[0].baseimageurl
+                ? data.images[0].baseimageurl
+                : data.images
+                ? "/pictures/bg-paper-texture-2.jpg"
+                : "/pictures/no-profile-picture.png"
+            }
+            alt="not available"
+          />
+          {data.people && data.people[0].displayname && data.title && (
             <div className="title">
               {data.people[0].displayname}: <br />
               {data.title}
             </div>
           )}
         </div>
-        {data.images[0].description ? (
+        {data.images && data.images[0] && data.images[0].description ? (
           <div className="description">{data.images[0].description}</div>
         ) : (
           <div className="unknown description">
@@ -185,14 +196,13 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
           )}
           {data.contact ? (
             <div>
-              <span>Contact: </span>
-              {data.contact}{" "}
+              <span>Contact: {data.contact}</span>
             </div>
           ) : null}
-          {data.worktypes[0].worktype ? (
+          {data.worktypes && data.worktypes[0].worktype ? (
             <div>
               <span>Worktype: </span>
-              {data.worktypes[0].worktype} {data.images[0].technique}
+              {data.worktypes[0].worktype}
             </div>
           ) : (
             <div className="unknown">
@@ -200,13 +210,6 @@ const BigImage = ({ data, isOpen, setIsOpen }) => {
               unknown
             </div>
           )}
-          {/* {data.images[0].height && data.images[0].width && (
-      <div>
-        <span>Width - height: </span>
-        {data.images[0].width}&nbsp;x&nbsp;
-        {data.images[0].height} px
-      </div>
-    )} */}
         </div>
         {data.lastupdate ? (
           <div className="lastupdate">
