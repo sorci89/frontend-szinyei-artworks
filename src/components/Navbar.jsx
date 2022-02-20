@@ -75,7 +75,6 @@ const Navbar = () => {
                 <p>mypics</p>
               </div>
             </Link>
-
             <Link to='/browser'>
               <div className='menu-dot-3'>
                 <p>browse</p>

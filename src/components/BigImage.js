@@ -8,7 +8,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const [stars, setStars] = useState(3);
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState('Comment');
   const [tag, setTag] = useState('Tag');
   const [newTag, setNewTag] = useState('');
   const [tags, setTags] = useState([
@@ -23,30 +23,36 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
   let dateYMD = data.lastupdate.slice(0, 10);
 
   const savedImage = {
-    // {lastupdate: data.lastupdate ? data.lastupdate : 'no data'},
-    title: data.title,
-    classification: data.classification,
-    century: data.century,
-    culture: data.culture,
-    dated: data.dated,
-    department: data.department,
-    dimensions: data.dimensions,
-    division: data.division,
-    medium: data.medium,
-    period: data.period,
+    lastupdate: data.lastupdate ? data.lastupdate : 'no data',
+    title: data.title ? data.title : 'no title',
+    classification: data.classification ? data.classification : 'no data',
+    century: data.century ? data.century : 'no data',
+    culture: data.culture ? data.culture : 'no data',
+    dated: data.dated ? data.dated : 'no data',
+    department: data.department ? data.department : 'no data',
+    dimensions: data.dimensions ? data.dimensions : 'no data',
+    division: data.division ? data.division : 'no data',
+    medium: data.medium ? data.medium : 'no data',
+    period: data.period ? data.period : 'no data',
 
     images: [
       {
-        baseimageurl: data.images[0].baseimageurl
-          ? data.images[0].baseimageurl
-          : '/public/no-profile-picture.png',
-        alttext: data.images[0].alttext ? data.images[0].alttext : 'no data',
-        description: data.images[0].description
-          ? data.images[0].description
-          : 'no avalable information',
-        technique: data.images[0].technique
-          ? data.images[0].technique
-          : 'no data',
+        baseimageurl:
+          data.images && data.images[0] && data.images[0].baseimageurl
+            ? data.images[0].baseimageurl
+            : '/public/no-profile-picture.png',
+        alttext:
+          data.images && data.images[0] && data.images[0].alttext
+            ? data.images[0].alttext
+            : 'no data',
+        description:
+          data.images && data.images[0] && data.images[0].description
+            ? data.images[0].description
+            : 'no avalable information',
+        technique:
+          data.images && data.images[0] && data.images[0].technique
+            ? data.images[0].technique
+            : 'no data',
       },
     ],
     people: [
@@ -54,9 +60,10 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
     ],
     worktypes: [
       {
-        worktype: data.worktypes[0].worktype
-          ? data.worktypes[0].worktype
-          : 'unknown',
+        worktype:
+          data.worktypes && data.worktypes[0].worktype
+            ? data.worktypes[0].worktype
+            : 'unknown',
       },
     ],
     tag: tag,
@@ -111,7 +118,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
           />
         </div>
       )}
-      <>
+      <div>
         <div className='head'>
           <div className='h2'>
             {data.people &&
@@ -124,9 +131,9 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
                 </div>
                 {data.title}
               </>
-            ) : (
-              <div bigImage_artist>Unknown artist: {data.title}</div>
-            )}
+            ) : data.title ? (
+              <div bigImage_artist>Unknown artist: {data.title} </div>
+            ) : null}
           </div>
           <div className='button_container'>
             <Button
@@ -154,6 +161,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
           ) : (
             <div className='unknown'>No picture</div>
           )}
+
           <div className='details'>
             {data.classification ? (
               <div>
@@ -217,7 +225,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
               </div>
             ) : (
               <div className='unknown'>
-                <span>Division: </span> no data
+                <spanv>Division: </spanv> no data
               </div>
             )}
             {data.medium ? (
@@ -242,7 +250,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
                 unknown
               </div>
             )}
-            {data.worktypes[0] ? (
+            {data.worktypes && data.worktypes[0] ? (
               <div>
                 <span>Worktype: </span>
                 {data.worktypes[0].worktype}
@@ -264,13 +272,13 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
         )}
         {data.lastupdate ? (
           <div className='lastupdate'>
-            <span>Last update:</span>
+            <b>Last update:</b>
             {dateYMD}
           </div>
         ) : (
           <div className='lastupdate'>Last update: no data</div>
         )}
-      </>
+      </div>
     </div>
   );
 };
