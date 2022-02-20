@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Imagebox from "../components/Imagebox";
-import AppPagination from "../components/AppPagination";
+// import AppPagination from "../components/AppPagination";
+import ReactPaginate from "react-paginate";
 
 const queryUrl = "https://api.harvardartmuseums.org/";
 const querySort = "&sort=totalpageviews&sortorder=desc";
@@ -22,8 +23,11 @@ const classifications = [
 
 const Browser = () => {
   const [dataList, setDataList] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [limit, setLimit] = useState(10);
+
   const [page, setPage] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(10);
+  // const [numberOfPages, setNumberOfPages] = useState(10);
   const [searchKeyword, updateSearchKeword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("");
   const [hasimage, setHasimage] = useState("");
@@ -37,7 +41,7 @@ const Browser = () => {
   };
 
   const getQuery = () => {
-    let queryPage = `object?size=10&page=${page}`;
+    let queryPage = `object?size=${limit}&page=${page}`;
     let queryClassification = `&classification=${searchClassification}`;
     let queryKeyWord = `&keyword=${searchKeyword}`;
     let queryHasImage = `${hasimage}`;
@@ -57,12 +61,32 @@ const Browser = () => {
     const resp = await axios.get(query);
     console.log(resp.data.records);
     setDataList(resp.data.records);
-    setNumberOfPages(resp.data.info.pages);
+    const total = resp.data.info.totalrecords;
+    setPageCount(Math.ceil(total / limit));
+
+    // setNumberOfPages(resp.data.info.pages);
   };
 
   useEffect(() => {
     renderData();
-  }, [page, searchKeyword, searchClassification, hasimage]);
+  }, [page, searchKeyword, searchClassification, hasimage, limit]);
+
+
+  // const fetchData = async (currentPage) => {
+  //   const res = await fetch(
+  //     `https://api.harvardartmuseums.org/object?size=${limit}&page=${currentPage}&classification=Paintings&century=19th%20century&apikey=a8d819ad-b52c-4acb-97b5-88541077022b`
+  //   );
+  //   const data = await res.json();
+  //   return data.records;
+  // };
+
+  // const handlePageClick = async (data) => {
+  //   let currentPage = data.selected + 1;
+
+  //   const dataFormServer = await fetchData(currentPage);
+  //   setDataList(dataFormServer);
+  // };
+
 
   return (
     <div>
@@ -109,7 +133,35 @@ const Browser = () => {
           <Imagebox data={data} key={Math.floor(Math.random() * 10000)} />
         ))}
       </div>
-      <AppPagination setPage={setPage} page={numberOfPages} />
+      {/* <AppPagination setPage={setPage} page={numberOfPages} /> */}
+      <div>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        breakLabel={"..."}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={(data)=> setPage(data.selected + 1)}
+        containerClassName={"pagination justify-content-center"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
+        activeClassName={"active"}
+      />
+    </div>
+      <select name="page-items" id="page-items" onChange={(event)=>setLimit(event.target.value)}>
+    <option value='10'>10 / page</option>
+    <option value="20">20 / page</option>
+    <option value="50">50 / page</option>
+    <option value="100">100 / page</option>
+  </select>
+
     </div>
   );
 };
