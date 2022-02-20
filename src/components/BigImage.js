@@ -43,7 +43,9 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
         technique: data.images[0].technique,
       },
     ],
-    people: [{ displayname: data.people[0].displayname }],
+    people: [
+      { displayname: data.people ? data.people[0].displayname : 'unknown' },
+    ],
     worktypes: [{ worktype: data.worktypes[0].worktype }],
     tag: tag,
     comment: comment,
@@ -249,7 +251,6 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             Desciption is not yet part of the museum API
           </div>
         )}
-
         {data.lastupdate ? (
           <div className='lastupdate'>
             <span>Last update:</span>
