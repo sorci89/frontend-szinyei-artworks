@@ -159,7 +159,12 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
           ) : data.images && data.images[0] ? (
             <img src={data.images[0].baseimageurl} alt='no data' />
           ) : (
-            <div className='unknown'>No picture</div>
+            <div
+              className='unknown color-image-no-image'
+              style={{ marginRight: '30px' }}
+            >
+              No picture
+            </div>
           )}
 
           <div className='details'>
