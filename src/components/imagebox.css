@@ -1,0 +1,52 @@
+.color-test {
+  position: relative;
+  width: 250px;
+  height: 380px;
+  margin: 20px 15px 5px;
+  padding-top: 12px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(146, 38, 77, 0.2);
+}
+
+.color-test .button_container {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.color-test .button_container button {
+  margin-left: 5px;
+}
+
+.color-image-no-image {
+  min-width: 200px;
+  min-height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.color-image,
+.color-image img {
+  max-width: 200px;
+  max-height: 200px;
+  margin-bottom: 1em;
+}
+/*# sourceMappingURL=imagebox.css.map */

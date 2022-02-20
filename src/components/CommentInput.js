@@ -8,7 +8,6 @@ import Stack from '@mui/material/Stack';
 
 import './bigImage.scss';
 import '../App.css';
-import { TakeoutDining } from '@mui/icons-material';
 
 function CommentInput({
   stars,
@@ -17,6 +16,8 @@ function CommentInput({
   setComment,
   tag,
   setTag,
+  newTag,
+  setNewTag,
   tags,
   setTags,
   loggedIn,
@@ -25,16 +26,18 @@ function CommentInput({
   setIsChoosen,
   savedImage,
 }) {
-  console.log(typeof tags);
+  console.log(loggedIn);
   const addTag = (tagIn) => {
-    let newTag = tags.push(tagIn);
-    console.log('add', tagIn, newTag, tags);
-    setTags(newTag);
+    console.log(tags.find((tag) => tag === tagIn));
+
+    // let newTag = tags.push(tagIn);
+    // console.log('add', tagIn, newTag, tags, 'log', loggedIn);
+    // setTags(newTag);
   };
   return (
     <div>
       {isChoosen && (
-        <div className='registration'>
+        <div className='input_comment'>
           <div className='head'>
             <h3>Add some details before saving</h3>
             <CloseIcon
@@ -42,10 +45,18 @@ function CommentInput({
               onClick={() => setIsChoosen(false)}
             />
           </div>
-          <lebel>You can add tag</lebel>
+          <hr />
+          {/* <select value={tag} onChange={(e) => setTag(e.target.value)}>
+            {tags.map((tag) => (
+              <option key={tag.id}>{tag.name}</option>
+            ))}
+          </select> */}
+
+          <label>You can add new tag</label>
           <div className='tag_container'>
             <input
               className='input_tag'
+              placeholder='new tag'
               value={tag}
               onChange={(e) => setTag(e.target.value)}
             />
@@ -53,14 +64,15 @@ function CommentInput({
               text='Add'
               onClick={() => addTag(tag)}
               className='tag_btn'
+              desabled={!loggedIn}
             />
           </div>
 
-          <lebel>Write here your commit</lebel>
+          <label>Add your comment here</label>
           <textarea
             value={comment}
             onChange={(e) => setComment(e.target.value)}
-            placeholder='Add your comment here'
+            placeholder='your comment'
           />
           <Box
             sx={{

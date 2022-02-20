@@ -9,8 +9,16 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
 
   const [stars, setStars] = useState(3);
   const [comment, setComment] = useState('');
-  const [tag, setTag] = useState(['favorite']);
-  const [tags, setTags] = useState(['']);
+  const [tag, setTag] = useState('Tag');
+  const [newTag, setNewTag] = useState('');
+  const [tags, setTags] = useState([
+    { name: 'Coins', value: '50' },
+    { name: 'Drawings', value: '21' },
+    { name: 'Photographs', value: '17' },
+    { name: 'Paintings', value: '26' },
+    { name: 'Sculpture', value: '30' },
+    { name: 'Vessels', value: '57' },
+  ]);
 
   let dateYMD = data.lastupdate.slice(0, 10);
 
@@ -78,6 +86,9 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
             setComment={setComment}
             tag={tag}
             setTag={setTag}
+            newTag={setNewTag}
+            tags={tags}
+            setTags={setTags}
             onClick={savePicture}
             isChoosen={isChoosen}
             setIsChoosen={setIsChoosen}
@@ -105,6 +116,7 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
               className='button save'
               onClick={() => setIsChoosen(true)}
               text='Save'
+              disabled={!loggedIn}
             />
             <Button
               className='button close'
@@ -125,121 +137,122 @@ const BigImage = ({ data, isOpen, setIsOpen, isChoosen, setIsChoosen }) => {
           ) : (
             <div className='unknown'>No picture</div>
           )}
-          {data.images && data.images[0] && data.images[0].description ? (
-            <div className='description'>{data.images[0].description}</div>
-          ) : (
-            <div className='unknown description'>
-              Desciption is not yet part of the museum API
-            </div>
-          )}
-        </div>
-        <div className='details'>
-          {data.classification ? (
-            <div>
-              <span>Classification: </span> {data.classification}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Classification: </span> unknown
-            </div>
-          )}
-          {data.century ? (
-            <div>
-              <span>Century: </span> {data.century}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Century: </span> unknown
-            </div>
-          )}
-          {data.culture ? (
-            <div>
-              <span>Culture: </span> {data.culture}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Culture: </span> unknown
-            </div>
-          )}
-          {data.dated ? (
-            <div>
-              <span>Dated: </span> {data.dated}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Dated: </span> unknown
-            </div>
-          )}
-          {data.department ? (
-            <div>
-              <span>Department: </span> {data.department}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Department: </span> no data
-            </div>
-          )}
-          {data.dimensions ? (
-            <div className='dimensions'>
-              <span>Dimensions: &nbsp; </span>&nbsp;
-              {data.dimensions}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Dimensions: </span> no data
-            </div>
-          )}
-          {data.division ? (
-            <div>
-              <span>Division: </span>
-              {data.division}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Division: </span> no data
-            </div>
-          )}
-          {data.medium ? (
-            <div>
-              <span>Technique: </span>
-              {data.medium}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Technique: </span>
-              no data
-            </div>
-          )}
-          {data.period ? (
-            <div>
-              <span>Artistic period: </span>
-              {data.period}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Artistic period: </span>
-              unknown
-            </div>
-          )}
-
-          {data.worktypes[0] ? (
-            <div>
-              <span>Worktype: </span>
-              {data.worktypes[0].worktype}
-            </div>
-          ) : (
-            <div className='unknown'>
-              <span>Worktype: </span>
-              unknown
-            </div>
-          )}
-          {/* {data.images[0].height && data.images[0].width && (
           <div>
-            <span>Width - height: </span>
-            {data.images[0].width}&nbsp;x&nbsp;
-            {data.images[0].height} px
+            {data.images && data.images[0] && data.images[0].description ? (
+              <div className='description'>{data.images[0].description}</div>
+            ) : (
+              <div className='unknown description'>
+                Desciption is not yet part of the museum API
+              </div>
+            )}
           </div>
-        )} */}
+          <div className='details'>
+            {data.classification ? (
+              <div>
+                <span>Classification: </span> {data.classification}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Classification: </span> unknown
+              </div>
+            )}
+            {data.century ? (
+              <div>
+                <span>Century: </span> {data.century}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Century: </span> unknown
+              </div>
+            )}
+            {data.culture ? (
+              <div>
+                <span>Culture: </span> {data.culture}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Culture: </span> unknown
+              </div>
+            )}
+            {data.dated ? (
+              <div>
+                <span>Dated: </span> {data.dated}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Dated: </span> unknown
+              </div>
+            )}
+            {data.department ? (
+              <div>
+                <span>Department: </span> {data.department}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Department: </span> no data
+              </div>
+            )}
+            {data.dimensions ? (
+              <div>
+                <span>Dimensions:</span> <br />
+                {data.dimensions}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Dimensions: </span> no data
+              </div>
+            )}
+            {data.division ? (
+              <div>
+                <span>Division: </span>
+                {data.division}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Division: </span> no data
+              </div>
+            )}
+            {data.medium ? (
+              <div>
+                <span>Technique: </span>
+                {data.medium}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Technique: </span>
+                no data
+              </div>
+            )}
+            {data.period ? (
+              <div>
+                <span>Artistic period: </span>
+                {data.period}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Artistic period: </span>
+                unknown
+              </div>
+            )}
+            {data.worktypes[0] ? (
+              <div>
+                <span>Worktype: </span>
+                {data.worktypes[0].worktype}
+              </div>
+            ) : (
+              <div className='unknown'>
+                <span>Worktype: </span>
+                unknown
+              </div>
+            )}
+            {/* {data.images[0].height && data.images[0].width && (
+			  <div>
+				<span>Width - height: </span>
+				{data.images[0].width}&nbsp;x&nbsp;
+				{data.images[0].height} px
+			  </div>
+					  )} */}
+          </div>
         </div>
         {data.lastupdate ? (
           <div className='lastupdate'>

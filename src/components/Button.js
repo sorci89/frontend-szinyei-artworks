@@ -5,12 +5,18 @@ function Button(props) {
   const onClick = props.onClick;
   const className = props.className;
   const style = props.style;
+  const loggedIn = props.loggedIn;
   return (
-    <div>
-      <button className={className} onClick={onClick} style={style}>
+    <>
+      <button
+        className={className}
+        onClick={onClick}
+        style={style}
+        disabled={loggedIn}
+      >
         {buttonText}
       </button>
-    </div>
+    </>
   );
 }
 

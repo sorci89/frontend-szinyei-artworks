@@ -125,7 +125,7 @@ button {
   }
 }
 
-.registration {
+.input_comment {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -134,11 +134,15 @@ button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40%;
-  min-width: 400px;
-  padding-bottom: 60px;
+  width: 50%;
+  margin: 30px auto;
+  text-align: center;
+  min-width: 420px;
+  padding: 30px 20px 60px;
   background-color: aliceblue;
   border-radius: 20px;
+  border: 1px solid rgba(146, 38, 77, 0.2);
+  box-shadow: 15px 15px 35px rgba(77, 15, 38, 0.6);
 
   button {
     width: 50px;
@@ -148,10 +152,10 @@ button {
     color: invert($menu3);
     font-size: 1em;
     font-weight: 400;
-    padding: 2px;
 
     &:hover {
       background-color: complement($menu3);
+      color: invert($menu3);
     }
     .save {
       background-color: green;
@@ -183,6 +187,9 @@ button {
     text-align: center;
     width: 90%;
   }
+  hr {
+    border-top: 1px solid #cf4578;
+  }
 
   .comment_save_btn {
     position: absolute;
@@ -193,15 +200,15 @@ button {
   input,
   textarea {
     display: inline-block;
-    min-width: 300px;
     padding: 8px;
     font-size: 20px;
     margin: 5px auto 25px;
     border-radius: 20px;
     border: 2px solid rgba(146, 38, 77, 0.4);
+    text-indent: 10px;
 
     &:onchange {
-      border: 1px solid invert(rgba(146, 38, 77, 0.4));
+      border: 1px solid red;
     }
   }
   .tag_container {
@@ -210,23 +217,38 @@ button {
     margin-bottom: 25px;
     margin-top: 5px;
     align-items: center;
+    justify-content: space-between;
 
     .input_tag {
       width: 80%;
       height: calc(1em + 50px);
+      margin: 0;
     }
     .tag_btn {
-      margin-left: 5px;
+      margin: 0 0 0 5px;
     }
   }
 
   textarea {
-    width: 90%;
-    padding-top: 5px;
-    padding-left: 10px;
+    width: 100%;
     min-height: calc(2em + 50px);
   }
   .MuiBox-root {
     margin-right: 80px;
   }
+}
+
+.error {
+  padding: 1px 5px 5px;
+  background-color: #92264d;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 25px;
+}
+.successful {
+  padding: 1px 5px 5px;
+  background-color: #22b86d;
+  color: #ffffff;
+  font-size: 25px;
+  border-radius: 10px;
 }
