@@ -1,7 +1,4 @@
-$menu1: #424058;
-$menu2: #a7cfe6;
-$menu3: #abdd98;
-$menu4: #92264d;
+@import './varialbes.scss';
 
 .menu_container {
   display: flex;
@@ -15,7 +12,7 @@ $menu4: #92264d;
   width: 60px;
   height: 60px;
   border-radius: 90%;
-  border: 1px solid burlywood;
+  border: 1px solid color(light);
   text-align: center;
   margin: 2px;
 

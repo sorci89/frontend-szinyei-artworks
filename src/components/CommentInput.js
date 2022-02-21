@@ -51,7 +51,7 @@ function CommentInput({
             ))}
           </select> */}
 
-          <label>You can add new tag</label>
+          <label>You can add new tags</label>
           <div className='tag_container'>
             <input
               className='input_tag'
@@ -59,12 +59,12 @@ function CommentInput({
               value={tag}
               onChange={(e) => setTag(e.target.value)}
             />
-            <Button
+            {/* <Button
               text='Add'
               onClick={() => addTag(tag)}
               className='tag_btn'
               desabled={!loggedIn}
-            />
+            /> */}
           </div>
 
           <label>Add your comment here</label>

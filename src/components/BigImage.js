@@ -145,13 +145,12 @@ const BigImage = ({
           </div>
           <div className='button_container'>
             <Button
-              className='button save'
               onClick={() => setIsChoosen(true)}
               text='Save'
               disabled={!loggedIn}
             />
             <Button
-              className='button close'
+              className='delete'
               onClick={() => {
                 setIsOpen(false);
                 setZ(z - 1);

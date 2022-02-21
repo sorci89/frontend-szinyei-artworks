@@ -81,11 +81,13 @@ const Imagebox = (props) => {
               }}
               text='Save'
               disabled={!loggedIn}
+              className='save'
             />
             <Button
               onClick={() => console.log('Delete')}
               text='Del'
               disabled={!loggedIn}
+              className='delete'
             />
           </div>
         )}
