@@ -25,7 +25,8 @@ const Browser = () => {
   const [pageCount, setPageCount] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(10);
+  const [savedList, setSavedList] = useState([]);
+
   const [searchKeyword, updateSearchKeword] = useState('');
   const [searchClassification, updateSearchClassification] = useState('');
   const [hasimage, setHasimage] = useState('');
@@ -63,9 +64,33 @@ const Browser = () => {
     setPageCount(Math.ceil(total / limit));
   };
 
+  const getSavedImages = async () => {
+    let authUsername = localStorage.getItem('user');
+    let authPassword = localStorage.getItem('pw');
+    console.log('render!render!');
+    try {
+      const response = await axios.post(
+        'http://localhost:3101/api/user/galery',
+        {},
+        {
+          headers: {
+            Authorization: authUsername + '&&&' + authPassword,
+          },
+        }
+      );
+      setSavedList(response.data);
+    } catch (e) {
+      console.log('not logged in');
+    }
+  };
+
   useEffect(() => {
     renderData();
-  }, [page, searchKeyword, searchClassification, hasimage, limit]);
+  }, [page, searchKeyword, searchClassification, hasimage, limit, savedList]);
+
+  useEffect(() => {
+    getSavedImages();
+  }, []);
 
   return (
     <div>
@@ -109,7 +134,12 @@ const Browser = () => {
           </label>
         </div>
         {dataList.map((data) => (
-          <Imagebox data={data} key={Math.floor(Math.random() * 1000000)} />
+          <Imagebox
+            data={data}
+            savedList={savedList}
+            page={''}
+            key={Math.floor(Math.random() * 10000)}
+          />
         ))}
       </div>
       {/* <AppPagination setPage={setPage} page={numberOfPages} /> */}

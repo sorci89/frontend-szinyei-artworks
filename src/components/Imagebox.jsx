@@ -1,28 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
-import Button from './Button';
 import axios from 'axios';
-import './imagebox.scss';
+import CommentInput from './CommentInput';
 
 const Imagebox = (props) => {
   const data = props.data;
   const page = props.page;
+  const savedList = props.savedList;
 
-  const [isChoosen, setIsChoosen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [imageId, setImageId] = useState('');
-  const [z, setZ] = useState(11);
-  const [dataList, setDataList] = useState([]);
   const [isSaved, setSaved] = useState('');
+
+  const [stars, setStars] = useState(0);
+  const [comment, setComment] = useState('');
+  const [tag, setTag] = useState([]);
+  const [isChoosen, setIsChoosen] = useState(false);
 
   const openImage = (image) => {
     setImageId(image);
     setIsOpen(true);
   };
 
-  const inMyGallery = (dataList) => {
-    for (let item of dataList) {
+  const inMyGallery = (savedList) => {
+    for (let item of savedList) {
       if (item.title === data.title) {
         console.log(item.title);
         setSaved('saved');
@@ -30,113 +32,155 @@ const Imagebox = (props) => {
     }
   };
 
-  const renderData = async () => {
-    let authUsername = localStorage.getItem('user');
-    let authPassword = localStorage.getItem('pw');
-    /*     console.log(localStorage.getItem("user"));
-    console.log(localStorage.getItem("pw")); */
+  const savedImage = {
+    lastupdate: data.lastupdate ? data.lastupdate : 'no data',
+    title: data.title ? data.title : 'no title',
+    classification: data.classification ? data.classification : 'no data',
+    century: data.century ? data.century : 'no data',
+    culture: data.culture ? data.culture : 'no data',
+    dated: data.dated ? data.dated : 'no data',
+    department: data.department ? data.department : 'no data',
+    dimensions: data.dimensions ? data.dimensions : 'no data',
+    division: data.division ? data.division : 'no data',
+    medium: data.medium ? data.medium : 'no data',
+    period: data.period ? data.period : 'no data',
+
+    images: [
+      {
+        baseimageurl:
+          data.images && data.images[0] && data.images[0].baseimageurl
+            ? data.images[0].baseimageurl
+            : '/public/no-profile-picture.png',
+        alttext:
+          data.images && data.images[0] && data.images[0].alttext
+            ? data.images[0].alttext
+            : 'no data',
+        description:
+          data.images && data.images[0] && data.images[0].description
+            ? data.images[0].description
+            : 'no avalable information',
+        technique:
+          data.images && data.images[0] && data.images[0].technique
+            ? data.images[0].technique
+            : 'no data',
+      },
+    ],
+    people: [
+      { displayname: data.people ? data.people[0].displayname : 'unknown' },
+    ],
+    worktypes: [
+      {
+        worktype:
+          data.worktypes && data.worktypes[0].worktype
+            ? data.worktypes[0].worktype
+            : 'unknown',
+      },
+    ],
+    tag: tag,
+    comment: comment,
+    stars: stars,
+  };
+
+  const savePicture = async () => {
+    const authUsername = localStorage.getItem('user');
+    const authPassword = localStorage.getItem('pw');
+
     try {
       const response = await axios.post(
-        'http://localhost:3101/api/user/galery',
-        {},
+        'http://localhost:3101/api/picture/save',
+        { data: savedImage },
         {
           headers: {
             Authorization: authUsername + '&&&' + authPassword,
           },
         }
       );
-      setDataList(response.data);
-      inMyGallery(response.data);
+      alert('Csuhajja');
     } catch (e) {
-      console.log('not logged in');
+      alert('wrong username/password');
     }
   };
 
   useEffect(() => {
     setLoggedIn(localStorage.getItem('loggedIn'));
-    renderData();
+    savedList && inMyGallery(savedList);
   }, []);
 
   return (
     <div>
-      {isOpen && (
-        <BigImage
-          isOpen={isOpen}
-          setIsOpen={setIsOpen}
-          data={data}
-          imageId={imageId}
-          isChoosen={isChoosen}
-          setIsChoosen={setIsChoosen}
-          z={z}
-          setZ={setZ}
-        />
+      {isChoosen && (
+        <div>
+          <CommentInput
+            stars={stars}
+            setStars={setStars}
+            comment={comment}
+            setComment={setComment}
+            tag={tag}
+            setTag={setTag}
+            isChoosen={isChoosen}
+            setIsChoosen={setIsChoosen}
+            savePicture={savePicture}
+          />
+        </div>
       )}
 
       <div className='color-test'>
-        <div className='color-image'>
-          <img
-            className={
-              data.images && data.images[0] ? 'img' : 'color-image-no-image'
-            }
-            style={{ cursor: 'pointer' }}
-            onClick={() => openImage(data.id)}
-            src={
-              data.images && data.images[0] && data.images[0].baseimageurl
-                ? data.images[0].baseimageurl
-                : data.images
-                ? '/pictures/bg-paper-texture-2.jpg'
-                : '/pictures/no-profile-picture.png'
-            }
-            alt='not available'
+        {isOpen ? (
+          <BigImage
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+            data={data}
+            imageId={imageId}
           />
-          {data.people ? (
-            <div>
-              <b>{data.people[0].displayname}</b>
-            </div>
-          ) : (
-            <div>Unknown Artist</div>
-          )}
-          <div style={{ textAlign: 'center' }}>{data.title}</div>
-          {loggedIn ? (
-            page === 'account' ? (
+        ) : (
+          <div className=''>
+            <img
+              style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
+              onClick={() => openImage(data.id)}
+              src={
+                data.images && data.images[0] && data.images[0].baseimageurl
+                  ? data.images[0].baseimageurl
+                  : data.images
+                  ? '/pictures/bg-paper-texture-2.jpg'
+                  : '/pictures/no-profile-picture.png'
+              }
+              alt='not available'
+            />
+            {data.people ? (
               <div>
-                <button
-                  onClick={(e) => {
-                    console.log('Remove!');
-                  }}
-                  className='save_btn'
-                >
-                  Remove
-                </button>
-
-                <button
-                  onClick={(e) => {
-                    console.log('Add tag!');
-                  }}
-                  className='save_btn'
-                >
-                  Add Tag
-                </button>
+                <b>{data.people[0].displayname}</b>
               </div>
-            ) : isSaved ? (
-              <b>already saved</b>
             ) : (
-              <div>
-                <button
-                  onClick={(e) => {
-                    console.log('Save!');
-                  }}
-                  className='save_btn'
-                  disabled={!loggedIn}
-                >
-                  Save
-                </button>
-              </div>
-            )
-          ) : (
-            <div></div>
-          )}
-        </div>
+              <div>Unknown Artist</div>
+            )}
+            <div style={{ textAlign: 'center' }}>{data.title}</div>
+            {loggedIn ? (
+              page === 'account' ? (
+                <div>
+                  <button onClick={console.log('remove')} className='save_btn'>
+                    Remove
+                  </button>
+                  {/*    <div>{data.tag}</div>
+                  <div>{data.comment}</div> */}
+                </div>
+              ) : isSaved ? (
+                <b>already saved</b>
+              ) : (
+                <div>
+                  <button
+                    onClick={(e) => setIsChoosen(true)}
+                    className='save_btn'
+                    disabled={!loggedIn}
+                  >
+                    Save
+                  </button>
+                </div>
+              )
+            ) : (
+              <div></div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
