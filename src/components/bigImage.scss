@@ -14,6 +14,14 @@ $myi: invert(#1234d5);
   // font-family: 'Roboto', sans-serif;
 }
 
+$desktop: 800px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
 button {
   width: 50px;
   height: 50px;
@@ -42,33 +50,39 @@ button {
 }
 
 .bigImage_container {
-  z-index: 10;
   position: fixed;
-  top: 5%;
+  top: 5px;
   left: 50%;
   transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  overflow-y: auto;
-  max-width: 80%;
-  min-width: min-content;
-
-  max-height: 90%;
-  min-height: fit-content;
-  scroll-behavior: auto;
+  z-index: 10;
+  width: 100vw;
+  height: auto;
   background-color: blanchedalmond;
   background-image: url('./bg-paper-texture.jpg');
   background-size: cover;
   color: rgb(51, 2, 131);
   font-size: 1em;
-  box-shadow: 5px 5px 10 10 grey;
-  padding: 30px 50px 20px;
+  padding: 10px;
+  overflow-y: scroll;
+  scroll-behavior: auto;
+
+  @include desktop {
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+
+    max-height: 90%;
+    min-height: min-content;
+    box-shadow: 5px 5px 10px grey;
+    padding: 30px 50px 20px;
+  }
 
   .head {
     display: flex;
     width: 100%;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 10px;
 
     .h2 {
@@ -81,7 +95,11 @@ button {
     }
 
     .button_container {
+      flex-direction: column;
       margin-left: auto;
+      @include desktop {
+        flex-direction: row;
+      }
 
       button {
         margin-left: 5px;
@@ -90,23 +108,51 @@ button {
   }
 
   .inside_image {
-    display: flex;
+    position: relative;
     width: 100%;
     margin-bottom: 1.5em;
+    @include desktop {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+    }
 
     img {
-      max-width: 50%;
-      min-height: max-content;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 5px solid wheat;
       max-height: 500px;
+      min-height: fit-content;
 
-      flex-shrink: 0;
-      display: inline;
-      margin-right: 20px;
-      box-shadow: 2px 2px 3px 0px rgb(51, 2, 131);
+      @include desktop {
+        position: static;
+        left: 0;
+
+        transform: translateX(0);
+        max-width: 50%;
+        min-height: auto;
+        max-height: 500px;
+        flex-shrink: 0;
+        // display: inline;
+        margin-right: 20px;
+        box-shadow: 2px 2px 3px 0px rgb(51, 2, 131);
+      }
     }
 
     .details {
-      align-self: center;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 0 10px;
+
+      @include desktop {
+        position: static;
+        left: 0;
+        transform: translateX(0);
+        margin: 0;
+        align-self: center;
+      }
       span {
         font-weight: 600;
         font-size: 16px;

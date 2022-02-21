@@ -16,8 +16,8 @@ const BigImage = ({
   const [loggedIn, setLoggedIn] = useState(false);
 
   const [stars, setStars] = useState(3);
-  const [comment, setComment] = useState('Comment');
-  const [tag, setTag] = useState('Tag');
+  const [comment, setComment] = useState([]);
+  const [tag, setTag] = useState([]);
   const [newTag, setNewTag] = useState('');
   const [tags, setTags] = useState([
     { name: 'Coins', value: '50' },
@@ -104,14 +104,14 @@ const BigImage = ({
   }, []);
 
   return (
-    <div className='bigImage_container' stlye={{ zIndex: z }}>
+    <div className='bigImage_container' style={{ zIndex: z }}>
       {isChoosen && (
         <div>
           <CommentInput
             data={data}
             loggedIn={loggedIn}
             stars={stars}
-            setStarts={setStars}
+            setStars={setStars}
             comment={comment}
             setComment={setComment}
             tag={tag}

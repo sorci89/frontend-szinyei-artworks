@@ -26,7 +26,6 @@ function CommentInput({
   setIsChoosen,
   savePicture,
 }) {
-  console.log(loggedIn);
   const addTag = (tagIn) => {
     console.log(tags.find((tag) => tag === tagIn));
 
@@ -76,21 +75,18 @@ function CommentInput({
           />
           <Box
             sx={{
-              '& > legend': { mt: 2 },
+              '& > legend': { mb: 0.5 },
             }}
           >
             <Typography component='legend'>My Vote</Typography>
-            <Stack spacing={2}>
-              <Rating
-                name='simple-controlled'
-                size='small'
-                defaultValue={0}
-                value={stars}
-                onChange={(event, newValue) => {
-                  setStars(newValue);
-                }}
-              />
-            </Stack>
+            <Rating
+              name='simple-controlled'
+              size='large'
+              value={stars}
+              onChange={(event, newValue) => {
+                setStars(newValue);
+              }}
+            />
           </Box>
           {loggedIn ? (
             <Button
