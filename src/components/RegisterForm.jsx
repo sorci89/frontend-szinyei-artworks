@@ -10,6 +10,7 @@ const RegisterForm = (props) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordAgain, setPasswordAgain] = useState("");
   const [regErrors, setRegErrors] = useState({});
   const [successful, setSuccessful] = useState("");
   const [alreadyExist, setAlreadyExist] = useState("");
@@ -20,6 +21,7 @@ const validation = () => {
   setSuccessful("");
     let Errors = {};
     Errors.empty= true;
+    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     if (!username) {
         Errors.username="Username is required!";
@@ -29,8 +31,20 @@ const validation = () => {
         Errors.username="Username must be more than 5 character!";
         Errors.empty= false;
         setAlreadyExist('');
-    }
-
+    }else if (username.length > 31) {
+        Errors.username="The username can be up to 30 characters long!";
+        Errors.empty= false;
+        setAlreadyExist('');
+    }else if (/\s/.test(username)) {
+        Errors.username="The username cannot contain white space!";
+        Errors.empty= false;
+        setAlreadyExist('');
+    }  else if (format.test(username)) {
+      Errors.username="The username cannot contain special characters!";
+      Errors.empty= false;
+      setAlreadyExist('');
+    }  
+  
 
 
     if (!email) {
@@ -54,6 +68,27 @@ const validation = () => {
         Errors.empty= false;
         setAlreadyExist('');
     }
+    if (!passwordAgain) {
+        Errors.passwordAgain="Password is required!";
+        Errors.empty= false;
+        setAlreadyExist('');
+    }else if (password.length < 5) {
+        Errors.passwordAgain="Password must be more than 5 character!";
+        Errors.empty= false;
+        setAlreadyExist('');
+    }
+
+    if (passwordAgain !== password) {
+      Errors.passwordAgain="The two passwords do not match!";
+      Errors.empty= false;
+      setAlreadyExist('');
+    }
+    
+
+
+
+
+
     console.log(Errors);
     if (!Errors.empty) {
       console.log("Hiba");
@@ -70,6 +105,7 @@ const validation = () => {
       const response = await axios.post('http://localhost:3101/api/user/reg', {username , email , password});
       setUsername('');
       setPassword('');
+      setPasswordAgain('');
       setEmail('');
       setSuccessful("Successful Sign in!");
       setRegErrors({});
@@ -81,6 +117,7 @@ const validation = () => {
         setAlreadyExist('Username or Email already exist');
         setUsername('');
         setPassword('');
+        setPasswordAgain('');
         setEmail('');
       }
     }
@@ -110,6 +147,11 @@ const validation = () => {
                 onChange={(e) => {setPassword(e.target.value)}} 
                 value={password} 
                 placeholder="Password"></input>
+        {regErrors.passwordAgain && <p className="error">{regErrors.passwordAgain}</p>}
+        <input  type="password" 
+                onChange={(e) => {setPasswordAgain(e.target.value)}} 
+                value={passwordAgain} 
+                placeholder="Password Again"></input>
         <button onClick={(e) => validation()}> SIGN UP!</button>    
     </div>
   );

@@ -388,3 +388,40 @@ imagebox_container {
   border-radius: 50%;
   background-color: blueviolet;
 } */
+
+.page-item,
+.page-link {
+  color: rgba(146, 38, 77);
+}
+
+.page-item.active .page-link {
+  background-color: rgba(146, 38, 77);
+  border-color: rgba(146, 38, 77, 0.2);
+}
+
+.page-link:hover {
+  background-color: rgba(146, 38, 77);
+  color: #fff;
+}
+
+.page-select-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+#page-select {
+  margin-right: 5px;
+  padding: 6px 12px;
+
+  height: 38px;
+  border: none;
+  border-radius: 5px;
+
+  color: rgba(146, 38, 77);
+  font-size: inherit;
+}
+
+#page-select:hover {
+  border-color: rgba(146, 38, 77);
+}

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Imagebox from "../components/Imagebox";
-import AppPagination from "../components/AppPagination";
+import ReactPaginate from "react-paginate";
 
 const queryUrl = "https://api.harvardartmuseums.org/";
 const querySort = "&sort=totalpageviews&sortorder=desc";
@@ -22,8 +22,10 @@ const classifications = [
 
 const Browser = () => {
   const [dataList, setDataList] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(10);
+
   const [searchKeyword, updateSearchKeword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("");
   const [hasimage, setHasimage] = useState("");
@@ -37,7 +39,7 @@ const Browser = () => {
   };
 
   const getQuery = () => {
-    let queryPage = `object?size=10&page=${page}`;
+    let queryPage = `object?size=${limit}&page=${page}`;
     let queryClassification = `&classification=${searchClassification}`;
     let queryKeyWord = `&keyword=${searchKeyword}`;
     let queryHasImage = `${hasimage}`;
@@ -57,12 +59,14 @@ const Browser = () => {
     const resp = await axios.get(query);
     console.log(resp.data.records);
     setDataList(resp.data.records);
-    setNumberOfPages(resp.data.info.pages);
+    const total = resp.data.info.totalrecords;
+    setPageCount(Math.ceil(total / limit));
   };
 
   useEffect(() => {
     renderData();
-  }, [page, searchKeyword, searchClassification, hasimage]);
+  }, [page, searchKeyword, searchClassification, hasimage, limit]);
+
 
   return (
     <div>
@@ -109,7 +113,38 @@ const Browser = () => {
           <Imagebox data={data} key={Math.floor(Math.random() * 10000)} />
         ))}
       </div>
-      <AppPagination setPage={setPage} page={numberOfPages} />
+      {/* <AppPagination setPage={setPage} page={numberOfPages} /> */}
+      <div className="page-select-container">
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        breakLabel={"..."}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={(data)=> setPage(data.selected + 1)}
+        containerClassName={"pagination justify-content-center"}
+        pageClassName={"page-item"}
+        pageLinkClassName={"page-link"}
+        previousClassName={"page-item"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"page-item"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"page-item"}
+        breakLinkClassName={"page-link"}
+        activeClassName={"active"}
+      />
+       <select name="page-select" id="page-select" onChange={(event)=>setLimit(event.target.value)}>
+    <option value='10'>10 / page</option>
+    <option value="20">20 / page</option>
+    <option value="50">50 / page</option>
+    <option value="100">100 / page</option>
+  </select>
+    </div>
+    <div>
+     
+    </div>
+
     </div>
   );
 };
