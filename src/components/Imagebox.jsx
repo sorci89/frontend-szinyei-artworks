@@ -45,6 +45,7 @@ const Imagebox = (props) => {
     division: data.division ? data.division : "no data",
     medium: data.medium ? data.medium : "no data",
     period: data.period ? data.period : "no data",
+    objectnumber: data.objectnumber,
 
     images: [
       {
@@ -101,6 +102,41 @@ const Imagebox = (props) => {
       alert("wrong username/password");
     }
   };
+
+
+  const deletePicture = async (id) => {
+    const authUsername = localStorage.getItem("user");
+    const authPassword = localStorage.getItem("pw");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:3101/api/picture/delete",
+        { data: id },
+        {
+          headers: {
+            Authorization: authUsername + "&&&" + authPassword,
+          },
+        }
+      );
+      alert("Törlés ok");
+    } catch (e) {
+      alert("wrong username/password");
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   useEffect(() => {
     setLoggedIn(localStorage.getItem("loggedIn"));
@@ -159,7 +195,7 @@ const Imagebox = (props) => {
             {loggedIn ? (
               page === "account" ? (
                 <div>
-                  <button onClick={console.log("remove")} className="save_btn">
+                  <button onClick={(e) => deletePicture(data.objectnumber)} className="save_btn">
                     Remove
                   </button>
                   {/*    <div>{data.tag}</div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -15,7 +16,7 @@ const RegisterForm = (props) => {
   const [successful, setSuccessful] = useState("");
   const [alreadyExist, setAlreadyExist] = useState("");
 
-
+  let navigate = useNavigate();
 
 const validation = () => {
   setSuccessful("");
@@ -110,6 +111,7 @@ const validation = () => {
       setSuccessful("Successful Sign in!");
       setRegErrors({});
       setAlreadyExist('');
+      navigate("/Login")
     } catch (error) {
       if(error.response.status === 400){
         alert('Missing datas!');
