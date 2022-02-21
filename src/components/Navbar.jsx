@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SelectMenu from "../components/SelectMenu";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   //   const themeState = [
   //     { id: 0, value: '#fff', text: 'Change' },
@@ -63,6 +65,7 @@ const Navbar = () => {
               onClick={() => {
                 localStorage.clear();
                 setLoggedIn(false);
+                navigate("/browser");
               }}
             >
               <div className="menu-dot-1">
