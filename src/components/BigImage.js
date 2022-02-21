@@ -61,11 +61,11 @@ const BigImage = ({
           data.images && data.images[0] && data.images[0].technique
             ? data.images[0].technique
             : 'no data',
-          data.images && data.images[0] && data.images[0].baseimageurl,
+
         // alttext: data.images && data.images[0] && data.images[0].alttext,
         // description:
         //   data.images && data.images[0] && data.images[0].description,
-        technique: data.images && data.images[0] && data.images[0].technique,
+        // technique: data.images && data.images[0] && data.images[0].technique,
       },
     ],
     people: [
@@ -167,19 +167,19 @@ const BigImage = ({
           </div>
         </div>
 
-        <div className="inside_image">
+        <div className='inside_image'>
           <img
             src={
               data.images && data.images[0] && data.images[0].baseimageurl
                 ? data.images[0].baseimageurl
                 : data.images
-                ? "/pictures/bg-paper-texture-2.jpg"
-                : "/pictures/no-profile-picture.png"
+                ? '/pictures/bg-paper-texture-2.jpg'
+                : '/pictures/no-profile-picture.png'
             }
-            alt="not available"
+            alt='not available'
           />
           {data.people && data.people[0].displayname && data.title && (
-            <div className="title">
+            <div className='title'>
               {data.people[0].displayname}: <br />
               {data.title}
             </div>
@@ -287,19 +287,19 @@ const BigImage = ({
           </div>
         </div>
         {data.images && data.images[0] && data.images[0].description ? (
-          <div className="description">{data.images[0].description}</div>
+          <div className='description'>{data.images[0].description}</div>
         ) : (
           <div className='unknown description'>
             Desciption is not yet part of the museum API
           </div>
         )}
-        <div className="details">
+        <div className='details'>
           {data.classification ? (
             <div>
               <span>Classification: </span> {data.classification}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Classification: </span> unknown
             </div>
           )}
@@ -308,7 +308,7 @@ const BigImage = ({
               <span>Century: </span> {data.century}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Century: </span> unknown
             </div>
           )}
@@ -317,7 +317,7 @@ const BigImage = ({
               <span>Culture: </span> {data.culture}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Culture: </span> unknown
             </div>
           )}
@@ -326,7 +326,7 @@ const BigImage = ({
               <span>Dated: </span> {data.dated}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Dated: </span> unknown
             </div>
           )}
@@ -340,7 +340,7 @@ const BigImage = ({
               <span>Dimensions: </span> {data.dimensions}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Dimensions: </span> no data
             </div>
           )}
@@ -350,7 +350,7 @@ const BigImage = ({
               {data.division}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Division: </span> no data
             </div>
           )}
@@ -360,7 +360,7 @@ const BigImage = ({
               {data.medium}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Technique: </span>
               no data
             </div>
@@ -371,7 +371,7 @@ const BigImage = ({
               {data.period}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Artistic period: </span>
               unknown
             </div>
@@ -387,7 +387,7 @@ const BigImage = ({
               {data.worktypes[0].worktype}
             </div>
           ) : (
-            <div className="unknown">
+            <div className='unknown'>
               <span>Worktype: </span>
               unknown
             </div>

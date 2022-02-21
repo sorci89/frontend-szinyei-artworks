@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
 import Button from './Button';
 import axios from 'axios';
+import './imagebox.scss';
 
 const Imagebox = (props) => {
   const data = props.data;
