@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SelectMenu from '../components/SelectMenu';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   //   const themeState = [
   //     { id: 0, value: '#fff', text: 'Change' },
@@ -59,14 +61,16 @@ const Navbar = () => {
       ) : (
         <div>
           <div className='menu-bar'>
-            <Link to='/account'>
-              <div
-                onClick={() => {
-                  localStorage.clear();
-                  setLoggedIn(false);
-                }}
-                className='menu-dot-1'
-              >
+            <button
+              onClick={() => {
+                localStorage.clear();
+                setLoggedIn(false);
+                navigate('/browser');
+              }}
+            ></button>
+            button
+            <Link>
+              <div className='menu-dot-1'>
                 <p>logout</p>
               </div>
             </Link>

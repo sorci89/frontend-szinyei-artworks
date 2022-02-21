@@ -61,6 +61,11 @@ const BigImage = ({
           data.images && data.images[0] && data.images[0].technique
             ? data.images[0].technique
             : 'no data',
+          data.images && data.images[0] && data.images[0].baseimageurl,
+        // alttext: data.images && data.images[0] && data.images[0].alttext,
+        // description:
+        //   data.images && data.images[0] && data.images[0].description,
+        technique: data.images && data.images[0] && data.images[0].technique,
       },
     ],
     people: [
@@ -77,6 +82,7 @@ const BigImage = ({
     tag: tag,
     comment: comment,
     stars: stars,
+    worktypes: [{ worktype: data.worktypes && data.worktypes[0].worktype }],
   };
 
   const savePicture = async () => {
@@ -161,20 +167,21 @@ const BigImage = ({
           </div>
         </div>
 
-        <div className='inside_image'>
-          {data.images && data.images[0] && data.images[0].alttext ? (
-            <img
-              src={data.images[0].baseimageurl}
-              alt={data.images[0].alttext}
-            />
-          ) : data.images && data.images[0] ? (
-            <img src={data.images[0].baseimageurl} alt='no data' />
-          ) : (
-            <div
-              className='unknown color-image-no-image'
-              style={{ marginRight: '30px' }}
-            >
-              No picture
+        <div className="inside_image">
+          <img
+            src={
+              data.images && data.images[0] && data.images[0].baseimageurl
+                ? data.images[0].baseimageurl
+                : data.images
+                ? "/pictures/bg-paper-texture-2.jpg"
+                : "/pictures/no-profile-picture.png"
+            }
+            alt="not available"
+          />
+          {data.people && data.people[0].displayname && data.title && (
+            <div className="title">
+              {data.people[0].displayname}: <br />
+              {data.title}
             </div>
           )}
 
@@ -241,7 +248,7 @@ const BigImage = ({
               </div>
             ) : (
               <div className='unknown'>
-                <spanv>Division: </spanv> no data
+                <span>Division: </span> no data
               </div>
             )}
             {data.medium ? (
@@ -280,12 +287,112 @@ const BigImage = ({
           </div>
         </div>
         {data.images && data.images[0] && data.images[0].description ? (
-          <div className='description'>{data.images[0].description}</div>
+          <div className="description">{data.images[0].description}</div>
         ) : (
           <div className='unknown description'>
             Desciption is not yet part of the museum API
           </div>
         )}
+        <div className="details">
+          {data.classification ? (
+            <div>
+              <span>Classification: </span> {data.classification}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Classification: </span> unknown
+            </div>
+          )}
+          {data.century ? (
+            <div>
+              <span>Century: </span> {data.century}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Century: </span> unknown
+            </div>
+          )}
+          {data.culture ? (
+            <div>
+              <span>Culture: </span> {data.culture}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Culture: </span> unknown
+            </div>
+          )}
+          {data.dated ? (
+            <div>
+              <span>Dated: </span> {data.dated}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Dated: </span> unknown
+            </div>
+          )}
+          {data.department ? (
+            <div>
+              <span>Department: </span> {data.department}
+            </div>
+          ) : null}
+          {data.dimensions ? (
+            <div>
+              <span>Dimensions: </span> {data.dimensions}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Dimensions: </span> no data
+            </div>
+          )}
+          {data.division ? (
+            <div>
+              <span>Division: </span>
+              {data.division}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Division: </span> no data
+            </div>
+          )}
+          {data.medium ? (
+            <div>
+              <span>Technique: </span>
+              {data.medium}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Technique: </span>
+              no data
+            </div>
+          )}
+          {data.period ? (
+            <div>
+              <span>Artistic period: </span>
+              {data.period}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Artistic period: </span>
+              unknown
+            </div>
+          )}
+          {data.contact ? (
+            <div>
+              <span>Contact: {data.contact}</span>
+            </div>
+          ) : null}
+          {data.worktypes && data.worktypes[0].worktype ? (
+            <div>
+              <span>Worktype: </span>
+              {data.worktypes[0].worktype}
+            </div>
+          ) : (
+            <div className="unknown">
+              <span>Worktype: </span>
+              unknown
+            </div>
+          )}
+        </div>
         {data.lastupdate ? (
           <div className='lastupdate'>
             <b>Last update:</b>

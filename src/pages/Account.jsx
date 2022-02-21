@@ -90,6 +90,7 @@ const Account = () => {
   useEffect(() => {
     renderData();
   }, []);
+
   useEffect(() => {
     filterData();
   }, [searchClassification, searchCulture, searchKeyword]);
@@ -149,7 +150,7 @@ const Account = () => {
         </div>
 
         {dataToShow.map((data, i) => (
-          <Imagebox data={data} key={i} />
+          <Imagebox data={data} key={i} page={"account"} />
         ))}
       </div>
     </div>
