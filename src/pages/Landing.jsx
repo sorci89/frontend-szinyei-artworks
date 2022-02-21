@@ -1,27 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Hirst from "../components/Hirst";
+
+import { useNavigate } from "react-router-dom";
 
 const Landing = () => {
-  const [next, swithNext] = useState(false);
+  let navigate = useNavigate();
 
   setTimeout(() => {
-    swithNext(true);
+    navigate("/browser");
   }, 6000);
 
   return (
     <div className="hirst-container-container">
-      {!next ? (
-        <Link to="/browser">
-          <div className="login-dot">
-            <p>Harvard Art Museum</p> <p>image browser</p>
-          </div>
-        </Link>
-      ) : (
-        <Link to="/browser">
-          <Hirst />
-        </Link>
-      )}
+      <Link to="/browser">
+        <div className="login-dot">
+          <p>Harvard Art Museum</p> <p>image browser</p>
+        </div>
+      </Link>
     </div>
   );
 };

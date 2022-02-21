@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import BigImage from "./BigImage";
 import axios from "axios";
 import CommentInput from "./CommentInput";
+import { useNavigate } from "react-router-dom";
 
 const Imagebox = (props) => {
+  let navigate = useNavigate();
+
   const data = props.data;
   const page = props.page;
   const savedList = props.savedList;
@@ -97,12 +100,12 @@ const Imagebox = (props) => {
           },
         }
       );
-      alert("Csuhajja");
+      navigate("/account");
+      navigate("/browser");
     } catch (e) {
       alert("wrong username/password");
     }
   };
-
 
   const deletePicture = async (id) => {
     const authUsername = localStorage.getItem("user");
@@ -118,25 +121,12 @@ const Imagebox = (props) => {
           },
         }
       );
-      alert("Törlés ok");
+      navigate("/browser");
+      navigate("/account");
     } catch (e) {
       alert("wrong username/password");
     }
   };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   useEffect(() => {
     setLoggedIn(localStorage.getItem("loggedIn"));
@@ -195,11 +185,14 @@ const Imagebox = (props) => {
             {loggedIn ? (
               page === "account" ? (
                 <div>
-                  <button onClick={(e) => deletePicture(data.objectnumber)} className="save_btn">
+                  <button
+                    onClick={(e) => deletePicture(data.objectnumber)}
+                    className="save_btn"
+                  >
                     Remove
                   </button>
-                  {/*    <div>{data.tag}</div>
-                  <div>{data.comment}</div> */}
+                  <div>{data.tag}</div>
+                  {/* <div>{data.comment}</div> */}
                 </div>
               ) : isSaved ? (
                 <b>already saved</b>
