@@ -16,6 +16,7 @@ const LoginForm = () => {
     console.log(authUsername, authPassword);
     let logErrors = {};
     logErrors.empty = true;
+    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     if (!authUsername) {
       logErrors.authUsername = 'Username is required!';
@@ -23,7 +24,16 @@ const LoginForm = () => {
     } else if (authUsername.length < 5) {
       logErrors.authUsername = 'Username must be more than 5 character!';
       logErrors.empty = false;
-    }
+    }else if (authUsername.length > 31) {
+      logErrors.authUsername="The username can be up to 30 characters long!";
+      logErrors.empty = false;
+    }else if (/\s/.test(authUsername)) {
+      logErrors.authUsername="The username cannot contain white space!";
+      logErrors.empty = false;
+    }else if (format.test(authUsername)) {
+      logErrors.authUsername="The username cannot contain special characters!";
+      logErrors.empty = false;
+    } 
 
     if (!authPassword) {
       logErrors.authPassword = 'Password is required!';
