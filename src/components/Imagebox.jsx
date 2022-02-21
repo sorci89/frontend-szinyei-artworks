@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import BigImage from "./BigImage";
-import axios from "axios";
 
 const Imagebox = (props) => {
   const data = props.data;
   const page = props.page;
+  const savedList = props.savedList;
 
   const [loggedIn, setLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [imageId, setImageId] = useState("");
-  const [dataList, setDataList] = useState([]);
   const [isSaved, setSaved] = useState("");
 
   const openImage = (image) => {
@@ -18,8 +17,8 @@ const Imagebox = (props) => {
     setIsOpen(true);
   };
 
-  const inMyGallery = (dataList) => {
-    for (let item of dataList) {
+  const inMyGallery = (savedList) => {
+    for (let item of savedList) {
       if (item.title === data.title) {
         console.log(item.title);
         setSaved("saved");
@@ -27,31 +26,9 @@ const Imagebox = (props) => {
     }
   };
 
-  const renderData = async () => {
-    let authUsername = localStorage.getItem("user");
-    let authPassword = localStorage.getItem("pw");
-    /*     console.log(localStorage.getItem("user"));
-    console.log(localStorage.getItem("pw")); */
-    try {
-      const response = await axios.post(
-        "http://localhost:3101/api/user/galery",
-        {},
-        {
-          headers: {
-            Authorization: authUsername + "&&&" + authPassword,
-          },
-        }
-      );
-      setDataList(response.data);
-      inMyGallery(response.data);
-    } catch (e) {
-      console.log("not logged in");
-    }
-  };
-
   useEffect(() => {
     setLoggedIn(localStorage.getItem("loggedIn"));
-    renderData();
+    savedList && inMyGallery(savedList);
   }, []);
 
   return (
@@ -95,15 +72,6 @@ const Imagebox = (props) => {
                   className="save_btn"
                 >
                   Remove
-                </button>
-
-                <button
-                  onClick={(e) => {
-                    console.log("Add tag!");
-                  }}
-                  className="save_btn"
-                >
-                  Add Tag
                 </button>
               </div>
             ) : isSaved ? (

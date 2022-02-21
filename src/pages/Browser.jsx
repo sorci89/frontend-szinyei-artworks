@@ -25,6 +25,7 @@ const Browser = () => {
   const [pageCount, setPageCount] = useState(0);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(1);
+  const [savedList, setSavedList] = useState([]);
 
   const [searchKeyword, updateSearchKeword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("");
@@ -63,10 +64,33 @@ const Browser = () => {
     setPageCount(Math.ceil(total / limit));
   };
 
+  const getSavedImages = async () => {
+    let authUsername = localStorage.getItem("user");
+    let authPassword = localStorage.getItem("pw");
+    console.log("render!render!");
+    try {
+      const response = await axios.post(
+        "http://localhost:3101/api/user/galery",
+        {},
+        {
+          headers: {
+            Authorization: authUsername + "&&&" + authPassword,
+          },
+        }
+      );
+      setSavedList(response.data);
+    } catch (e) {
+      console.log("not logged in");
+    }
+  };
+
   useEffect(() => {
     renderData();
-  }, [page, searchKeyword, searchClassification, hasimage, limit]);
+  }, [page, searchKeyword, searchClassification, hasimage, limit, savedList]);
 
+  useEffect(() => {
+    getSavedImages();
+  }, []);
 
   return (
     <div>
@@ -110,41 +134,47 @@ const Browser = () => {
           </label>
         </div>
         {dataList.map((data) => (
-          <Imagebox data={data} key={Math.floor(Math.random() * 10000)} />
+          <Imagebox
+            data={data}
+            savedList={savedList}
+            page={""}
+            key={Math.floor(Math.random() * 10000)}
+          />
         ))}
       </div>
       {/* <AppPagination setPage={setPage} page={numberOfPages} /> */}
       <div className="page-select-container">
-      <ReactPaginate
-        previousLabel={"Previous"}
-        nextLabel={"Next"}
-        breakLabel={"..."}
-        pageCount={pageCount}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={3}
-        onPageChange={(data)=> setPage(data.selected + 1)}
-        containerClassName={"pagination justify-content-center"}
-        pageClassName={"page-item"}
-        pageLinkClassName={"page-link"}
-        previousClassName={"page-item"}
-        previousLinkClassName={"page-link"}
-        nextClassName={"page-item"}
-        nextLinkClassName={"page-link"}
-        breakClassName={"page-item"}
-        breakLinkClassName={"page-link"}
-        activeClassName={"active"}
-      />
-       <select name="page-select" id="page-select" onChange={(event)=>setLimit(event.target.value)}>
-    <option value='10'>10 / page</option>
-    <option value="20">20 / page</option>
-    <option value="50">50 / page</option>
-    <option value="100">100 / page</option>
-  </select>
-    </div>
-    <div>
-     
-    </div>
-
+        <ReactPaginate
+          previousLabel={"Previous"}
+          nextLabel={"Next"}
+          breakLabel={"..."}
+          pageCount={pageCount}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={3}
+          onPageChange={(data) => setPage(data.selected + 1)}
+          containerClassName={"pagination justify-content-center"}
+          pageClassName={"page-item"}
+          pageLinkClassName={"page-link"}
+          previousClassName={"page-item"}
+          previousLinkClassName={"page-link"}
+          nextClassName={"page-item"}
+          nextLinkClassName={"page-link"}
+          breakClassName={"page-item"}
+          breakLinkClassName={"page-link"}
+          activeClassName={"active"}
+        />
+        <select
+          name="page-select"
+          id="page-select"
+          onChange={(event) => setLimit(event.target.value)}
+        >
+          <option value="10">10 / page</option>
+          <option value="20">20 / page</option>
+          <option value="50">50 / page</option>
+          <option value="100">100 / page</option>
+        </select>
+      </div>
+      <div></div>
     </div>
   );
 };

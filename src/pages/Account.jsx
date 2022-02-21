@@ -150,7 +150,7 @@ const Account = () => {
         </div>
 
         {dataToShow.map((data, i) => (
-          <Imagebox data={data} key={i} page={"account"} />
+          <Imagebox data={data} key={i} page={"account"} savedlist={""} />
         ))}
       </div>
     </div>
