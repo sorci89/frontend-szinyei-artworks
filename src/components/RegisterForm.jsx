@@ -21,6 +21,7 @@ const validation = () => {
   setSuccessful("");
     let Errors = {};
     Errors.empty= true;
+    var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
 
     if (!username) {
         Errors.username="Username is required!";
@@ -34,16 +35,16 @@ const validation = () => {
         Errors.username="The username can be up to 30 characters long!";
         Errors.empty= false;
         setAlreadyExist('');
-    }else if (username.match(/^[^a-zA-Z0-9]+$/)) {
-        Errors.username="The username cannot contain special characters!";
-        Errors.empty= false;
-        setAlreadyExist('');
-    }else if (username.match(/\S/)) {
+    }else if (/\s/.test(username)) {
         Errors.username="The username cannot contain white space!";
         Errors.empty= false;
         setAlreadyExist('');
-    }    
-
+    }  else if (format.test(username)) {
+      Errors.username="The username cannot contain special characters!";
+      Errors.empty= false;
+      setAlreadyExist('');
+    }  
+  
 
 
     if (!email) {
@@ -104,6 +105,7 @@ const validation = () => {
       const response = await axios.post('http://localhost:3101/api/user/reg', {username , email , password});
       setUsername('');
       setPassword('');
+      setPasswordAgain('');
       setEmail('');
       setSuccessful("Successful Sign in!");
       setRegErrors({});
@@ -115,6 +117,7 @@ const validation = () => {
         setAlreadyExist('Username or Email already exist');
         setUsername('');
         setPassword('');
+        setPasswordAgain('');
         setEmail('');
       }
     }
