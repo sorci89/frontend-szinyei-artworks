@@ -81,6 +81,7 @@ div [class^="menu-dot-4"] {
 .color-test {
   width: 250px;
   height: 90%;
+  min-height: 380px;
   margin: 20px;
   display: flex;
   flex-direction: column;
