@@ -3,6 +3,9 @@ import BigImage from './BigImage';
 import axios from 'axios';
 import CommentInput from './CommentInput';
 import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const Imagebox = (props) => {
   let navigate = useNavigate();
@@ -17,7 +20,6 @@ const Imagebox = (props) => {
   const [isSaved, setSaved] = useState('');
 
   const [stars, setStars] = useState(0);
-  const [comment, setComment] = useState('');
   const [tag, setTag] = useState([]);
   const [isChoosen, setIsChoosen] = useState(false);
 
@@ -156,7 +158,7 @@ const Imagebox = (props) => {
             // imageId={imageId}
           />
         ) : (
-          <div className=''>
+          <div className='color-image'>
             <img
               style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
               onClick={() => openImage(data.id)}
@@ -187,7 +189,18 @@ const Imagebox = (props) => {
                     Remove
                   </button>
                   <div>{data.tag}</div>
-                  {/* <div>{data.comment}</div> */}
+                  <Box
+                    sx={{
+                      '& > legend': { mb: 0.5 },
+                    }}
+                  >
+                    {/* <Typography component='legend'>My Vote</Typography> */}
+                    <Rating
+                      name='simple-controlled'
+                      size='small'
+                      value={data.stars}
+                    />
+                  </Box>
                 </div>
               ) : isSaved ? (
                 <b>already saved</b>
