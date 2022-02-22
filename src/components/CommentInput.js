@@ -31,7 +31,13 @@ const CommentInput = ({
             className='input_tag'
             placeholder='$tag'
             value={tag}
-            onChange={(e) => setTag(e.target.value)}
+            onChange={(e) => {
+              let newValue = e.target.value;
+              newValue = newValue.replace(/[$+]/g, '');
+              newValue = '$' + newValue;
+              setTag(newValue);
+              console.log(newValue);
+            }}
           />
         </div>
         <Box

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
 
 * {
   box-sizing: border-box;
@@ -11,10 +11,10 @@ body {
 .menu-bar {
   display: flex;
   flex-wrap: wrap;
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
-div [class^="menu-dot"] {
+div [class^='menu-dot'] {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -24,11 +24,11 @@ div [class^="menu-dot"] {
   position: relative;
 }
 
-div [class^="menu-dot"] p {
+div [class^='menu-dot'] p {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 .menu-dot-1 {
@@ -40,7 +40,7 @@ div [class^="menu-dot"] p {
 .menu-dot-3 {
   background: #abdd98;
 }
-div [class^="menu-dot-4"] {
+div [class^='menu-dot-4'] {
   z-index: 10;
 }
 
@@ -58,24 +58,33 @@ div [class^="menu-dot-4"] {
 }
 
 .search-bar {
-  width: 95%;
-  height: 200px;
-  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  margin-bottom: 30px;
   position: relative;
   background: rgba(146, 38, 77, 0.2);
 }
 
+.search-bar input {
+  margin: 10px;
+  text-indent: 10px;
+}
+
 .color-test {
   width: 250px;
-  height: 320px;
+  height: 380px;
   margin: 20px;
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
+  /* flex-wrap: nowrap; */
   align-items: center;
-  justify-content: space-evenly;
-  padding: 0 20px 10px;
+  /* justify-content: space-evenly; */
+  padding: 15px 10px 10px;
   background-color: rgba(146, 38, 77, 0.2);
+  text-align: center;
 }
 
 .color-test img {
@@ -93,7 +102,7 @@ div [class^="menu-dot-4"] {
 }
 
 .login-dot:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -103,7 +112,7 @@ div [class^="menu-dot-4"] {
   animation: shockwave 1.5s 0.5s ease-out infinite;
 }
 .login-dot:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -116,7 +125,7 @@ div [class^="menu-dot-4"] {
 }
 
 .login-dot p:nth-child(1) {
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   color: #ffffff;
   font-size: 70px;
   line-height: 0.9;
@@ -132,7 +141,7 @@ div [class^="menu-dot-4"] {
 }
 
 .login-dot p:nth-child(2) {
-  font-family: "Noto Sans", sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   color: #ffffff;
   font-size: 25px;
   font-weight: bold;
