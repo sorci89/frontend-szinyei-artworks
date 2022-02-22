@@ -94,7 +94,7 @@ const Browser = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar active={1} />
 
       <div
         className="page-content"

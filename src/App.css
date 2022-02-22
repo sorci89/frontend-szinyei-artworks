@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap");
 
 * {
   box-sizing: border-box;
@@ -8,13 +8,13 @@ body {
   background: #eeeeee;
 }
 
-.menu-bar {
+/* .menu-bar {
   display: flex;
   flex-wrap: wrap;
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
-div [class^='menu-dot'] {
+div [class^="menu-dot"] {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -24,11 +24,11 @@ div [class^='menu-dot'] {
   position: relative;
 }
 
-div [class^='menu-dot'] p {
+div [class^="menu-dot"] p {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .menu-dot-1 {
@@ -40,16 +40,9 @@ div [class^='menu-dot'] p {
 .menu-dot-3 {
   background: #abdd98;
 }
-div [class^='menu-dot-4'] {
+div [class^="menu-dot-4"] {
   z-index: 10;
-}
-
-.nav-border {
-  width: 90%;
-  height: 2px;
-  background: #92264d;
-  margin-bottom: 50px;
-}
+} */
 
 .page-content {
   display: flex;
@@ -94,38 +87,39 @@ div [class^='menu-dot-4'] {
 
 .login-dot {
   width: 500px;
-  height: 500px;
+  height: 280px;
+  opacity: 0.7;
   position: relative;
-  border-radius: 50%;
-  background: #5a83db;
+
+  background: transparent;
+  border: 5px solid black;
+
   animation: 6s shrink;
 }
 
 .login-dot:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  border-radius: 50%;
-  animation: shockwave 1.5s 0.5s ease-out infinite;
+  animation: shockwave 1.5s 0.6s ease-out infinite;
 }
 .login-dot:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  border-radius: 50%;
   animation: shockwave 1.5s 0.2s ease-out infinite;
   z-index: -1;
   /*  animation: 1.5s cresent linear infinite alternate; */
 }
 
 .login-dot p:nth-child(1) {
-  font-family: 'Noto Sans', sans-serif;
+  /*   font-family: "Noto Sans", sans-serif;
   color: #ffffff;
   font-size: 70px;
   line-height: 0.9;
@@ -137,17 +131,25 @@ div [class^='menu-dot-4'] {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke-width: 6px;
   -webkit-text-stroke-color: white;
-  text-shadow: 4px 6px #a7cfe6, 11px 10px 0px #4b3c39;
+  text-shadow: 4px 6px #a7cfe6, 11px 10px 0px #4b3c39; */
+  width: 400px;
+  height: 300px;
+  position: absolute;
+  top: 27%;
+  left: 8%;
+  background-image: url("../public/pictures/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .login-dot p:nth-child(2) {
-  font-family: 'Noto Sans', sans-serif;
-  color: #ffffff;
-  font-size: 25px;
+  font-family: "Noto Sans", sans-serif;
+  color: black;
+  font-size: 28px;
   font-weight: bold;
   position: absolute;
-  top: 62%;
-  left: 40%;
+  top: 60%;
+  left: 43%;
   animation: text-shadow 1.5s ease-in-out infinite;
 }
 
@@ -243,7 +245,7 @@ div [class^='menu-dot-4'] {
   0% {
     transform: scale(1);
   }
-  95% {
+  94% {
     transform: scale(1);
   }
   100% {
@@ -254,13 +256,13 @@ div [class^='menu-dot-4'] {
 @keyframes shockwave {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(0, 0, 0, 0.4);
   }
   95% {
     box-shadow: 0 0 50px rgba(0, 0, 0, 0), inset 0 0 30px rgba(0, 0, 0, 0);
   }
   100% {
-    transform: scale(1.3);
+    transform: scale(1.4);
   }
 }
 

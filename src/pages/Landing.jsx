@@ -14,7 +14,7 @@ const Landing = () => {
     <div className="hirst-container-container">
       <Link to="/browser">
         <div className="login-dot">
-          <p>Harvard Art Museum</p> <p>image browser</p>
+          <p></p> <p>image browser</p>
         </div>
       </Link>
     </div>

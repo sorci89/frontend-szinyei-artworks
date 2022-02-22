@@ -1,9 +1,9 @@
-@import './variables.scss';
+@import "./variables.scss";
 
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
   // font-family: 'Roboto', sans-serif;
 }
 
@@ -15,7 +15,7 @@ $desktop: 800px;
   }
 }
 
-button {
+/* button {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -28,7 +28,7 @@ button {
   &:hover {
     background-color: color(green1);
   }
-}
+} */
 .delete {
   background-color: color(del);
   color: #ffffff;

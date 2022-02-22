@@ -5,7 +5,7 @@ import LoginForm from "../components/LoginForm";
 const Login = () => {
   return (
     <div>
-      <Navbar />
+      <Navbar active={2} />
       <LoginForm />
     </div>
   );

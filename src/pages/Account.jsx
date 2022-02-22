@@ -135,7 +135,7 @@ const Account = () => {
 
   return (
     <div>
-      <Navbar />
+      <Navbar active={2} />
 
       <div
         className="page-content"
