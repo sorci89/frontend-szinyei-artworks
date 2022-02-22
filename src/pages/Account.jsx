@@ -148,10 +148,11 @@ const Account = () => {
             ))}
           </select>
         </div>
-
+              <div className="data-container">
         {dataToShow.map((data, i) => (
           <Imagebox data={data} key={i} page={"account"} savedlist={""} />
-        ))}
+          ))}
+          </div>
       </div>
     </div>
   );

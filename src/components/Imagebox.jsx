@@ -161,7 +161,7 @@ const Imagebox = (props) => {
             // imageId={imageId}
           />
         ) : (
-          <div className=''>
+          <div className='card-container'>
             <img
               style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
               onClick={() => openImage(data.id)}
