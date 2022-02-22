@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
 import axios from 'axios';
 import CommentInput from './CommentInput';
+import { useNavigate } from 'react-router-dom';
 
 const Imagebox = (props) => {
+  let navigate = useNavigate();
+
   const data = props.data;
   const page = props.page;
   const savedList = props.savedList;
@@ -26,7 +29,7 @@ const Imagebox = (props) => {
   const inMyGallery = (savedList) => {
     for (let item of savedList) {
       if (item.title === data.title) {
-        console.log(item.title);
+        // console.log(item.title);
         setSaved('saved');
       }
     }
@@ -44,6 +47,7 @@ const Imagebox = (props) => {
     division: data.division ? data.division : 'no data',
     medium: data.medium ? data.medium : 'no data',
     period: data.period ? data.period : 'no data',
+    objectnumber: data.objectnumber,
 
     images: [
       {
@@ -77,7 +81,6 @@ const Imagebox = (props) => {
       },
     ],
     tag: tag,
-    comment: comment,
     stars: stars,
   };
 
@@ -95,7 +98,29 @@ const Imagebox = (props) => {
           },
         }
       );
-      alert('Csuhajja');
+      navigate('/account');
+      navigate('/browser');
+    } catch (e) {
+      alert('wrong username/password');
+    }
+  };
+
+  const deletePicture = async (id) => {
+    const authUsername = localStorage.getItem('user');
+    const authPassword = localStorage.getItem('pw');
+
+    try {
+      const response = await axios.post(
+        'http://localhost:3101/api/picture/delete',
+        { data: id },
+        {
+          headers: {
+            Authorization: authUsername + '&&&' + authPassword,
+          },
+        }
+      );
+      navigate('/browser');
+      navigate('/account');
     } catch (e) {
       alert('wrong username/password');
     }
@@ -113,8 +138,6 @@ const Imagebox = (props) => {
           <CommentInput
             stars={stars}
             setStars={setStars}
-            comment={comment}
-            setComment={setComment}
             tag={tag}
             setTag={setTag}
             isChoosen={isChoosen}
@@ -130,7 +153,7 @@ const Imagebox = (props) => {
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             data={data}
-            imageId={imageId}
+            // imageId={imageId}
           />
         ) : (
           <div className=''>
@@ -157,11 +180,14 @@ const Imagebox = (props) => {
             {loggedIn ? (
               page === 'account' ? (
                 <div>
-                  <button onClick={console.log('remove')} className='save_btn'>
+                  <button
+                    onClick={(e) => deletePicture(data.objectnumber)}
+                    className='save_btn'
+                  >
                     Remove
                   </button>
-                  {/*    <div>{data.tag}</div>
-                  <div>{data.comment}</div> */}
+                  <div>{data.tag}</div>
+                  {/* <div>{data.comment}</div> */}
                 </div>
               ) : isSaved ? (
                 <b>already saved</b>
@@ -169,7 +195,7 @@ const Imagebox = (props) => {
                 <div>
                   <button
                     onClick={(e) => setIsChoosen(true)}
-                    className='save_btn'
+                    className='save'
                     disabled={!loggedIn}
                   >
                     Save

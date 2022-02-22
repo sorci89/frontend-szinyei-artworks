@@ -67,13 +67,11 @@ const Navbar = () => {
                 setLoggedIn(false);
                 navigate('/browser');
               }}
-            ></button>
-            button
-            <Link>
+            >
               <div className='menu-dot-1'>
                 <p>logout</p>
               </div>
-            </Link>
+            </button>
             <Link to='/account'>
               <div className='menu-dot-2'>
                 <p>mypics</p>

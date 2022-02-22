@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import './bigImage.scss';
 import '../App.css';
 
-function CommentInput({
+const CommentInput = ({
   stars,
   setStars,
   comment,
@@ -16,11 +16,8 @@ function CommentInput({
   tag,
   setTag,
   savePicture,
-
-  onClick,
-  isChoosen,
   setIsChoosen,
-}) {
+}) => {
   return (
     <div>
       <div className='input_comment'>
@@ -28,33 +25,15 @@ function CommentInput({
           <h3>Add some details before saving</h3>
           <CloseIcon className='mui_icon' onClick={() => setIsChoosen(false)} />
         </div>
-        <hr />
-        {/* <select value={tag} onChange={(e) => setTag(e.target.value)}>
-            {tags.map((tag) => (
-              <option key={tag.id}>{tag.name}</option>
-            ))}
-          </select> */}
-        <label>You can add new tags</label>
+        <label>My tag</label>
         <div className='tag_container'>
           <input
             className='input_tag'
-            placeholder='new tag'
+            placeholder='$tag'
             value={tag}
             onChange={(e) => setTag(e.target.value)}
           />
-          {/* <Button
-              text='Add'
-              onClick={() => addTag(tag)}
-              className='tag_btn'
-              desabled={!loggedIn}
-            /> */}
         </div>
-        <label>Add your comment here</label>
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          placeholder='your comment'
-        />
         <Box
           sx={{
             '& > legend': { mb: 0.5 },
@@ -70,7 +49,7 @@ function CommentInput({
             }}
           />
         </Box>
-        (
+
         <Button
           onClick={(e) => {
             console.log('ok');
@@ -83,6 +62,6 @@ function CommentInput({
       </div>
     </div>
   );
-}
+};
 
 export default CommentInput;

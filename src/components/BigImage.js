@@ -3,7 +3,7 @@ import './bigImage.scss';
 
 import Button from './Button';
 
-const BigImage = ({ data, isOpen, setIsOpen }) => {
+const BigImage = ({ data, setIsOpen }) => {
   let dateYMD = data.lastupdate.slice(0, 10);
 
   return (
