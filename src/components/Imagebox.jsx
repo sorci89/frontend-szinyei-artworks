@@ -3,6 +3,9 @@ import BigImage from './BigImage';
 import axios from 'axios';
 import CommentInput from './CommentInput';
 import { useNavigate } from 'react-router-dom';
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const Imagebox = (props) => {
   let navigate = useNavigate();
@@ -189,7 +192,18 @@ const Imagebox = (props) => {
                     Remove
                   </button>
                   <div>{data.tag}</div>
-                  {/* <div>{data.comment}</div> */}
+                  <Box
+                    sx={{
+                      '& > legend': { mb: 0.5 },
+                    }}
+                  >
+                    {/* <Typography component='legend'>My Vote</Typography> */}
+                    <Rating
+                      name='simple-controlled'
+                      size='small'
+                      value={data.stars}
+                    />
+                  </Box>
                 </div>
               ) : isSaved ? (
                 <b>already saved</b>
