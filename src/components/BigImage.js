@@ -45,12 +45,6 @@ const BigImage = ({ data, setIsOpen }) => {
           }
           alt='not available'
         />
-        {data.people && data.people[0].displayname && data.title && (
-          <div className='title'>
-            {data.people[0].displayname}: <br />
-            {data.title}
-          </div>
-        )}
 
         <div className='details'>
           {data.classification ? (
@@ -160,106 +154,6 @@ const BigImage = ({ data, setIsOpen }) => {
           Desciption is not yet part of the museum API
         </div>
       )}
-      <div className='details'>
-        {data.classification ? (
-          <div>
-            <span>Classification: </span> {data.classification}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Classification: </span> unknown
-          </div>
-        )}
-        {data.century ? (
-          <div>
-            <span>Century: </span> {data.century}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Century: </span> unknown
-          </div>
-        )}
-        {data.culture ? (
-          <div>
-            <span>Culture: </span> {data.culture}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Culture: </span> unknown
-          </div>
-        )}
-        {data.dated ? (
-          <div>
-            <span>Dated: </span> {data.dated}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Dated: </span> unknown
-          </div>
-        )}
-        {data.department ? (
-          <div>
-            <span>Department: </span> {data.department}
-          </div>
-        ) : null}
-        {data.dimensions ? (
-          <div>
-            <span>Dimensions: </span> {data.dimensions}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Dimensions: </span> no data
-          </div>
-        )}
-        {data.division ? (
-          <div>
-            <span>Division: </span>
-            {data.division}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Division: </span> no data
-          </div>
-        )}
-        {data.medium ? (
-          <div>
-            <span>Technique: </span>
-            {data.medium}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Technique: </span>
-            no data
-          </div>
-        )}
-        {data.period ? (
-          <div>
-            <span>Artistic period: </span>
-            {data.period}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Artistic period: </span>
-            unknown
-          </div>
-        )}
-        {data.contact ? (
-          <div>
-            <span>Contact: {data.contact}</span>
-          </div>
-        ) : null}
-        {data.worktypes && data.worktypes[0].worktype ? (
-          <div>
-            <span>Worktype: </span>
-            {data.worktypes[0].worktype}
-          </div>
-        ) : (
-          <div className='unknown'>
-            <span>Worktype: </span>
-            unknown
-          </div>
-        )}
-      </div>
       {data.lastupdate ? (
         <div className='lastupdate'>
           <b>Last update:</b>
