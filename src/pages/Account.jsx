@@ -198,16 +198,18 @@ const Account = () => {
               </select>
             </div>
           ) : (
-            <div className="tag-bar">
-              {tags.map((type, i) => (
-                <div
-                  className="tag"
-                  key={i}
-                  onClick={() => updateSearchTag(type)}
-                >
-                  {type}
-                </div>
-              ))}
+            <div className="tag-bar-container">
+              <div className="tag-bar">
+                {tags.map((type, i) => (
+                  <div
+                    className="tag"
+                    key={i}
+                    onClick={() => updateSearchTag(type)}
+                  >
+                    {type}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           <div className="search-border"></div>

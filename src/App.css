@@ -46,14 +46,16 @@ input[type="checkbox"] {
   margin-right: 3px;
 }
 
-.classification-bar-container {
+.classification-bar-container,
+.tag-bar-container {
   width: 100%;
   height: 18px;
   position: relative;
   overflow: hidden;
 }
 
-.classification-bar {
+.classification-bar,
+.tag-bar {
   width: 100%;
   padding-left: 20px;
   display: flex;
@@ -89,7 +91,7 @@ input[type="checkbox"] {
 }
 
 .classification-bar div,
-.tag-bar div {
+.tag {
   display: inline;
   margin-right: 15px;
   cursor: pointer;
@@ -183,13 +185,16 @@ input[type="checkbox"] {
 
 .tag-bar {
   width: 100%;
+  padding-left: 20px;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  color: #a1a1a1;
+  background: rgb(244, 244, 244);
+  font-size: 14px;
+  animation: textUp 0.5s forwards;
 }
 
-.tag-bar div {
+.tag {
   display: inline;
 }
 
