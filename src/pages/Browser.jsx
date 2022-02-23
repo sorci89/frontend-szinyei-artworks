@@ -10,14 +10,14 @@ const queryApyKey = `&apikey=a8d819ad-b52c-4acb-97b5-88541077022b`;
 
 const classifications = [
   { name: 'ALL', value: '' },
-  { name: 'Coins', value: '50' },
+  { name: 'Paintings', value: '26' },
   { name: 'Drawings', value: '21' },
   { name: 'Photographs', value: '17' },
-  { name: 'Paintings', value: '26' },
-  { name: 'Sculpture', value: '30' },
+  { name: 'Sculptures', value: '30' },
   { name: 'Vessels', value: '57' },
-  { name: 'Textile Arts', value: '62' },
-  { name: 'Tools and Equipment', value: '32' },
+  { name: 'Textile', value: '62' },
+  { name: 'Tools', value: '32' },
+  { name: 'Coins', value: '50' },
 ];
 
 const Browser = () => {
@@ -28,8 +28,13 @@ const Browser = () => {
   const [savedList, setSavedList] = useState([]);
 
   const [searchKeyword, updateSearchKeword] = useState('');
-  const [searchClassification, updateSearchClassification] = useState('');
+  const [searchClassification, updateSearchClassification] = useState({
+    name: '',
+    value: '',
+  });
   const [hasimage, setHasimage] = useState('');
+  const [categoriesVisible, setCategoriesVisible] = useState(false);
+  const [clickedCategory, setClicedCategory] = useState(0);
 
   const toggleSetimage = () => {
     if (hasimage === '') {
@@ -41,7 +46,7 @@ const Browser = () => {
 
   const getQuery = () => {
     let queryPage = `object?size=${limit}&page=${page}`;
-    let queryClassification = `&classification=${searchClassification}`;
+    let queryClassification = `&classification=${searchClassification.value}`;
     let queryKeyWord = `&keyword=${searchKeyword}`;
     let queryHasImage = `${hasimage}`;
     return (
@@ -86,7 +91,14 @@ const Browser = () => {
 
   useEffect(() => {
     renderData();
-  }, [page, searchKeyword, searchClassification, hasimage, limit, savedList]);
+  }, [
+    page,
+    searchKeyword,
+    searchClassification.name,
+    hasimage,
+    limit,
+    savedList,
+  ]);
 
   useEffect(() => {
     getSavedImages();
@@ -98,7 +110,17 @@ const Browser = () => {
 
       <div className='page-content'>
         <div className='search-bar'>
+          <div className='search-border'></div>
+          <div
+            className='search-input'
+            onClick={(e) => setCategoriesVisible(!categoriesVisible)}
+          >
+            {searchClassification.name && searchClassification.name !== 'ALL'
+              ? '#' + searchClassification.name.toUpperCase()
+              : '>CATEGORY'}
+          </div>
           <input
+            className='search-input'
             type='text'
             value={searchKeyword}
             placeholder='kewords'
@@ -107,37 +129,42 @@ const Browser = () => {
               setPage(1);
             }}
           ></input>
-          <label>
+          <label className='search-input'>
             <input type='checkbox' onChange={toggleSetimage} />
             with image only
           </label>
-          <div
-            className='classification-bar'
-            /*             value={searchClassification}
-            onChange={(e) => {
-              updateSearchClassification(e.target.value);
-              setPage(1);
-            }} */
-          >
-            {classifications.map((type) => (
-              <div
-                key={Math.floor(Math.random() * 10000)}
-                value={type.value}
-                onClick={(e) => updateSearchClassification(type.value)}
-              >
-                {type.name}
-              </div>
-            ))}
+          <div className='classification-bar-container'>
+            <div
+              className={
+                categoriesVisible
+                  ? 'classification-bar'
+                  : 'classification-bar bar-hidden'
+              }
+            >
+              {classifications.map((type, i) => (
+                <div
+                  className={clickedCategory === i && 'category-clicked'}
+                  key={i}
+                  value={type.name}
+                  onClick={(e) => {
+                    categoriesVisible &&
+                      updateSearchClassification({
+                        value: type.value,
+                        name: type.name,
+                      });
+                    setClicedCategory(i);
+                  }}
+                >
+                  {type.name}
+                </div>
+              ))}
+            </div>
           </div>
+          <div className='search-border'></div>
         </div>
         <div className='data-container'>
-          {dataList.map((data) => (
-            <Imagebox
-              data={data}
-              savedList={savedList}
-              page={''}
-              key={Math.floor(Math.random() * 10000)}
-            />
+          {dataList.map((data, i) => (
+            <Imagebox data={data} savedList={savedList} page={''} key={i} />
           ))}
         </div>
         <div className='page-select-container'>
