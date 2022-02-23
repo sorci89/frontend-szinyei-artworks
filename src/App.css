@@ -237,13 +237,6 @@ input[type="checkbox"] {
   animation: showup 0.5s;
 }
 
-/* IMAGE CARDS */
-
-.page-content {
-  display: flex;
-  flex-direction: column;
-}
-
 .keywords-category {
   font-size: 16px;
   color: black;
@@ -263,6 +256,13 @@ input[type="checkbox"] {
   margin-right: 52px;
 }
 
+/* IMAGE CARDS */
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+}
+
 .data-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -280,7 +280,7 @@ input[type="checkbox"] {
   align-items: center;
   justify-content: space-evenly;
   padding: 15px 10px 10px;
-  background-color: rgba(146, 38, 77, 0.2);
+  background-color: #fff;
   text-align: center;
 }
 
@@ -288,12 +288,24 @@ input[type="checkbox"] {
   max-width: 200px;
   max-height: 200px;
 }
-.card-container {
+.color-image {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.name-div {
+  text-transform: uppercase;
+}
+.already-saved {
+  padding: 7px 10px;
+  margin: 10px 5px 5px 5px;
+  background-color: #c7c7c7;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #fff;
 }
 
 /* SAVE AND REMOVE BUTTON OPTION 1 */
@@ -312,7 +324,7 @@ input[type="checkbox"] {
   text-transform: uppercase;
 }
 .save:hover,
-.save_btn {
+.save_btn:hover {
   color: #fff;
   animation: text-shadow 1.5s ease-in-out infinite;
 }
