@@ -844,19 +844,19 @@ imagebox_container {
 
 .page-item,
 .page-link {
-  background-color: black;
-  color: #fff;
+  background-color: #fff;
+  color: black;
 }
 
 .page-item.active .page-link {
-  background-color: #fff;
-  color: black;
-  border-color: #a1a1a1;
+  background-color: black;
+  color: #fff;
+  border-color: black;
 }
 
 .page-link:hover {
-  background-color: #fff;
-  color: black;
+  background-color: black;
+  color: #fff;
 }
 .page-item:first-child .page-link,
 .page-item:last-child .page-link {
@@ -877,7 +877,7 @@ imagebox_container {
   height: 38px;
   border: none;
 
-  color: #fff;
-  background-color: black;
+  color: black;
+  background-color: #fff;
   font-size: 16px;
 }
