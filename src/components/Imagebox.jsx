@@ -93,7 +93,7 @@ const Imagebox = (props) => {
 
     try {
       const response = await axios.post(
-        'http://ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/picture/save',
+        'http://localhost:3101/api/picture/save',
         { data: savedImage },
         {
           headers: {
@@ -113,7 +113,7 @@ const Imagebox = (props) => {
   const deletePicture = async (id) => {
     try {
       const response = await axios.post(
-        'http://ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/picture/delete',
+        'http://localhost:3101/api/picture/delete',
         { data: id },
         {
           headers: {
@@ -154,8 +154,8 @@ const Imagebox = (props) => {
       <div className={isOpen ? 'on' : 'off'}>
         <BigImage isOpen={isOpen} setIsOpen={setIsOpen} data={data} />
       </div>
-      <div className='color-test'>
-        <div className='color-image'>
+      <div className="color-test">
+        <div className="color-image">
           <img
             style={{ cursor: 'pointer' }}
             onClick={() => openImage(data.id)}
@@ -166,7 +166,7 @@ const Imagebox = (props) => {
                 ? '/pictures/bg-paper-texture-2.jpg'
                 : '/pictures/no-profile-picture.png'
             }
-            alt='not available'
+            alt="not available"
           />
           {data.people ? (
             <div>
@@ -181,7 +181,7 @@ const Imagebox = (props) => {
               <div>
                 <button
                   onClick={(e) => deletePicture(data.objectnumber)}
-                  className='save_btn'
+                  className="save_btn"
                 >
                   Remove
                 </button>
@@ -192,8 +192,8 @@ const Imagebox = (props) => {
                   }}
                 >
                   <Rating
-                    name='simple-controlled'
-                    size='small'
+                    name="simple-controlled"
+                    size="small"
                     value={data.stars}
                   />
                 </Box>
@@ -204,9 +204,9 @@ const Imagebox = (props) => {
               <div>
                 <Button
                   onClick={(e) => setIsChosen(true)}
-                  className='save'
+                  className="save"
                   disabled={!loggedIn}
-                  text='Save btn button'
+                  text="Save btn button"
                 />
                 {/* <button
                     onClick={(e) => setIsChosen(true)}

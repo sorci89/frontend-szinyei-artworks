@@ -13,6 +13,9 @@ const Account = () => {
   const [searchTag, updateSearchTag] = useState("All");
   const [filter, setFilter] = useState("keword");
   const [clickedSetFilter, setClickedSetFilter] = useState("keywords");
+  const [clickedTag, setClickedTag] = useState(0);
+  const [clickedClassifications, setClickedClassifications] = useState(0);
+  const [clickedCultures, setClickedCultures] = useState(0);
 
   const [classifications, setClassifications] = useState([""]);
   const [cultures, setCultures] = useState([""]);
@@ -164,7 +167,11 @@ const Account = () => {
 
           {filter !== "tags" ? (
             <div>
+              <div className="keywords-category keywords-category-0">
+                KEYWORD {" > "}{" "}
+              </div>
               <input
+                className="keywords-input"
                 type="text"
                 value={searchKeyword}
                 placeholder="kewords"
@@ -172,42 +179,66 @@ const Account = () => {
                   updateSearchKeword(e.target.value);
                 }}
               ></input>
-              <label>Classification:</label>
-              <select
-                value={searchClassification}
-                onChange={(e) => {
-                  updateSearchClassification(e.target.value);
-                }}
-              >
+              <div className="classifications-bar">
+                <div className="keywords-category keywords-category-1">
+                  CLASSIFICATIONS {" > "}{" "}
+                </div>
                 {classifications.map((type, i) => (
-                  <option key={i} value={type}>
+                  <div
+                    className={
+                      clickedClassifications === i
+                        ? "classifications-clicked classifications"
+                        : "classifications"
+                    }
+                    key={i}
+                    onClick={() => {
+                      updateSearchClassification(type);
+                      setClickedClassifications(i);
+                    }}
+                  >
                     {type}
-                  </option>
+                  </div>
                 ))}
-              </select>
-              <label>Culture:</label>
-              <select
-                value={searchCulture}
-                onChange={(e) => updateSearchCulture(e.target.value)}
-              >
+              </div>
+              <div className="cultures-bar">
+                <div className="keywords-category keywords-category-2">
+                  CULTURES {" > "}{" "}
+                </div>
+
                 {cultures.map((type, i) => (
-                  <option key={i} value={type}>
+                  <div
+                    className={
+                      clickedCultures === i
+                        ? "cultures-clicked cultures"
+                        : "cultures"
+                    }
+                    key={i}
+                    onClick={() => {
+                      updateSearchCulture(type);
+                      setClickedCultures(i);
+                    }}
+                  >
                     {type}
-                  </option>
+                  </div>
                 ))}
-              </select>
+              </div>
             </div>
           ) : (
-            <div className="tag-bar">
-              {tags.map((type, i) => (
-                <div
-                  className="tag"
-                  key={i}
-                  onClick={() => updateSearchTag(type)}
-                >
-                  {type}
-                </div>
-              ))}
+            <div className="tag-bar-container">
+              <div className="tag-bar">
+                {tags.map((type, i) => (
+                  <div
+                    className={clickedTag === i ? "tag-clicked tag" : "tag"}
+                    key={i}
+                    onClick={() => {
+                      updateSearchTag(type);
+                      setClickedTag(i);
+                    }}
+                  >
+                    {type}
+                  </div>
+                ))}
+              </div>
             </div>
           )}
           <div className="search-border"></div>
