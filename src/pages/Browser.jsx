@@ -13,7 +13,7 @@ const classifications = [
   { name: "Paintings", value: "26" },
   { name: "Drawings", value: "21" },
   { name: "Photographs", value: "17" },
-  { name: "Sculpture", value: "30" },
+  { name: "Sculptures", value: "30" },
   { name: "Vessels", value: "57" },
   { name: "Textile", value: "62" },
   { name: "Tools", value: "32" },
@@ -28,7 +28,10 @@ const Browser = () => {
   const [savedList, setSavedList] = useState([]);
 
   const [searchKeyword, updateSearchKeword] = useState("");
-  const [searchClassification, updateSearchClassification] = useState("");
+  const [searchClassification, updateSearchClassification] = useState({
+    name: "",
+    value: "",
+  });
   const [hasimage, setHasimage] = useState("");
   const [categoriesVisible, setCategoriesVisible] = useState(false);
   const [clickedCategory, setClicedCategory] = useState(0);
@@ -43,7 +46,7 @@ const Browser = () => {
 
   const getQuery = () => {
     let queryPage = `object?size=${limit}&page=${page}`;
-    let queryClassification = `&classification=${searchClassification}`;
+    let queryClassification = `&classification=${searchClassification.value}`;
     let queryKeyWord = `&keyword=${searchKeyword}`;
     let queryHasImage = `${hasimage}`;
     return (
@@ -88,7 +91,14 @@ const Browser = () => {
 
   useEffect(() => {
     renderData();
-  }, [page, searchKeyword, searchClassification, hasimage, limit, savedList]);
+  }, [
+    page,
+    searchKeyword,
+    searchClassification.name,
+    hasimage,
+    limit,
+    savedList,
+  ]);
 
   useEffect(() => {
     getSavedImages();
@@ -105,7 +115,9 @@ const Browser = () => {
             className="search-input"
             onClick={(e) => setCategoriesVisible(!categoriesVisible)}
           >
-            {categoriesVisible ? "# " : "> "}CATEGORY
+            {searchClassification.name && searchClassification.name !== "ALL"
+              ? "#" + searchClassification.name.toUpperCase()
+              : ">CATEGORY"}
           </div>
           <input
             className="search-input"
@@ -121,37 +133,38 @@ const Browser = () => {
             <input type="checkbox" onChange={toggleSetimage} />
             with image only
           </label>
-          <div
-            className={
-              categoriesVisible
-                ? "classification-bar"
-                : "classification-bar bar-hidden"
-            }
-          >
-            {classifications.map((type, i) => (
-              <div
-                className={clickedCategory === i && "category-clicked"}
-                key={i}
-                value={type.value}
-                onClick={(e) => {
-                  categoriesVisible && updateSearchClassification(type.value);
-                  setClicedCategory(i);
-                }}
-              >
-                {type.name}
-              </div>
-            ))}
+          <div className="classification-bar-container">
+            <div
+              className={
+                categoriesVisible
+                  ? "classification-bar"
+                  : "classification-bar bar-hidden"
+              }
+            >
+              {classifications.map((type, i) => (
+                <div
+                  className={clickedCategory === i && "category-clicked"}
+                  key={i}
+                  value={type.name}
+                  onClick={(e) => {
+                    categoriesVisible &&
+                      updateSearchClassification({
+                        value: type.value,
+                        name: type.name,
+                      });
+                    setClicedCategory(i);
+                  }}
+                >
+                  {type.name}
+                </div>
+              ))}
+            </div>
           </div>
           <div className="search-border"></div>
         </div>
         <div className="data-container">
-          {dataList.map((data) => (
-            <Imagebox
-              data={data}
-              savedList={savedList}
-              page={""}
-              key={Math.floor(Math.random() * 10000)}
-            />
+          {dataList.map((data, i) => (
+            <Imagebox data={data} savedList={savedList} page={""} key={i} />
           ))}
         </div>
         <div className="page-select-container">
