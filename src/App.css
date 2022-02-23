@@ -331,8 +331,15 @@ input[type="checkbox"] {
 }
 
 .name-div {
+  margin-top: 5px;
+  border-top: 1px black solid;
   text-transform: uppercase;
+  font-weight: bold;
 }
+.title-div {
+  font-size: 14px;
+}
+
 .already-saved {
   padding: 7px 10px;
   margin: 10px 5px 5px 5px;

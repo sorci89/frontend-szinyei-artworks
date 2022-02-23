@@ -178,9 +178,9 @@ const Imagebox = (props) => {
                 <b>{data.people[0].displayname}</b>
               </div>
             ) : (
-              <div>Unknown Artist</div>
+              <div className='name-div'>Unknown Artist</div>
             )}
-            <div style={{ textAlign: "center" }}>{data.title}</div>
+            <div className='title-div' style={{ textAlign: "center" }}>{data.title}</div>
             {loggedIn ? (
               page === "account" ? (
                 <div>
