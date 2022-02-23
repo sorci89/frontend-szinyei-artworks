@@ -74,7 +74,7 @@ const Browser = () => {
       console.log("get saved images");
       try {
         const response = await axios.post(
-          "ec2-3-123-23-184.eu-central-1.compute.amazonaws.com/api/user/galery",
+          "ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/user/galery",
           {},
           {
             headers: {
