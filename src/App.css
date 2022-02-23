@@ -131,6 +131,7 @@ input[type="checkbox"] {
 .classifications-clicked {
   background: #7e7e7e;
   color: rgb(244, 244, 244);
+  animation: text-shadow 0.5s;
 }
 @media screen and (max-width: 650px) {
   .search-bar {
@@ -212,6 +213,28 @@ input[type="checkbox"] {
 .clicked-set-filter {
   background: #7e7e7e;
   color: #eeeeee;
+  animation: shake 1s;
+}
+
+@keyframes shake {
+  0% {
+    transform: skewX(-15deg);
+  }
+  5% {
+    transform: skewX(15deg);
+  }
+  10% {
+    transform: skewX(-15deg);
+  }
+  15% {
+    transform: skewX(15deg);
+  }
+  20% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(0deg);
+  }
 }
 
 .tag-bar-container {
@@ -235,6 +258,10 @@ input[type="checkbox"] {
   margin-right: 25px;
   transform: skew(-15deg);
   animation: showup 0.5s;
+}
+
+.tag-clicked {
+  animation: text-shadow 0.5s;
 }
 
 /* IMAGE CARDS */
