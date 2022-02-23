@@ -35,6 +35,7 @@ body {
 
 .search-input {
   margin: 20px 35px 12px 10px;
+  cursor: pointer;
 }
 
 input[type="text"] {
@@ -90,10 +91,11 @@ input[type="checkbox"] {
 .classification-bar div {
   display: inline;
   margin-right: 15px;
+  cursor: pointer;
 }
 
 .category-clicked {
-  background: #a1a1a1;
+  background: #7e7e7e;
   color: rgb(244, 244, 244);
 }
 @media screen and (max-width: 650px) {
