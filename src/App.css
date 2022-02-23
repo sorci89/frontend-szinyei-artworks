@@ -55,7 +55,9 @@ input[type="checkbox"] {
 }
 
 .classification-bar,
-.tag-bar {
+.tag-bar,
+.classifications-bar,
+.cultures-bar {
   width: 100%;
   padding-left: 20px;
   display: flex;
@@ -64,6 +66,12 @@ input[type="checkbox"] {
   background: rgb(244, 244, 244);
   font-size: 14px;
   animation: textUp 0.5s forwards;
+}
+
+.classifications-bar,
+.cultures-bar {
+  margin-top: 2px;
+  background: #eeeeee;
 }
 
 .bar-hidden {
@@ -91,13 +99,18 @@ input[type="checkbox"] {
 }
 
 .classification-bar div,
-.tag {
+.tag,
+.cultures,
+.classifications {
   display: inline;
   margin-right: 15px;
   cursor: pointer;
 }
 
-.category-clicked {
+.category-clicked,
+.tag-clicked,
+.cultures-clicked,
+.classifications-clicked {
   background: #7e7e7e;
   color: rgb(244, 244, 244);
 }
@@ -165,14 +178,14 @@ input[type="checkbox"] {
 }
 
 .set-filter-container {
-  padding-left: 3px;
+  padding-left: 17px;
   width: 100%;
   display: flex;
 }
 .set-filter {
   width: 100px;
   height: 30px;
-  margin: 3px 0;
+  margin: 10px 0;
   color: #7e7e7e;
   text-align: center;
   cursor: pointer;
@@ -183,24 +196,49 @@ input[type="checkbox"] {
   color: #eeeeee;
 }
 
+.tag-bar-container {
+  height: auto;
+}
+
 .tag-bar {
   width: 100%;
+  margin-top: 19px;
+  margin-bottom: 30px;
   padding-left: 20px;
   display: flex;
   flex-wrap: wrap;
   color: #a1a1a1;
-  background: rgb(244, 244, 244);
-  font-size: 14px;
+  background: #eeeeee;
+  font-size: 18px;
   animation: textUp 0.5s forwards;
 }
 
 .tag {
   display: inline;
+  margin-right: 25px;
 }
 
 .page-content {
   display: flex;
   flex-direction: column;
+}
+
+.keywords-category {
+  font-size: 16px;
+  color: black;
+}
+.keywords-input {
+  height: 24px;
+}
+.keywords-category-0 {
+  margin: 0 20px 0;
+  display: inline;
+}
+.keywords-category-1 {
+  margin-right: 10px;
+}
+.keywords-category-2 {
+  margin-right: 52px;
 }
 
 .data-container {
