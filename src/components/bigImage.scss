@@ -67,13 +67,14 @@ $desktop: 1000px;
       justify-content: space-between;
     }
 
+    .close-icon {
+      margin-left: auto;
+    }
     .bigImage-noArtist {
       display: flex;
       align-items: flex-start;
-      .close-icon {
-        margin-left: auto;
-      }
     }
+
     .bigImage-title {
       display: flex;
       flex-direction: column;
@@ -159,9 +160,14 @@ $desktop: 1000px;
     }
   }
 }
-
-.input_comment,
 .on {
+  display: block;
+  position: absolute;
+}
+.off {
+  display: none;
+}
+.input_comment {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -177,10 +183,6 @@ $desktop: 1000px;
   box-shadow: 10px 10px 15px gray;
   text-align: center;
   background-color: #fff;
-
-  .off {
-    display: none;
-  }
 
   .head {
     display: flex;
