@@ -133,16 +133,16 @@ const Browser = () => {
             with image only
           </label>
         </div>
+        <div className="data-container">
         {dataList.map((data) => (
           <Imagebox
-            data={data}
-            savedList={savedList}
-            page={""}
-            key={Math.floor(Math.random() * 10000)}
+          data={data}
+          savedList={savedList}
+          page={""}
+          key={Math.floor(Math.random() * 10000)}
           />
-        ))}
-      </div>
-      {/* <AppPagination setPage={setPage} page={numberOfPages} /> */}
+          ))}
+          </div>
       <div className="page-select-container">
         <ReactPaginate
           previousLabel={"Previous"}
@@ -167,13 +167,14 @@ const Browser = () => {
           name="page-select"
           id="page-select"
           onChange={(event) => setLimit(event.target.value)}
-        >
+          >
           <option value="10">10 / page</option>
           <option value="20">20 / page</option>
           <option value="50">50 / page</option>
           <option value="100">100 / page</option>
         </select>
       </div>
+          </div>
       <div></div>
     </div>
   );

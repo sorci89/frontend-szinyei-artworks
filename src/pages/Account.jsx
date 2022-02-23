@@ -7,6 +7,7 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import { useNavigate } from 'react-router-dom';
 
 const Account = () => {
   const [dataList, setDataList] = useState([]);
@@ -20,6 +21,7 @@ const Account = () => {
   const [classifications, setClassifications] = useState([""]);
   const [cultures, setCultures] = useState([""]);
   const [tags, setTags] = useState([""]);
+  let navigate = useNavigate();
 
   const handleChange = (event) => {
     setFilter(event.target.value);
@@ -85,17 +87,16 @@ const Account = () => {
   };
 
   const renderData = async () => {
-    let authUsername = localStorage.getItem("user");
-    let authPassword = localStorage.getItem("pw");
 
-    console.log("Render, render!!!!!!!!!");
+
+
     try {
       const response = await axios.post(
         "http://localhost:3101/api/user/galery",
         {},
         {
           headers: {
-            Authorization: authUsername + "&&&" + authPassword,
+            'Authorization': localStorage.getItem("SessionID")
           },
         }
       );
@@ -105,7 +106,9 @@ const Account = () => {
       getClassifications(response.data);
       getTags(response.data);
     } catch (e) {
-      alert("wrong username/password");
+      alert('Session ended!');
+      navigate('/login');
+      localStorage.removeItem('SessionID');
     }
   };
 
@@ -214,10 +217,11 @@ const Account = () => {
             </div>
           )}
         </div>
-
+              <div className="data-container">
         {dataToShow.map((data, i) => (
           <Imagebox data={data} key={i} page={"account"} savedlist={""} />
-        ))}
+          ))}
+          </div>
       </div>
     </div>
   );
