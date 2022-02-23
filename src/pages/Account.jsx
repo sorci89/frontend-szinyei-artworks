@@ -81,7 +81,7 @@ const Account = () => {
   const renderData = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:3101/api/user/galery",
+        "ec2-3-123-23-184.eu-central-1.compute.amazonaws.com/api/user/galery",
         {},
         {
           headers: {
