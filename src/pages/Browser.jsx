@@ -65,23 +65,22 @@ const Browser = () => {
   };
 
   const getSavedImages = async () => {
-    let authUsername = localStorage.getItem("user");
-    let authPassword = localStorage.getItem("pw");
-    console.log("render!render!");
+    if(localStorage.getItem('loggedIn')){
+    console.log("get saved images");
     try {
       const response = await axios.post(
         "http://localhost:3101/api/user/galery",
         {},
         {
           headers: {
-            Authorization: authUsername + "&&&" + authPassword,
+            'Authorization': localStorage.getItem("SessionID")
           },
         }
       );
       setSavedList(response.data);
     } catch (e) {
-      console.log("not logged in");
-    }
+      console.log("not logged in GET SAVED IMAGES");
+    }}
   };
 
   useEffect(() => {
