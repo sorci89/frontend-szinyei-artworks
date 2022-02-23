@@ -1,7 +1,217 @@
+/* $menu1: #424058;
+$menu2: #a7cfe6;
+$menu3: #abdd98;
+$menu4: #92264d;
+
 select select {
   position: relative;
   display: none;
   border-radius: '50%';
   height: '60px';
+} */
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+.menu-bar {
+  font-family: 'Oswald', sans-serif;
+  color: #a1a1a1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu-bar * {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  outline: none;
+  text-decoration: none;
+  outline: none;
+  font-family: inherit;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.menu-bar ol,
+.menu-bar ul,
+.menu-bar li {
+  list-style: none;
+  display: block;
+}
+
+.menu-bar table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.menu-bar a img {
+  border: none;
+}
+
+.menu-bar button,
+.menu-bar a {
+  cursor: pointer;
+  color: inherit;
+}
+
+.menu-bar textarea {
+  resize: none;
+}
+
+.menu-bar button,
+.menu-bar input,
+.menu-bar textarea,
+.menu-bar select {
+  -moz-appearance: none !important;
+       appearance: none !important;
+  -webkit-appearance: none !important;
+  border-radius: 0;
+}
+
+@media screen and (max-width: 850px) {
+  .menu-bar {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-bottom: 100px;
+  }
+}
+
+.menu-bar .menu-left,
+.menu-bar .menu-right {
+  width: 37%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu-bar .menu-left {
+  padding-left: 7%;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+.menu-bar .menu-right {
+  padding-right: 7%;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+}
+
+.menu-bar .menu-middle {
+  width: 26%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.menu-bar .logo {
+  width: 205px;
+  height: 55px;
+  margin-top: 15px;
+  background-image: url("../../public/pictures/logo.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@media screen and (max-width: 850px) {
+  .menu-bar .logo {
+    position: fixed;
+    left: 15px;
+    top: 0;
+    width: 50%;
+  }
+}
+
+.menu-bar .menu-item {
+  margin: 25px 30px;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.menu-bar .menu-item:hover {
+  color: black;
+}
+
+.menu-bar .menu-item:hover {
+  color: black;
+  -webkit-animation: text-shadow 1.5s ease-in-out infinite;
+          animation: text-shadow 1.5s ease-in-out infinite;
+}
+
+@media screen and (max-width: 850px) {
+  .menu-bar .item-1 {
+    position: fixed;
+    right: 40px;
+    top: -20px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .menu-bar .item-2 {
+    position: fixed;
+    right: 40px;
+    top: 10px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .menu-bar .item-3 {
+    position: fixed;
+    right: 40px;
+    top: 40px;
+  }
+}
+
+.selected {
+  color: black;
+}
+
+.nav-border {
+  width: 98%;
+  margin-left: 1%;
+  height: 2px;
+  margin-bottom: 25px;
+  background: #a1a1a1;
+}
+
+@-webkit-keyframes text-shadow {
+  0% {
+    text-shadow: 0 0 0 #89af24, 0 0 0 #a7cfe6, 0 0 0 #d65035, 0 0 0 #f2d748;
+  }
+  20% {
+    text-shadow: 0 0.125em 0 #89af24, 0 0.25em 0 #a7cfe6, 0 -0.125em 0 #d65035, 0 -0.25em 0 #f2d748;
+  }
+  40% {
+    text-shadow: 0 -0.0625em 0 #89af24, 0 -0.125em 0 #a7cfe6, 0 0.0625em 0 #d65035, 0 0.125em 0 #f2d748;
+  }
+  60% {
+    text-shadow: 0 0.03125em 0 #89af24, 0 0.0625em 0 #a7cfe6, 0 -0.03125em 0 #d65035, 0 -0.0625em 0 #f2d748;
+  }
+  80% {
+    text-shadow: 0 0 0 #89af24, 0 0 0 #a7cfe6, 0 0 0 #d65035, 0 0 0 #f2d748;
+  }
+}
+
+@keyframes text-shadow {
+  0% {
+    text-shadow: 0 0 0 #89af24, 0 0 0 #a7cfe6, 0 0 0 #d65035, 0 0 0 #f2d748;
+  }
+  20% {
+    text-shadow: 0 0.125em 0 #89af24, 0 0.25em 0 #a7cfe6, 0 -0.125em 0 #d65035, 0 -0.25em 0 #f2d748;
+  }
+  40% {
+    text-shadow: 0 -0.0625em 0 #89af24, 0 -0.125em 0 #a7cfe6, 0 0.0625em 0 #d65035, 0 0.125em 0 #f2d748;
+  }
+  60% {
+    text-shadow: 0 0.03125em 0 #89af24, 0 0.0625em 0 #a7cfe6, 0 -0.03125em 0 #d65035, 0 -0.0625em 0 #f2d748;
+  }
+  80% {
+    text-shadow: 0 0 0 #89af24, 0 0 0 #a7cfe6, 0 0 0 #d65035, 0 0 0 #f2d748;
+  }
 }
 /*# sourceMappingURL=Navbar.css.map */

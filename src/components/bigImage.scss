@@ -1,10 +1,6 @@
-@import './variables.scss';
-
 * {
   margin: 0;
   padding: 0;
-  //   font-family: 'Quicksand', sans-serif;
-  font-family: 'Roboto', sans-serif;
 }
 
 $desktop: 800px;
@@ -49,6 +45,7 @@ $desktop: 800px;
     width: 100%;
     align-items: center;
     margin-bottom: 10px;
+    padding: 10px;
 
     @include desktop {
       flex-direction: row;
@@ -181,17 +178,15 @@ $desktop: 800px;
   //   text-align: center;
   min-width: 300px;
   padding: 30px 20px 60px;
-  background-color: aliceblue;
-  border-radius: 20px;
-  border: 1px solid rgba(146, 38, 77, 0.2);
-  box-shadow: 15px 15px 35px rgba(77, 15, 38, 0.6);
+  border: 1px solid black;
+  box-shadow: 10px 10px 15px gray;
   text-align: center;
 
   .head {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
-    border-bottom: 2px solid rgba(146, 38, 77, 0.2);
+    border: 2px solid black;
 
     .mui_icon {
       color: $menu4;
@@ -199,25 +194,24 @@ $desktop: 800px;
     }
   }
   h3 {
-    color: #92264d;
+    color: black;
     font-size: 1.5em;
     font-weight: 600;
     text-align: center;
     width: 90%;
   }
 
-  .comment_save_btn {
-    width: 100px;
-    height: 50px;
-    border-radius: 20%;
-    // background-color: $menu3;
-    // color: invert($menu3);
-    font-size: 1em;
-    font-weight: 400;
-    position: absolute;
-    right: 30px;
-    bottom: 20px;
-  }
+  //   .comment_save_btn {
+  //     width: 100px;
+  //     height: 50px;
+  //     background-color: black;
+  //     color: white);
+  //     font-size: 1em;
+  //     font-weight: 400;
+  //     position: absolute;
+  //     right: 30px;
+  //     bottom: 20px;
+  //   }
 
   .tag_container {
     width: 80%;
@@ -228,8 +222,7 @@ $desktop: 800px;
       width: 100%;
       font-size: 1.1em;
       margin: 5px auto 25px;
-      border-radius: 20px;
-      border: 2px solid rgba(146, 38, 77, 0.4);
+      border-bottom: 2px solid black;
       text-indent: 10px;
       height: calc(1em + 30px);
       margin: 0;
@@ -241,17 +234,17 @@ $desktop: 800px;
   }
 }
 
-.error {
-  padding: 1px 5px 5px;
-  background-color: #92264d;
-  border-radius: 10px;
-  color: #ffffff;
-  font-size: 25px;
-}
-.successful {
-  padding: 1px 5px 5px;
-  background-color: #22b86d;
-  color: #ffffff;
-  font-size: 25px;
-  border-radius: 10px;
-}
+// .error {
+//   padding: 1px 5px 5px;
+//   background-color: #92264d;
+//   border-radius: 10px;
+//   color: #ffffff;
+//   font-size: 25px;
+// }
+// .successful {
+//   padding: 1px 5px 5px;
+//   background-color: #22b86d;
+//   color: #ffffff;
+//   font-size: 25px;
+//   border-radius: 10px;
+// }

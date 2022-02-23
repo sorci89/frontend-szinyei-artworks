@@ -11,6 +11,8 @@ import '../App.css';
 const CommentInput = ({
   stars,
   setStars,
+  comment,
+  setComment,
   tag,
   setTag,
   savePicture,
@@ -27,11 +29,11 @@ const CommentInput = ({
         <div className='tag_container'>
           <input
             className='input_tag'
-            placeholder='$tag'
+            placeholder='#tag'
             value={tag}
-            onInput={(e) => {
+            onChange={(e) => {
               let newValue = e.target.value;
-              newValue = newValue.replace(/[#+]/g, '');
+              newValue = newValue.replace(/[$+]/g, '');
               newValue = '#' + newValue;
               setTag(newValue);
               console.log(newValue);

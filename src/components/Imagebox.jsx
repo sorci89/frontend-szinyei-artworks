@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
-import Button from './Button';
 import axios from 'axios';
 import CommentInput from './CommentInput';
 import { useNavigate } from 'react-router-dom';
@@ -97,35 +96,36 @@ const Imagebox = (props) => {
         { data: savedImage },
         {
           headers: {
-            Authorization: authUsername + '&&&' + authPassword,
+            Authorization: localStorage.getItem('SessionID'),
           },
         }
       );
       navigate('/account');
       navigate('/browser');
     } catch (e) {
-      alert('wrong username/password');
+      alert('Session ended!');
+      navigate('/login');
+      localStorage.removeItem('SessionID');
     }
   };
 
   const deletePicture = async (id) => {
-    const authUsername = localStorage.getItem('user');
-    const authPassword = localStorage.getItem('pw');
-
     try {
       const response = await axios.post(
         'http://localhost:3101/api/picture/delete',
         { data: id },
         {
           headers: {
-            Authorization: authUsername + '&&&' + authPassword,
+            Authorization: localStorage.getItem('SessionID'),
           },
         }
       );
       navigate('/browser');
       navigate('/account');
     } catch (e) {
-      alert('wrong username/password');
+      alert('Session ended!');
+      navigate('/login');
+      localStorage.removeItem('SessionID');
     }
   };
 
@@ -179,21 +179,16 @@ const Imagebox = (props) => {
             ) : (
               <div>Unknown Artist</div>
             )}
-            <div>{data.title}</div>
+            <div style={{ textAlign: 'center' }}>{data.title}</div>
             {loggedIn ? (
               page === 'account' ? (
                 <div>
-                  <Button
-                    onClick={(e) => deletePicture(data.objectnumber)}
-                    className='delete'
-                    text='Remove'
-                  />
-                  {/* <button
+                  <button
                     onClick={(e) => deletePicture(data.objectnumber)}
                     className='save_btn'
                   >
                     Remove
-                  </button> */}
+                  </button>
                   <div>{data.tag}</div>
                   <Box
                     sx={{

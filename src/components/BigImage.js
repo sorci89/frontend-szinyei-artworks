@@ -2,12 +2,7 @@ import React from 'react';
 import './bigImage.scss';
 import CloseIcon from '@mui/icons-material/Close';
 
-import Button from './Button';
-
 const BigImage = ({ data, setIsOpen }) => {
-  console.log(data.lastupdate);
-  let dateYMD = data.lastupdate.slice(0, 10);
-
   return (
     <div className='bigImage_container'>
       <div className='head'>
@@ -42,15 +37,6 @@ const BigImage = ({ data, setIsOpen }) => {
                     setIsOpen(false);
                   }}
                 />
-                {/* <div className='button_container'>
-                  <Button
-                    onClick={() => {
-                      setIsOpen(false);
-                    }}
-                    text='Close'
-                    className='btn delete'
-                  />
-                </div> */}
               </>
             ) : data.title ? (
               <div className='bigImage-noArtist'>
@@ -180,15 +166,6 @@ const BigImage = ({ data, setIsOpen }) => {
           Desciption is not yet part of the museum API
         </div>
       )}
-
-      {/* {data.lastupdate ? (
-        <div className='lastupdate'>
-          <b>Last update:</b>
-          {dateYMD}
-        </div>
-      ) : (
-        <div className='lastupdate'>Last update: no data</div>
-      )} */}
     </div>
   );
 };

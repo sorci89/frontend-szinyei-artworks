@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import SelectMenu from '../components/SelectMenu';
 import { useNavigate } from 'react-router-dom';
+import './Navbar.scss';
 
-const Navbar = () => {
+const Navbar = (props) => {
   const [loggedIn, setLoggedIn] = useState(false);
+  let active = props.active;
+
+  const [isActive, setActive] = useState(0);
   const navigate = useNavigate();
 
   //   const themeState = [
@@ -30,6 +33,8 @@ const Navbar = () => {
 
   useEffect(() => {
     setLoggedIn(localStorage.getItem('loggedIn'));
+
+    setActive(active);
   }, []);
 
   return (
@@ -37,23 +42,45 @@ const Navbar = () => {
       {!loggedIn ? (
         <div>
           <div className='menu-bar'>
-            <Link to='/browser'>
-              <div className='menu-dot-1'>
-                <p>browse</p>
-              </div>
-            </Link>
-            <Link to='/login'>
-              <div className='menu-dot-3'>
-                <p>login</p>
-              </div>
-            </Link>
-            <Link to='/register'>
-              <div className='menu-dot-2'>
-                <p>register</p>
-              </div>
-            </Link>
-            <div className='menu-dot-4'>
-              <SelectMenu />
+            <div className='menu-left'>
+              <Link to='/browser'>
+                <div
+                  className={
+                    isActive === 1
+                      ? 'menu-item item-1 selected'
+                      : 'menu-item item-1'
+                  }
+                >
+                  <p>BROWSE</p>
+                </div>
+              </Link>
+            </div>
+            <div className='menu-middle'>
+              <div className='logo'></div>
+            </div>
+            <div className='menu-right'>
+              <Link to='/login'>
+                <div
+                  className={
+                    isActive === 2
+                      ? 'menu-item item-2 selected'
+                      : 'menu-item item-2'
+                  }
+                >
+                  <p>LOGIN</p>
+                </div>
+              </Link>
+              <Link to='/register'>
+                <div
+                  className={
+                    isActive === 3
+                      ? 'menu-item item-3 selected'
+                      : 'menu-item item-3'
+                  }
+                >
+                  <p>REGISTER</p>
+                </div>
+              </Link>
             </div>
           </div>
           <div className='nav-border'></div>
@@ -61,28 +88,46 @@ const Navbar = () => {
       ) : (
         <div>
           <div className='menu-bar'>
-            <button
-              onClick={() => {
-                localStorage.clear();
-                setLoggedIn(false);
-                navigate('/browser');
-              }}
-            >
-              <div className='menu-dot-1'>
-                <p>logout</p>
-              </div>
-            </button>
-            <Link to='/account'>
-              <div className='menu-dot-2'>
-                <p>mypics</p>
-              </div>
-            </Link>
-            <Link to='/browser'>
-              <div className='menu-dot-3'>
-                <p>browse</p>
-              </div>
-            </Link>
-            <div className='menu-dot-4'></div>
+            <div className='menu-left'>
+              <Link to='/browser'>
+                <div
+                  className={
+                    isActive === 1
+                      ? 'menu-item item-1 selected'
+                      : 'menu-item item-1'
+                  }
+                >
+                  <p>BROWSE</p>
+                </div>
+              </Link>
+
+              <Link to='/account'>
+                <div
+                  className={
+                    isActive === 2
+                      ? 'menu-item item-2 selected'
+                      : 'menu-item item-2'
+                  }
+                >
+                  <p>MY GALLERY</p>
+                </div>
+              </Link>
+            </div>
+            <div className='menu-middle'>
+              <div className='logo'></div>
+            </div>
+            <div className='menu-right'>
+              <button
+                className='menu-item item-3'
+                onClick={() => {
+                  localStorage.clear();
+                  setLoggedIn(false);
+                  navigate('/browser');
+                }}
+              >
+                <p>LOGOUT</p>
+              </button>
+            </div>
           </div>
           <div className='nav-border'></div>
         </div>
