@@ -10,14 +10,14 @@ const queryApyKey = `&apikey=a8d819ad-b52c-4acb-97b5-88541077022b`;
 
 const classifications = [
   { name: "ALL", value: "" },
-  { name: "Coins", value: "50" },
+  { name: "Paintings", value: "26" },
   { name: "Drawings", value: "21" },
   { name: "Photographs", value: "17" },
-  { name: "Paintings", value: "26" },
   { name: "Sculpture", value: "30" },
   { name: "Vessels", value: "57" },
-  { name: "Textile Arts", value: "62" },
-  { name: "Tools and Equipment", value: "32" },
+  { name: "Textile", value: "62" },
+  { name: "Tools", value: "32" },
+  { name: "Coins", value: "50" },
 ];
 
 const Browser = () => {
@@ -30,6 +30,8 @@ const Browser = () => {
   const [searchKeyword, updateSearchKeword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("");
   const [hasimage, setHasimage] = useState("");
+  const [categoriesVisible, setCategoriesVisible] = useState(false);
+  const [clickedCategory, setClicedCategory] = useState(0);
 
   const toggleSetimage = () => {
     if (hasimage === "") {
@@ -65,22 +67,23 @@ const Browser = () => {
   };
 
   const getSavedImages = async () => {
-    if(localStorage.getItem('loggedIn')){
-    console.log("get saved images");
-    try {
-      const response = await axios.post(
-        "http://localhost:3101/api/user/galery",
-        {},
-        {
-          headers: {
-            'Authorization': localStorage.getItem("SessionID")
-          },
-        }
-      );
-      setSavedList(response.data);
-    } catch (e) {
-      console.log("not logged in GET SAVED IMAGES");
-    }}
+    if (localStorage.getItem("loggedIn")) {
+      console.log("get saved images");
+      try {
+        const response = await axios.post(
+          "http://localhost:3101/api/user/galery",
+          {},
+          {
+            headers: {
+              Authorization: localStorage.getItem("SessionID"),
+            },
+          }
+        );
+        setSavedList(response.data);
+      } catch (e) {
+        console.log("not logged in GET SAVED IMAGES");
+      }
+    }
   };
 
   useEffect(() => {
@@ -97,7 +100,15 @@ const Browser = () => {
 
       <div className="page-content">
         <div className="search-bar">
+          <div className="search-border"></div>
+          <div
+            className="search-input"
+            onClick={(e) => setCategoriesVisible(!categoriesVisible)}
+          >
+            {categoriesVisible ? "# " : "> "}CATEGORY
+          </div>
           <input
+            className="search-input"
             type="text"
             value={searchKeyword}
             placeholder="kewords"
@@ -106,28 +117,32 @@ const Browser = () => {
               setPage(1);
             }}
           ></input>
-          <label>
+          <label className="search-input">
             <input type="checkbox" onChange={toggleSetimage} />
             with image only
           </label>
           <div
-            className="classification-bar"
-            /*             value={searchClassification}
-            onChange={(e) => {
-              updateSearchClassification(e.target.value);
-              setPage(1);
-            }} */
+            className={
+              categoriesVisible
+                ? "classification-bar"
+                : "classification-bar bar-hidden"
+            }
           >
-            {classifications.map((type) => (
+            {classifications.map((type, i) => (
               <div
-                key={Math.floor(Math.random() * 10000)}
+                className={clickedCategory === i && "category-clicked"}
+                key={i}
                 value={type.value}
-                onClick={(e) => updateSearchClassification(type.value)}
+                onClick={(e) => {
+                  categoriesVisible && updateSearchClassification(type.value);
+                  setClicedCategory(i);
+                }}
               >
                 {type.name}
               </div>
             ))}
           </div>
+          <div className="search-border"></div>
         </div>
         <div className="data-container">
           {dataList.map((data) => (
