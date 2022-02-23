@@ -54,7 +54,7 @@ const LoginForm = () => {
   const login = async () => {
     try {
       const response = await axios.post(
-        "ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/user/login",
+        "http://ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/user/login",
         {},
         {
           headers: {

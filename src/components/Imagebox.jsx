@@ -93,7 +93,7 @@ const Imagebox = (props) => {
 
     try {
       const response = await axios.post(
-        "ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/picture/save",
+        "http://ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/picture/save",
         { data: savedImage },
         {
           headers: {
@@ -113,7 +113,7 @@ const Imagebox = (props) => {
   const deletePicture = async (id) => {
     try {
       const response = await axios.post(
-        "ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/picture/delete",
+        "http://ec2-3-123-23-184.eu-central-1.compute.amazonaws.com:3101/api/picture/delete",
         { data: id },
         {
           headers: {
