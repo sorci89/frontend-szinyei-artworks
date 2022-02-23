@@ -5,9 +5,16 @@ import CloseIcon from '@mui/icons-material/Close';
 const BigImage = ({ data, setIsOpen }) => {
   return (
     <div className='bigImage_container'>
-      <div className='head'>
-        <div className='inside_image'>
+      <div className={data.classification === 'Coins' ? 'coins' : 'head'}>
+        <div
+          className={
+            data.images && data.images[0] && data.images[0].baseimageurl
+              ? 'inside_image'
+              : 'image-not-available'
+          }
+        >
           <img
+            onError={(event) => (event.target.style.display = 'none')}
             src={
               data.images && data.images[0] && data.images[0].baseimageurl
                 ? data.images[0].baseimageurl
@@ -32,24 +39,26 @@ const BigImage = ({ data, setIsOpen }) => {
                   </div>
                   {data.title}
                 </div>
-                <CloseIcon
-                  className='close-icon'
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                />
+                <div className='close-icon'>
+                  <CloseIcon
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  />
+                </div>
               </>
             ) : data.title ? (
               <div className='bigImage-noArtist'>
                 <div className='bigImage-title'>
                   Unknown artist: <div>{data.title}</div>
                 </div>
-                <CloseIcon
-                  className='close-icon'
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                />
+                <div className='close-icon'>
+                  <CloseIcon
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  />
+                </div>
               </div>
             ) : null}
           </div>

@@ -52,18 +52,27 @@ $desktop: 1000px;
       justify-content: flex-start;
     }
   }
+  .coins {
+    .h2 {
+      display: block;
+    }
+  }
   .h2 {
     display: flex;
-    justify-content: space-between;
     font-size: 2em;
     font-weight: 300;
+
+    @include desktop {
+      display: flex;
+      justify-content: space-between;
+    }
 
     .bigImage-noArtist {
       display: flex;
       align-items: flex-start;
-    }
-    .close-icon {
-      margin-left: auto;
+      .close-icon {
+        margin-left: auto;
+      }
     }
     .bigImage-title {
       display: flex;
@@ -106,6 +115,20 @@ $desktop: 1000px;
       // display: inline;
       margin-right: 20px;
       box-shadow: 2px 2px 3px 0px rgb(114, 111, 117);
+    }
+  }
+  .image-not-available {
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    overflow: hidden;
+    padding: 30px;
+
+    &:before {
+      content: 'picture is not available';
+
+      //   background-image: url('/pictures/white_canvas.jpg');
+      background-size: cover;
     }
   }
 
