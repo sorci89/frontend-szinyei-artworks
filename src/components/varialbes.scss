@@ -7,6 +7,11 @@ $myg: grayscale(#1234d5);
 $myc: complement(#1234d5);
 $myi: invert(#1234d5);
 
+$spot: (
+  black: black,
+  white: white,
+);
+
 $spot1: (
   green1: #006e5e,
   green2: #288564,
@@ -29,5 +34,5 @@ $spot2: (
 );
 
 @function color($color-name) {
-  @return map-get($spot1, $color-name);
+  @return map-get($spot, $color-name);
 } ;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
+import Button from './Button';
 import axios from 'axios';
 import CommentInput from './CommentInput';
 import { useNavigate } from 'react-router-dom';
@@ -134,9 +135,9 @@ const Imagebox = (props) => {
   }, []);
 
   return (
-    <div>
+    <>
       {isChoosen && (
-        <div>
+        <>
           <CommentInput
             stars={stars}
             setStars={setStars}
@@ -146,7 +147,7 @@ const Imagebox = (props) => {
             setIsChoosen={setIsChoosen}
             savePicture={savePicture}
           />
-        </div>
+        </>
       )}
 
       <div className='color-test'>
@@ -160,7 +161,7 @@ const Imagebox = (props) => {
         ) : (
           <div className='color-image'>
             <img
-              style={{ cursor: 'pointer', margin: '5px 0px 18px' }}
+              style={{ cursor: 'pointer' }}
               onClick={() => openImage(data.id)}
               src={
                 data.images && data.images[0] && data.images[0].baseimageurl
@@ -178,16 +179,21 @@ const Imagebox = (props) => {
             ) : (
               <div>Unknown Artist</div>
             )}
-            <div style={{ textAlign: 'center' }}>{data.title}</div>
+            <div>{data.title}</div>
             {loggedIn ? (
               page === 'account' ? (
                 <div>
-                  <button
+                  <Button
+                    onClick={(e) => deletePicture(data.objectnumber)}
+                    className='delete'
+                    text='Remove'
+                  />
+                  {/* <button
                     onClick={(e) => deletePicture(data.objectnumber)}
                     className='save_btn'
                   >
                     Remove
-                  </button>
+                  </button> */}
                   <div>{data.tag}</div>
                   <Box
                     sx={{
@@ -206,13 +212,19 @@ const Imagebox = (props) => {
                 <b>already saved</b>
               ) : (
                 <div>
-                  <button
+                  <Button
+                    onClick={(e) => setIsChoosen(true)}
+                    className='save'
+                    disabled={!loggedIn}
+                    text='Save'
+                  />
+                  {/* <button
                     onClick={(e) => setIsChoosen(true)}
                     className='save'
                     disabled={!loggedIn}
                   >
                     Save
-                  </button>
+                  </button> */}
                 </div>
               )
             ) : (
@@ -221,7 +233,7 @@ const Imagebox = (props) => {
           </div>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
