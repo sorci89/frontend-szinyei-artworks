@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-$desktop: 800px;
+$desktop: 1000px;
 
 @mixin desktop {
   @media (min-width: #{$desktop}) {
@@ -81,7 +81,7 @@ $desktop: 800px;
     .bigImage-title {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      text-align: left;
       margin-right: 8px;
     }
 
@@ -97,14 +97,18 @@ $desktop: 800px;
   .inside_image {
     width: 100%;
 
-    img {
+    .image-container {
       position: relative;
-      left: 50%;
-      transform: translateX(-50%);
+
+      //   left: 50%;
+      //   transform: translateX(-50%);
       border: 5px solid black;
       min-width: 350px;
       max-height: 500px;
       min-height: fit-content;
+      img {
+        width: 50%;
+      }
 
       @include desktop {
         position: static;
@@ -126,7 +130,7 @@ $desktop: 800px;
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid black;
-      margin: 5px 0px;
+      margin: 4px 0px;
       div:first-child {
         border: 0;
       }

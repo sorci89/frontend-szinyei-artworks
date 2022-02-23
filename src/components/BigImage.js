@@ -163,7 +163,7 @@ const BigImage = ({ data, setIsOpen }) => {
         <div className='description'>{data.images[0].description}</div>
       ) : (
         <div className='unknown description'>
-          Desciption is not yet part of the museum API
+          Description is not yet part of the museum API
         </div>
       )}
     </div>

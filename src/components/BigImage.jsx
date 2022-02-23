@@ -35,16 +35,18 @@ const BigImage = ({ data, setIsOpen }) => {
       </div>
 
       <div className='inside_image'>
-        <img
-          src={
-            data.images && data.images[0] && data.images[0].baseimageurl
-              ? data.images[0].baseimageurl
-              : data.images
-              ? '/pictures/bg-paper-texture-2.jpg'
-              : '/pictures/no-profile-picture.png'
-          }
-          alt='not available'
-        />
+        <div className='image-container'>
+          <img
+            src={
+              data.images && data.images[0] && data.images[0].baseimageurl
+                ? data.images[0].baseimageurl
+                : data.images
+                ? '/pictures/bg-paper-texture-2.jpg'
+                : '/pictures/no-profile-picture.png'
+            }
+            alt='not available'
+          />
+        </div>
 
         <div className='details'>
           {data.classification ? (

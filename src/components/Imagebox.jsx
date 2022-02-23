@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BigImage from './BigImage';
+import Button from './Button';
 import axios from 'axios';
 import CommentInput from './CommentInput';
 import { useNavigate } from 'react-router-dom';
