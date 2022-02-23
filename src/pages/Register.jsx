@@ -5,8 +5,8 @@ import RegisterForm from "../components/RegisterForm";
 const Register = () => {
   return (
     <div>
-      <Navbar />
-      <RegisterForm/>
+      <Navbar active={3} />
+      <RegisterForm />
     </div>
   );
 };

@@ -13,7 +13,7 @@ const LoginForm = () => {
 
   const loginValidation = () => {
     setLogErrors({});
-    console.log(authUsername, authPassword);
+
     let logErrors = {};
     logErrors.empty = true;
     var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
@@ -42,12 +42,12 @@ const LoginForm = () => {
       logErrors.authPassword = "Password must be more than 5 character!";
       logErrors.empty = false;
     }
-    console.log(logErrors);
+
     if (!logErrors.empty) {
-      console.log("Hiba");
+
       setLogErrors(logErrors);
     } else {
-      console.log("ok");
+
       login();
     }
   };
@@ -63,11 +63,9 @@ const LoginForm = () => {
           },
         }
       );
-      localStorage.setItem("user", authUsername);
-      localStorage.setItem("pw", authPassword);
+      localStorage.setItem("SessionID", response.data);
       localStorage.setItem("loggedIn", true);
       setLoggedIn(true);
-      console.log("válasz ok");
     } catch (e) {
       alert("wrong username/password");
     }
