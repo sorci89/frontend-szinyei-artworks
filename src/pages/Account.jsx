@@ -2,11 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Imagebox from "../components/Imagebox";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import { useNavigate } from "react-router-dom";
 
 const Account = () => {
@@ -17,15 +12,12 @@ const Account = () => {
   const [searchCulture, updateSearchCulture] = useState("All");
   const [searchTag, updateSearchTag] = useState("All");
   const [filter, setFilter] = useState("keword");
+  const [clickedSetFilter, setClickedSetFilter] = useState("keywords");
 
   const [classifications, setClassifications] = useState([""]);
   const [cultures, setCultures] = useState([""]);
   const [tags, setTags] = useState([""]);
   let navigate = useNavigate();
-
-  const handleChange = (event) => {
-    setFilter(event.target.value);
-  };
 
   const getClassifications = (dataToShow) => {
     let classificationList = ["All"];
@@ -137,31 +129,38 @@ const Account = () => {
     <div>
       <Navbar active={2} />
 
-      <div
-        className="page-content"
-        style={{
-          backgroundImage: `url("/pictures/bg-paper-texture.jpg")`,
-        }}
-      >
+      <div className="page-content">
         <div className="search-bar">
-          <FormControl>
-            <FormLabel id="demo-controlled-radio-buttons-group">
-              FIlter by
-            </FormLabel>
-            <RadioGroup
-              aria-labelledby="demo-controlled-radio-buttons-group"
-              name="controlled-radio-buttons-group"
-              value={filter}
-              onChange={handleChange}
+          <div className="search-border"></div>
+
+          <div className="set-filter-container">
+            <div
+              className={
+                clickedSetFilter === "keywords"
+                  ? "set-filter clicked-set-filter"
+                  : "set-filter"
+              }
+              onClick={() => {
+                setFilter("keywords");
+                setClickedSetFilter("keywords");
+              }}
             >
-              <FormControlLabel
-                value="keywords"
-                control={<Radio />}
-                label="Keywords"
-              />
-              <FormControlLabel value="tags" control={<Radio />} label="Tags" />
-            </RadioGroup>
-          </FormControl>
+              KEYWORDS
+            </div>
+            <div
+              className={
+                clickedSetFilter === "tags"
+                  ? "set-filter clicked-set-filter"
+                  : "set-filter"
+              }
+              onClick={() => {
+                setFilter("tags");
+                setClickedSetFilter("tags");
+              }}
+            >
+              TAGS
+            </div>
+          </div>
 
           {filter !== "tags" ? (
             <div>
@@ -199,20 +198,19 @@ const Account = () => {
               </select>
             </div>
           ) : (
-            <div>
-              <label>Tags:</label>
-              <select
-                value={searchTag}
-                onChange={(e) => updateSearchTag(e.target.value)}
-              >
-                {tags.map((type, i) => (
-                  <option key={i} value={type}>
-                    {type}
-                  </option>
-                ))}
-              </select>
+            <div className="tag-bar">
+              {tags.map((type, i) => (
+                <div
+                  className="tag"
+                  key={i}
+                  onClick={() => updateSearchTag(type)}
+                >
+                  {type}
+                </div>
+              ))}
             </div>
           )}
+          <div className="search-border"></div>
         </div>
         <div className="data-container">
           {dataToShow.map((data, i) => (
