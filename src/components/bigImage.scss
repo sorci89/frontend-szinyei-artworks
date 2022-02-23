@@ -17,8 +17,7 @@ $desktop: 1000px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
-  width: 100vw;
-  height: auto;
+  //   height: auto;
 
   display: flex;
   flex-wrap: wrap;
@@ -27,8 +26,7 @@ $desktop: 1000px;
   color: black;
   font-size: 1em;
   padding: 10px;
-  overflow-y: scroll;
-  scroll-behavior: auto;
+  overflow-y: auto;
 
   @include desktop {
     top: 5%;
@@ -42,31 +40,16 @@ $desktop: 1000px;
   .head {
     display: flex;
     flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 3;
     width: 100%;
-    align-items: center;
     margin-bottom: 10px;
     padding: 10px;
 
     @include desktop {
       flex-direction: row;
+      align-items: flex-start;
       justify-content: flex-start;
-
-      // .button_container {
-      //   flex-direction: column;
-      //   margin-left: auto;
-      //   @include desktop {
-      //     flex-direction: row;
-      //   }
-
-      //   button {
-      //     margin-left: 5px;
-      //     margin-bottom: 5px;
-      //     @include desktop {
-      //       width: 55px;
-      //       height: 55px;
-      //     }
-      //   }
-      // }
     }
   }
   .h2 {
@@ -77,6 +60,10 @@ $desktop: 1000px;
 
     .bigImage-noArtist {
       display: flex;
+      align-items: flex-start;
+    }
+    .close-icon {
+      margin-left: auto;
     }
     .bigImage-title {
       display: flex;
@@ -91,42 +78,40 @@ $desktop: 1000px;
   }
 
   .right {
-    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 3;
     margin-left: 15px;
   }
+
   .inside_image {
-    width: 100%;
+    // min-width: 350px;
+    max-height: 500px;
+    min-height: fit-content;
+    margin-bottom: 10px;
+    img {
+      max-width: 100%;
+      min-width: auto;
+      max-height: 496px;
+      border: 3px solid black;
+    }
 
-    .image-container {
-      position: relative;
+    @include desktop {
+      position: static;
+      left: 0;
 
-      //   left: 50%;
-      //   transform: translateX(-50%);
-      border: 5px solid black;
-      min-width: 350px;
+      transform: translateX(0);
+      min-height: auto;
       max-height: 500px;
-      min-height: fit-content;
-      img {
-        width: 50%;
-      }
-
-      @include desktop {
-        position: static;
-        left: 0;
-
-        transform: translateX(0);
-        min-height: auto;
-        max-height: 500px;
-        flex-shrink: 0;
-        // display: inline;
-        margin-right: 20px;
-        box-shadow: 2px 2px 3px 0px rgb(114, 111, 117);
-      }
+      flex-shrink: 0;
+      // display: inline;
+      margin-right: 20px;
+      box-shadow: 2px 2px 3px 0px rgb(114, 111, 117);
     }
   }
+
   .details {
+    margin-top: 20px;
     div {
-      background-color: #ffffff;
       display: flex;
       justify-content: space-between;
       border-bottom: 1px solid black;
@@ -155,100 +140,77 @@ $desktop: 1000px;
   }
 
   .description {
-    margin: 10px 0px;
+    margin: 5px 15px 10px;
     text-align: justify;
   }
-  .lastupdate {
+
+  .input_comment {
+    position: fixed;
     display: flex;
     flex-direction: column;
-    align-self: flex-end;
-    font-size: 14px;
-    text-align: right;
-    font-style: italic;
-  }
-}
-
-.input_comment {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 20;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 250px;
-  margin: 30px auto;
-  //   text-align: center;
-  min-width: 300px;
-  padding: 30px 20px 60px;
-  border: 1px solid black;
-  box-shadow: 10px 10px 15px gray;
-  text-align: center;
-
-  .head {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 30px;
-    border: 2px solid black;
-
-    .mui_icon {
-      color: black;
-      margin-left: auto;
-    }
-  }
-  h3 {
-    color: black;
-    font-size: 1.5em;
-    font-weight: 600;
+    align-items: center;
+    z-index: 20;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    margin: 30px auto;
+    //   text-align: center;
+    min-width: 300px;
+    padding: 30px 20px 60px;
+    border: 1px solid black;
+    box-shadow: 10px 10px 15px gray;
     text-align: center;
-    width: 90%;
-  }
 
-  //   .comment_save_btn {
-  //     width: 100px;
-  //     height: 50px;
-  //     background-color: black;
-  //     color: white);
-  //     font-size: 1em;
-  //     font-weight: 400;
-  //     position: absolute;
-  //     right: 30px;
-  //     bottom: 20px;
-  //   }
+    .head {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 30px;
+      border: 2px solid black;
 
-  .tag_container {
-    width: 80%;
-    margin-bottom: 25px;
-    margin-top: 5px;
+      .mui_icon {
+        color: black;
+        margin-left: auto;
+      }
+    }
+    h3 {
+      color: black;
+      font-size: 1.5em;
+      font-weight: 600;
+      text-align: center;
+      width: 90%;
+    }
 
-    .input_tag {
-      width: 100%;
-      font-size: 1.1em;
-      margin: 5px auto 25px;
-      border-bottom: 2px solid black;
-      text-indent: 10px;
-      height: calc(1em + 30px);
-      margin: 0;
+    //   .comment_save_btn {
+    //     width: 100px;
+    //     height: 50px;
+    //     background-color: black;
+    //     color: white);
+    //     font-size: 1em;
+    //     font-weight: 400;
+    //     position: absolute;
+    //     right: 30px;
+    //     bottom: 20px;
+    //   }
+
+    .tag_container {
+      width: 80%;
+      margin-bottom: 25px;
+      margin-top: 5px;
+
+      .input_tag {
+        width: 100%;
+        font-size: 1.1em;
+        margin: 5px auto 25px;
+        border-bottom: 2px solid black;
+        text-indent: 10px;
+        height: calc(1em + 30px);
+        margin: 0;
+      }
+    }
+    .MuiBox-root,
+    .css-x5eoc3 {
+      margin-bottom: 20px;
     }
   }
-  .MuiBox-root,
-  .css-x5eoc3 {
-    margin-bottom: 20px;
-  }
 }
-
-// .error {
-//   padding: 1px 5px 5px;
-//   background-color: #92264d;
-//   border-radius: 10px;
-//   color: #ffffff;
-//   font-size: 25px;
-// }
-// .successful {
-//   padding: 1px 5px 5px;
-//   background-color: #22b86d;
-//   color: #ffffff;
-//   font-size: 25px;
-//   border-radius: 10px;
-// }

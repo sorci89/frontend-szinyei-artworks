@@ -33,6 +33,7 @@ const BigImage = ({ data, setIsOpen }) => {
                   {data.title}
                 </div>
                 <CloseIcon
+                  className='close-icon'
                   onClick={() => {
                     setIsOpen(false);
                   }}
@@ -41,10 +42,10 @@ const BigImage = ({ data, setIsOpen }) => {
             ) : data.title ? (
               <div className='bigImage-noArtist'>
                 <div className='bigImage-title'>
-                  Unknown artist: {data.title}
+                  Unknown artist: <div>{data.title}</div>
                 </div>
                 <CloseIcon
-                  className='self-align'
+                  className='close-icon'
                   onClick={() => {
                     setIsOpen(false);
                   }}
