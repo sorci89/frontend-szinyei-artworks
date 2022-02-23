@@ -174,7 +174,7 @@ const Imagebox = (props) => {
               alt="not available"
             />
             {data.people ? (
-              <div>
+              <div className='name-div'>
                 <b>{data.people[0].displayname}</b>
               </div>
             ) : (
@@ -205,7 +205,7 @@ const Imagebox = (props) => {
                   </Box>
                 </div>
               ) : isSaved ? (
-                <b>already saved</b>
+                <b className='already-saved'>already saved</b>
               ) : (
                 <div>
                   <Button
