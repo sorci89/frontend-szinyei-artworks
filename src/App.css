@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
   flex-wrap: wrap;
   margin-bottom: 30px;
   position: relative;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 16px;
 }
 
@@ -38,11 +38,11 @@ body {
   cursor: pointer;
 }
 
-input[type='text'] {
+input[type="text"] {
   border: 1px solid #a1a1a1;
   border-radius: 4px;
 }
-input[type='checkbox'] {
+input[type="checkbox"] {
   margin-right: 3px;
 }
 
@@ -189,6 +189,10 @@ input[type='checkbox'] {
   justify-content: center;
 }
 
+.tag-bar div {
+  display: inline;
+}
+
 .page-content {
   display: flex;
   flex-direction: column;
@@ -240,7 +244,7 @@ input[type='checkbox'] {
 }
 
 .login-dot:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -249,7 +253,7 @@ input[type='checkbox'] {
   animation: shockwave 1.5s 0.6s ease-out infinite;
 }
 .login-dot:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -266,13 +270,13 @@ input[type='checkbox'] {
   position: absolute;
   top: 27%;
   left: 8%;
-  background-image: url('../public/pictures/logo.png');
+  background-image: url("../public/pictures/logo.png");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .login-dot p:nth-child(2) {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   color: black;
   font-size: 28px;
   font-weight: bold;
@@ -465,7 +469,7 @@ input[type='checkbox'] {
   padding: 8px;
   font-size: 20px;
   margin: 30px auto;
-  border: none ;
+  border: none;
   border-bottom: 2px solid rgba(183, 185, 185, 0.4);
 }
 .regstration input::placeholder {
@@ -474,7 +478,7 @@ input[type='checkbox'] {
 }
 .regstration input:focus {
   outline: none;
-  border-bottom: 2px solid rgba(22, 22, 22, 0.4); 
+  border-bottom: 2px solid rgba(22, 22, 22, 0.4);
 }
 
 .regstration input:focus::placeholder {
@@ -541,9 +545,16 @@ input[type='checkbox'] {
 }
 
 @keyframes error {
-  0%   {background-color: 	rgb(138, 53, 71, 1);}
-  50%  {background-color: rgb(161, 53, 76); box-shadow: 0 0 6px rgb(190, 50, 80);}
-  100% {background-color: rgb(138, 53, 71, 1);}
+  0% {
+    background-color: rgb(138, 53, 71, 1);
+  }
+  50% {
+    background-color: rgb(161, 53, 76);
+    box-shadow: 0 0 6px rgb(190, 50, 80);
+  }
+  100% {
+    background-color: rgb(138, 53, 71, 1);
+  }
 }
 .successful {
   font-family: "Oswald";
@@ -554,9 +565,16 @@ input[type='checkbox'] {
   border-radius: 10px;
 }
 @keyframes successful {
-  0%   {background-color: 	rgb(138, 53, 71, 1);}
-  50%  {background-color: rgb(161, 53, 76); box-shadow: 0 0 6px rgb(190, 50, 80);}
-  100% {background-color: rgb(138, 53, 71, 1);}
+  0% {
+    background-color: rgb(138, 53, 71, 1);
+  }
+  50% {
+    background-color: rgb(161, 53, 76);
+    box-shadow: 0 0 6px rgb(190, 50, 80);
+  }
+  100% {
+    background-color: rgb(138, 53, 71, 1);
+  }
 }
 
 imagebox_container {
