@@ -14,24 +14,27 @@ const CommentInput = ({
   tag,
   setTag,
   savePicture,
-  setIsChoosen,
+  setIsChosen,
 }) => {
   return (
     <div>
       <div className='input_comment'>
         <div className='head'>
           <h3>Add some details before saving</h3>
-          <CloseIcon className='mui_icon' onClick={() => setIsChoosen(false)} />
+          <CloseIcon className='mui_icon' onClick={() => setIsChosen(false)} />
         </div>
-        <label>My tag</label>
+        <label>My tag (only letters)</label>
         <div className='tag_container'>
           <input
             className='input_tag'
-            placeholder='$tag'
+            placeholder='#tag'
             value={tag}
             onInput={(e) => {
               let newValue = e.target.value;
-              newValue = newValue.replace(/[#+]/g, '');
+              newValue = newValue.replace(
+                /[#+.>#&@{}<;>*-?$'"+!%/=()~ˇ^˘°`˙]/g,
+                ''
+              );
               newValue = '#' + newValue;
               setTag(newValue);
               console.log(newValue);
@@ -57,7 +60,7 @@ const CommentInput = ({
         <Button
           onClick={(e) => {
             console.log('ok');
-            setIsChoosen(false);
+            setIsChosen(false);
             savePicture();
           }}
           text='Save'

@@ -6,7 +6,7 @@ import CommentInput from './CommentInput';
 import { useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import './bigImage.scss';
 
 const Imagebox = (props) => {
   let navigate = useNavigate();
@@ -22,7 +22,7 @@ const Imagebox = (props) => {
 
   const [stars, setStars] = useState(0);
   const [tag, setTag] = useState([]);
-  const [isChoosen, setIsChoosen] = useState(false);
+  const [isChosen, setIsChosen] = useState(false);
 
   const openImage = (image) => {
     setImageId(image);
@@ -137,18 +137,18 @@ const Imagebox = (props) => {
 
   return (
     <>
-      {isChoosen && (
-        <>
+      {isChosen && (
+        <div className='comment_container'>
           <CommentInput
             stars={stars}
             setStars={setStars}
             tag={tag}
             setTag={setTag}
-            isChoosen={isChoosen}
-            setIsChoosen={setIsChoosen}
+            isChosen={isChosen}
+            setIsChosen={setIsChosen}
             savePicture={savePicture}
           />
-        </>
+        </div>
       )}
 
       <div className='color-test'>
@@ -209,13 +209,13 @@ const Imagebox = (props) => {
               ) : (
                 <div>
                   <Button
-                    onClick={(e) => setIsChoosen(true)}
+                    onClick={(e) => setIsChosen(true)}
                     className='save'
                     disabled={!loggedIn}
                     text='Save'
                   />
                   {/* <button
-                    onClick={(e) => setIsChoosen(true)}
+                    onClick={(e) => setIsChosen(true)}
                     className='save'
                     disabled={!loggedIn}
                   >
