@@ -1,12 +1,12 @@
-import React from 'react';
-import Button from './Button';
-import CloseIcon from '@mui/icons-material/Close';
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import React from "react";
+import Button from "./Button";
+import CloseIcon from "@mui/icons-material/Close";
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
+import Typography from "@mui/material/Typography";
 
-import './bigImage.scss';
-import '../App.css';
+import "./bigImage.scss";
+import "../App.css";
 
 const CommentInput = ({
   stars,
@@ -18,35 +18,34 @@ const CommentInput = ({
 }) => {
   return (
     <div>
-      <div className='input_comment'>
-        <div className='head'>
+      <div className="input_comment">
+        <div className="head">
           <h3>Add some details before saving</h3>
-          <CloseIcon className='mui_icon' onClick={() => setIsChoosen(false)} />
+          <CloseIcon className="mui_icon" onClick={() => setIsChoosen(false)} />
         </div>
         <label>My tag</label>
-        <div className='tag_container'>
+        <div className="tag_container">
           <input
-            className='input_tag'
-            placeholder='$tag'
+            className="input_tag"
+            placeholder="#tag"
             value={tag}
             onInput={(e) => {
               let newValue = e.target.value;
-              newValue = newValue.replace(/[#+]/g, '');
-              newValue = '#' + newValue;
+              newValue = newValue.replace(/[#+]/g, "");
+              newValue = "#" + newValue;
               setTag(newValue);
-              console.log(newValue);
             }}
           />
         </div>
         <Box
           sx={{
-            '& > legend': { mb: 0.5 },
+            "& > legend": { mb: 0.5 },
           }}
         >
-          <Typography component='legend'>My Vote</Typography>
+          <Typography component="legend">My Vote</Typography>
           <Rating
-            name='simple-controlled'
-            size='large'
+            name="simple-controlled"
+            size="large"
             value={stars}
             onChange={(event, newValue) => {
               setStars(newValue);
@@ -56,12 +55,12 @@ const CommentInput = ({
 
         <Button
           onClick={(e) => {
-            console.log('ok');
+            console.log("ok");
             setIsChoosen(false);
             savePicture();
           }}
-          text='Save'
-          className='comment_save_btn save'
+          text="Save"
+          className="comment_save_btn save"
         />
       </div>
     </div>
