@@ -122,7 +122,10 @@ const Navbar = (props) => {
                 onClick={() => {
                   localStorage.clear();
                   setLoggedIn(false);
-                  navigate('/browser');
+                  navigate('/landing');
+                  setTimeout(() => {
+                    navigate('/browser');
+                  }, 1);
                 }}
               >
                 <p>LOGOUT</p>

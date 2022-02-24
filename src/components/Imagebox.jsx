@@ -6,7 +6,7 @@ import CommentInput from "./CommentInput";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
-import Typography from "@mui/material/Typography";
+/* import Typography from "@mui/material/Typography"; */
 
 const Imagebox = (props) => {
   let navigate = useNavigate();
@@ -88,8 +88,6 @@ const Imagebox = (props) => {
   };
 
   const savePicture = async () => {
-    const authUsername = localStorage.getItem("user");
-    const authPassword = localStorage.getItem("pw");
 
     try {
       const response = await axios.post(
