@@ -88,7 +88,6 @@ const Imagebox = (props) => {
   };
 
   const savePicture = async () => {
-
     try {
       const response = await axios.post(
         "http://localhost:3101/api/picture/save",
@@ -129,10 +128,12 @@ const Imagebox = (props) => {
   };
 
   useEffect(() => {
-    setLoggedIn(localStorage.getItem("loggedIn"));
+    console.log(typeof loggedIn);
+    localStorage.getItem("loggedIn") === "true"
+      ? setLoggedIn("true")
+      : setLoggedIn("false");
     savedList && inMyGallery(savedList);
   }, []);
-
 
   return (
     <>
@@ -173,14 +174,16 @@ const Imagebox = (props) => {
               alt="not available"
             />
             {data.people ? (
-              <div className='name-div'>
+              <div className="name-div">
                 <b>{data.people[0].displayname}</b>
               </div>
             ) : (
-              <div className='name-div'>Unknown Artist</div>
+              <div className="name-div">Unknown Artist</div>
             )}
-            <div className='title-div' style={{ textAlign: "center" }}>{data.title}</div>
-            {loggedIn ? (
+            <div className="title-div" style={{ textAlign: "center" }}>
+              {data.title}
+            </div>
+            {loggedIn === "true" ? (
               page === "account" ? (
                 <div>
                   <button
@@ -204,16 +207,16 @@ const Imagebox = (props) => {
                   </Box>
                 </div>
               ) : isSaved ? (
-                <b className='already-saved'>already saved</b>
+                <b className="already-saved">already saved</b>
               ) : (
                 <div>
                   <Button
                     onClick={(e) => setIsChoosen(true)}
                     className="save"
-                    disabled={!loggedIn}
+                    disabled={loggedIn !== "true"}
                     text="Save"
                   />
-                  {/* <button
+                  {/*                   {/* <button
                     onClick={(e) => setIsChoosen(true)}
                     className='save'
                     disabled={!loggedIn}
