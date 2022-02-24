@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
 
 body {
@@ -19,7 +19,7 @@ body {
   flex-wrap: wrap;
   margin-bottom: 30px;
   position: relative;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   font-size: 16px;
 }
 
@@ -38,11 +38,11 @@ body {
   cursor: pointer;
 }
 
-input[type='text'] {
+input[type="text"] {
   border: 1px solid #a1a1a1;
   border-radius: 4px;
 }
-input[type='checkbox'] {
+input[type="checkbox"] {
   margin-right: 3px;
 }
 
@@ -510,7 +510,7 @@ input[type='checkbox'] {
 }
 
 .login-dot:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -519,7 +519,7 @@ input[type='checkbox'] {
   animation: shockwave 1.5s 0.6s ease-out infinite;
 }
 .login-dot:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -536,13 +536,13 @@ input[type='checkbox'] {
   position: absolute;
   top: 27%;
   left: 8%;
-  background-image: url('../public/pictures/logo.png');
+  background-image: url("../public/pictures/logo.png");
   background-repeat: no-repeat;
   background-size: contain;
 }
 
 .login-dot p:nth-child(2) {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: "Noto Sans", sans-serif;
   color: black;
   font-size: 28px;
   font-weight: bold;
@@ -715,10 +715,10 @@ input[type='checkbox'] {
   background-color: #ffffff;
   text-align: center;
   box-shadow: 5px 5px 15px rgba(133, 133, 133, 0.6);
-  font-family: 'Oswald';
+  font-family: "Oswald";
 }
 .regstration h1 {
-  font-family: 'Oswald';
+  font-family: "Oswald";
   color: #343a40;
   font-size: 40px;
 }
@@ -733,7 +733,7 @@ input[type='checkbox'] {
 }
 .regstration input::placeholder {
   color: #a1a1a1;
-  font-family: 'Oswald';
+  font-family: "Oswald";
 }
 .regstration input:focus {
   outline: none;
@@ -744,7 +744,7 @@ input[type='checkbox'] {
   color: transparent;
 }
 .regstration button {
-  font-family: 'Oswald';
+  font-family: "Oswald";
   margin: 5px;
   width: 170px;
   height: 40px;
@@ -791,7 +791,7 @@ input[type='checkbox'] {
   border-top: 1px solid #343a40;
 }
 .error {
-  font-family: 'Oswald';
+  font-family: "Oswald";
   padding: 1px 5px 5px;
   background-color: #8a3547;
   border-radius: 2px;
@@ -816,7 +816,7 @@ input[type='checkbox'] {
   }
 }
 .successful {
-  font-family: 'Oswald';
+  font-family: "Oswald";
   padding: 1px 5px 5px;
   background-color: #42795d;
   color: #ffffff;
@@ -894,7 +894,6 @@ input[type='checkbox'] {
   animation-duration: 1.3s;
   animation-iteration-count: 100000;
 }
-
 
 /* ----------------------------------------------------------------------------- */
 

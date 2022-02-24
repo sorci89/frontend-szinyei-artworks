@@ -32,7 +32,6 @@ const Imagebox = (props) => {
   const inMyGallery = (savedList) => {
     for (let item of savedList) {
       if (item.title === data.title) {
-        // console.log(item.title);
         setSaved("saved");
       }
     }
@@ -196,7 +195,6 @@ const Imagebox = (props) => {
                       "& > legend": { mb: 0.5 },
                     }}
                   >
-                    {/* <Typography component='legend'>My Vote</Typography> */}
                     <Rating
                       name="simple-controlled"
                       size="small"
@@ -214,13 +212,6 @@ const Imagebox = (props) => {
                     disabled={!loggedIn}
                     text="Save"
                   />
-                  {/* <button
-                    onClick={(e) => setIsChoosen(true)}
-                    className='save'
-                    disabled={!loggedIn}
-                  >
-                    Save
-                  </button> */}
                 </div>
               )
             ) : (

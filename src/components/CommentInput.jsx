@@ -54,8 +54,7 @@ const CommentInput = ({
         </Box>
 
         <Button
-          onClick={(e) => {
-            console.log("ok");
+          onClick={() => {
             setIsChoosen(false);
             savePicture();
           }}

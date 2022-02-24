@@ -76,27 +76,20 @@ const RegisterForm = (props) => {
       Errors.empty = false;
       setAlreadyExist("");
     }
-
-    console.log(Errors);
     if (!Errors.empty) {
-      console.log("Hiba");
       setRegErrors(Errors);
     } else {
-      console.log("ok");
       signup();
     }
   };
 
   const signup = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:3101/api/user/reg",
-        {
-          username,
-          email,
-          password,
-        }
-      );
+      const response = await axios.post("http://localhost:3101/api/user/reg", {
+        username,
+        email,
+        password,
+      });
       setUsername("");
       setPassword("");
       setPasswordAgain("");

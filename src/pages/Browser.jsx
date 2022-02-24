@@ -63,7 +63,6 @@ const Browser = () => {
   const renderData = async () => {
     const query = getQuery();
     const resp = await axios.get(query);
-    console.log(resp.data.records);
     setDataList(resp.data.records);
     const total = resp.data.info.totalrecords;
     setPageCount(Math.ceil(total / limit));
@@ -71,7 +70,6 @@ const Browser = () => {
 
   const getSavedImages = async () => {
     if (localStorage.getItem("loggedIn")) {
-      console.log("get saved images");
       try {
         const response = await axios.post(
           "http://localhost:3101/api/user/galery",
@@ -83,9 +81,7 @@ const Browser = () => {
           }
         );
         setSavedList(response.data);
-      } catch (e) {
-        console.log("not logged in GET SAVED IMAGES");
-      }
+      } catch (e) {}
     }
   };
 

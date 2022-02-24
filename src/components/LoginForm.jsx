@@ -75,7 +75,7 @@ const LoginForm = () => {
   }, [loggedIn]);
 
   return (
-    <div className='login'>
+    <div className="login">
       {!loggedIn ? (
         <div>
           <h1>Login</h1>
@@ -106,20 +106,6 @@ const LoginForm = () => {
         </div>
       ) : (
         navigate("/browser")
-        // <div>
-        //   <h1>Hi,you're logged in!</h1>
-        //   <button
-        //     onClick={(e) => {
-        //       setAuthUsername("");
-        //       setAuthPassword("");
-        //       localStorage.clear();
-        //       setLoggedIn(false);
-        //       console.log(loggedIn);
-        //     }}
-        //   >
-        //     Log out
-        //   </button>
-        // </div>
       )}
     </div>
   );
