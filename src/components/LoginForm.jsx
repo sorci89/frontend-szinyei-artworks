@@ -75,11 +75,7 @@ const LoginForm = () => {
   }, [loggedIn]);
 
   return (
-<<<<<<< HEAD
     <div className='login'>
-=======
-    <div className="registration">
->>>>>>> a0bb110ce7b5173a47fb8229c4588b2ed0aa6b55
       {!loggedIn ? (
         <div>
           <h1>Login</h1>
