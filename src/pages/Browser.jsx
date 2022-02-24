@@ -72,7 +72,7 @@ const Browser = () => {
     if (localStorage.getItem("loggedIn")) {
       try {
         const response = await axios.post(
-          "http://localhost:3101/api/user/galery",
+          "http://ec2-3-121-180-63.eu-central-1.compute.amazonaws.com:3101/api/user/galery",
           {},
           {
             headers: {
