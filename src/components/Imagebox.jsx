@@ -22,7 +22,7 @@ const Imagebox = (props) => {
 
   const [stars, setStars] = useState(0);
   const [tag, setTag] = useState([]);
-  const [isChosen, setisChosen] = useState(false);
+  const [isChoosen, setIsChoosen] = useState(false);
 
   const openImage = (image) => {
     setImageId(image);
@@ -137,15 +137,15 @@ const Imagebox = (props) => {
 
   return (
     <>
-      {isChosen && (
+      {isChoosen && (
         <>
           <CommentInput
             stars={stars}
             setStars={setStars}
             tag={tag}
             setTag={setTag}
-            isChosen={isChosen}
-            setisChosen={setisChosen}
+            isChoosen={isChoosen}
+            setIsChoosen={setIsChoosen}
             savePicture={savePicture}
           />
         </>
@@ -209,13 +209,13 @@ const Imagebox = (props) => {
               ) : (
                 <div>
                   <Button
-                    onClick={(e) => setisChosen(true)}
+                    onClick={(e) => setIsChoosen(true)}
                     className="save"
                     disabled={!loggedIn}
                     text="Save"
                   />
                   {/* <button
-                    onClick={(e) => setisChosen(true)}
+                    onClick={(e) => setIsChoosen(true)}
                     className='save'
                     disabled={!loggedIn}
                   >
