@@ -10,7 +10,7 @@ select select {
   height: '60px';
 } */
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
 
 .menu-bar {
   * {
@@ -59,7 +59,7 @@ select select {
     border-radius: 0;
   }
 
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   color: #a1a1a1;
   display: flex;
   @media screen and (max-width: 850px) {
@@ -91,11 +91,11 @@ select select {
     width: 205px;
     height: 55px;
     margin-top: 15px;
-    background-image: url('../../public/pictures/logo.png');
+    background-image: url("../../public/pictures/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
     @media screen and (max-width: 850px) {
-      position: fixed;
+      position: absolute;
       left: 15px;
       top: 0;
       width: 50%;
@@ -119,7 +119,7 @@ select select {
 
   .item-1 {
     @media screen and (max-width: 850px) {
-      position: fixed;
+      position: absolute;
       right: 40px;
       top: -20px;
     }
@@ -127,7 +127,7 @@ select select {
 
   .item-2 {
     @media screen and (max-width: 850px) {
-      position: fixed;
+      position: absolute;
       right: 40px;
       top: 10px;
     }
@@ -135,7 +135,7 @@ select select {
 
   .item-3 {
     @media screen and (max-width: 850px) {
-      position: fixed;
+      position: absolute;
       right: 40px;
       top: 40px;
     }
