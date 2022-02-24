@@ -204,9 +204,9 @@ const Imagebox = (props) => {
               <div>
                 <Button
                   onClick={(e) => setIsChosen(true)}
-                  className="save"
+                  className="save btn button"
                   disabled={!loggedIn}
-                  text="Save btn button"
+                  text="Save"
                 />
                 {/* <button
                     onClick={(e) => setIsChosen(true)}
