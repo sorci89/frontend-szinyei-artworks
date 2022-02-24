@@ -15,7 +15,7 @@ const Imagebox = (props) => {
   const page = props.page;
   const savedList = props.savedList;
 
-  const [loggedIn, setLoggedIn] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [imageId, setImageId] = useState("");
   const [isSaved, setSaved] = useState("");
@@ -134,6 +134,7 @@ const Imagebox = (props) => {
     setLoggedIn(localStorage.getItem("loggedIn"));
     savedList && inMyGallery(savedList);
   }, []);
+
 
   return (
     <>
