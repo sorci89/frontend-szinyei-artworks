@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 const Account = () => {
   const [dataList, setDataList] = useState([]);
   const [dataToShow, setDataToShow] = useState([]);
-  const [searchKeyword, updateSearchKeword] = useState("");
+  const [searchKeyword, updateSearchKeyword] = useState("");
   const [searchClassification, updateSearchClassification] = useState("All");
   const [searchCulture, updateSearchCulture] = useState("All");
   const [searchTag, updateSearchTag] = useState("All");
-  const [filter, setFilter] = useState("keword");
+  const [filter, setFilter] = useState("keyword");
   const [clickedSetFilter, setClickedSetFilter] = useState("keywords");
   const [clickedTag, setClickedTag] = useState(0);
   const [clickedClassifications, setClickedClassifications] = useState(0);
@@ -122,7 +122,7 @@ const Account = () => {
   }, [dataToShow]);
 
   useEffect(() => {
-    updateSearchKeword("");
+    updateSearchKeyword("");
     updateSearchClassification("All");
     updateSearchCulture("All");
     updateSearchTag("All");
@@ -174,9 +174,9 @@ const Account = () => {
                 className="keywords-input"
                 type="text"
                 value={searchKeyword}
-                placeholder="kewords"
+                placeholder="keywords"
                 onChange={(e) => {
-                  updateSearchKeword(e.target.value);
+                  updateSearchKeyword(e.target.value);
                 }}
               ></input>
               <div className="classifications-bar">
