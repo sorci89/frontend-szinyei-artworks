@@ -168,33 +168,60 @@ const Imagebox = (props) => {
             }
             alt="not available"
           />
-          {data.people ? (
-            <div>
-              <b>{data.people[0].displayname}</b>
-            </div>
-          ) : (
-            <div>Unknown Artist</div>
-          )}
-          <div style={{ textAlign: 'center' }}>{data.title}</div>
-          {loggedIn ? (
-            page === 'account' ? (
-              <div>
-                <button
-                  onClick={(e) => deletePicture(data.objectnumber)}
-                  className="save_btn"
-                >
-                  Remove
-                </button>
-                <div>{data.tag}</div>
-                <Box
-                  sx={{
-                    '& > legend': { mb: 0.5 },
-                  }}
-                >
-                  <Rating
-                    name="simple-controlled"
-                    size="small"
-                    value={data.stars}
+        ) : (
+          <div className="color-image">
+            <img
+              style={{ cursor: "pointer" }}
+              onClick={() => openImage(data.id)}
+              src={
+                data.images && data.images[0] && data.images[0].baseimageurl
+                  ? data.images[0].baseimageurl
+                  : data.images
+                  ? "/pictures/bg-paper-texture-2.jpg"
+                  : "/pictures/no-profile-picture.png"
+              }
+              alt="not available"
+            />
+            {data.people ? (
+              <div className='name-div'>
+                <b>{data.people[0].displayname}</b>
+              </div>
+            ) : (
+              <div className='name-div'>Unknown Artist</div>
+            )}
+            <div className='title-div' style={{ textAlign: "center" }}>{data.title}</div>
+            {loggedIn ? (
+              page === "account" ? (
+                <div>
+                  <button
+                    onClick={(e) => deletePicture(data.objectnumber)}
+                    className="save_btn"
+                  >
+                    Remove
+                  </button>
+                  <div>{data.tag}</div>
+                  <Box
+                    sx={{
+                      "& > legend": { mb: 0.5 },
+                    }}
+                  >
+                    {/* <Typography component='legend'>My Vote</Typography> */}
+                    <Rating
+                      name="simple-controlled"
+                      size="small"
+                      value={data.stars}
+                    />
+                  </Box>
+                </div>
+              ) : isSaved ? (
+                <b className='already-saved'>already saved</b>
+              ) : (
+                <div>
+                  <Button
+                    onClick={(e) => setIsChoosen(true)}
+                    className="save"
+                    disabled={!loggedIn}
+                    text="Save"
                   />
                 </Box>
               </div>
