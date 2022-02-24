@@ -27,7 +27,7 @@ const Browser = () => {
   const [page, setPage] = useState(1);
   const [savedList, setSavedList] = useState([]);
 
-  const [searchKeyword, updateSearchKeword] = useState("");
+  const [searchKeyword, updateSearchKeyword] = useState("");
   const [searchClassification, updateSearchClassification] = useState({
     name: "",
     value: "",
@@ -119,9 +119,9 @@ const Browser = () => {
             className="search-input"
             type="text"
             value={searchKeyword}
-            placeholder="kewords"
+            placeholder="keywords"
             onChange={(e) => {
-              updateSearchKeword(e.target.value);
+              updateSearchKeyword(e.target.value);
               setPage(1);
             }}
           ></input>
